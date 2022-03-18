@@ -6,7 +6,7 @@ public abstract class Account {
     protected BigDecimal overdraftFee;
     protected BigDecimal minimumBalance;
 
-    public Acount(int accountID, String balance, String overdraftFee, String minimumBalance){
+    public Account(int accountID, String balance, String overdraftFee, String minimumBalance){
         this.accountID = accountID;
         this.balance = new BigDecimal(balance);
         this.overdraftFee = new BigDecimal(overdraftFee);
