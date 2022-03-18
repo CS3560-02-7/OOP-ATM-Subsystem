@@ -1,13 +1,15 @@
+import java.math.BigDecimal
+
 public abstract class Account {
     protected int accountID;
-    protected float balance;
-    protected float overdraftFee;
-    protected float minimumBalance;
+    protected BigDecimal balance;
+    protected BigDecimal overdraftFee;
+    protected BigDecimal minimumBalance;
 
-    public Acount(int accountID, float balance, float overdraftFee, float minimumBalance){
+    public Acount(int accountID, String balance, String overdraftFee, String minimumBalance){
         this.accountID = accountID;
-        this.balance = balance;
-        this.overdraftFee = overdraftFee;
-        this.minimumBalance = minimumBalance;
+        this.balance = new BigDecimal(balance);
+        this.overdraftFee = new BigDecimal(overdraftFee);
+        this.minimumBalance = new BidDecimal(minimumBalance);
     }
 }

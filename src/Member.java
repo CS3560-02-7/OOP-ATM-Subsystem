@@ -10,6 +10,6 @@ public class Member {
     public Member(int memberID, String firstName, String lastName){
         this.memberID = memberID;
         this.firstName = firstName;
-        this.lastName = lastName
+        this.lastName = lastName;
     }
 }

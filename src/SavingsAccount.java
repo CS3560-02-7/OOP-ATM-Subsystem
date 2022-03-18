@@ -1,13 +1,15 @@
-public class SavingsAccount extends Account {
-    private float withdrawLimit;
-    private float interestRate;
+import java.math.BigDecimal
 
-    public SavingsAccount(int accountID, float balance, float overdraftFee, float minimumBalance,
-                          float withdrawLimit, float interestRate){
+public class SavingsAccount extends Account {
+    private BigDecimal withdrawLimit;
+    private BigDecimal interestRate;
+
+    public SavingsAccount(int accountID, String balance, String overdraftFee, String minimumBalance,
+                          String withdrawLimit, String interestRate){
 
         super(accountID, balance, overdraftFee, minimumBalance);
-        this.withdrawLimit = withdrawLimit;
-        this.interestRate = interestRate;
+        this.withdrawLimit = new BigDecimal(withdrawLimit);
+        this.interestRate = new BigDecimal(interestRate);
     }
 
 }
