@@ -1,4 +1,4 @@
-import java.math.BigDecimal
+import java.math.BigDecimal;
 
 public abstract class Account {
     protected int accountID;
@@ -10,6 +10,6 @@ public abstract class Account {
         this.accountID = accountID;
         this.balance = new BigDecimal(balance);
         this.overdraftFee = new BigDecimal(overdraftFee);
-        this.minimumBalance = new BidDecimal(minimumBalance);
+        this.minimumBalance = new BigDecimal(minimumBalance);
     }
 }
