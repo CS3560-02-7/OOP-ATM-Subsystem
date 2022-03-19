@@ -8,5 +8,15 @@ public class Deposit extends Transaction
     {
         super(transactionID, amount, date);
         this.destinationAccountID = destinationAccountID;
+        depositCash();
+    }
+
+    private boolean depositCash()
+    {
+        //this.amount is the amount to deposit to the account
+        //update amount in the bank account;
+        //if deposit is succesful, return true, else false
+        boolean depositSuccessful = false;
+        return depositSuccessful;
     }
 }
