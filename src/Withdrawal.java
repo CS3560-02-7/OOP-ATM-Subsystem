@@ -12,37 +12,33 @@ public class Withdrawal extends Transaction
         this.sourceAccountID = sourceAccountID;
         this.maxWithdrawalAmount = maxWithdrawalAmount;
         this.amount = amount;
+        withdrawCash();
     }
 
-    /* This method will remove money from the source account's balance when a withdrawal is made, and also
-       check to ensure that not too much money is withdrawn from the account. It will return true if the
-       withdrawal is successful and false if it was not.
-     */
-/*    public boolean withdrawFrom(int sourceAccountID, BigDecimal amount)
+
+    private boolean availableBalanceInAccount()
     {
+        boolean fundsAvailable = false;
+        //check if the withdrawal is possible, else return false
+        return fundsAvailable;
+    }
+
+    private boolean withdrawCash()
+    {
+        //this.amount is the amount to withdraw from the account
+        //update amount in the bank account;
+        //if withdraw is succesful, return true, else false
         boolean withdrawSuccessful = false;
+        //run availableBalance to check if enough money is available
+        //and run checkwithdrawalAmount to check if the withdrawal exceeds limit
+
         return withdrawSuccessful;
     }
-*/
 
-    public boolean availableBalanceInAccount(BigDecimal amount)
+    private boolean checkWithdrawalAmount()
     {
-        //check if the withdrawal is possible, else return false
-        return true;
-    }
-
-    public BigDecimal withdrawCash(BigDecimal amount)
-    {
-        BigDecimal dispensedAmount;
-        //dispensedAmount = amount to withdraw;
-        //update amount in the bank account (probably not here though);
-
-        return dispensedAmount;
-    }
-
-    public boolean checkWithdrawalAmount(BigDecimal amount)
-    {
-        // return true if withdrawal amount is within the withdrawal limit, else return false
-        return true;
+        boolean exceedsLimit = true;
+        // return true if withdrawal amount is above the withdrawal limit, else return false
+        return exceedsLimit;
     }
 }
