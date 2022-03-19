@@ -14,4 +14,9 @@ public abstract class Account
         this.overdraftFee = new BigDecimal(overdraftFee);
         this.minimumBalance = new BigDecimal(minimumBalance);
     }
+
+    protected BigDecimal getBalance(){
+        return this.balance;
+    }
+
 }
