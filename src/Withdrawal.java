@@ -11,6 +11,7 @@ public class Withdrawal extends Transaction
         super(transactionID, amount, date);
         this.sourceAccountID = sourceAccountID;
         this.maxWithdrawalAmount = maxWithdrawalAmount;
+        this.amount = amount;
     }
 
     /* This method will remove money from the source account's balance when a withdrawal is made, and also
@@ -24,7 +25,7 @@ public class Withdrawal extends Transaction
     }
 */
 
-    public boolean availableBalanceInAccount()
+    public boolean availableBalanceInAccount(BigDecimal amount)
     {
         //check if the withdrawal is possible, else return false
         return true;
@@ -39,7 +40,7 @@ public class Withdrawal extends Transaction
         return dispensedAmount;
     }
 
-    public boolean checkWithdrawalAmount()
+    public boolean checkWithdrawalAmount(BigDecimal amount)
     {
         // return true if withdrawal amount is within the withdrawal limit, else return false
         return true;
