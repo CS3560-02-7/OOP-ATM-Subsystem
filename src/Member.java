@@ -1,11 +1,11 @@
 public class Member
 {
-    private int memberID;
+    private final int memberID;
     private int savingsAccountID;
     private int checkingAccountID;
     private int pin;
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
     private String address;
 
     public Member(int memberID, String firstName, String lastName)

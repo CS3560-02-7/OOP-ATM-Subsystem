@@ -2,8 +2,8 @@ import java.math.BigDecimal;
 
 public class SavingsAccount extends Account
 {
-    private BigDecimal withdrawLimit;
-    private BigDecimal interestRate;
+    private final BigDecimal withdrawLimit;
+    private final BigDecimal interestRate;
 
     public SavingsAccount(int accountID, String balance, String overdraftFee, String minimumBalance,
                           String withdrawLimit, String interestRate)

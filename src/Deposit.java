@@ -2,7 +2,7 @@ import java.math.BigDecimal;
 
 public class Deposit extends Transaction
 {
-    private int destinationAccountID;
+    private final int destinationAccountID;
 
     public Deposit(int transactionID, BigDecimal amount, int date, int destinationAccountID)
     {

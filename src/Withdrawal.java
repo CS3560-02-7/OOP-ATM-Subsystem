@@ -2,8 +2,8 @@ import java.math.BigDecimal;
 
 public class Withdrawal extends Transaction
 {
-    private int sourceAccountID;
-    private BigDecimal maxWithdrawalAmount;
+    private final int sourceAccountID;
+    private final BigDecimal maxWithdrawalAmount;
 
     public Withdrawal(int transactionID, BigDecimal amount, int date, int sourceAccountID,
                       BigDecimal maxWithdrawalAmount)
