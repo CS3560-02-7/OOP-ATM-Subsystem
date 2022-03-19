@@ -15,11 +15,19 @@ public class Member
         this.lastName = lastName;
     }
 
-    /*This method will check if the user inputted valid login credentials and return true if they did, and false
-      if they did not. The user will be notified if they entered incorrect credentials.
+    /*This method will attempt to log in a member and return true if the login is sucessful
      */
     public boolean logMemberIn(int possibleMemberID, int possiblePin){
-        boolean isCorrectLogin = false;
-        return isCorrectLogin;
+        boolean loginSuccessful = false;
+        //calls verifyCredentials to make sure that the members account info is valid
+        return loginSuccessful;
+    }
+
+    /*This method will verify a members login information and return true if it is a valid combination
+     */
+    private boolean verifyCredentials(int possibleMemberId, int possiblePin)
+    {
+        boolean validCredentials = false;
+        return validCredentials;
     }
 }
