@@ -1,4 +1,5 @@
-public class Member {
+public class Member
+{
     private int memberID;
     private int savingsAccountID;
     private int checkingAccountID;
@@ -7,7 +8,8 @@ public class Member {
     private String lastName;
     private String address;
 
-    public Member(int memberID, String firstName, String lastName){
+    public Member(int memberID, String firstName, String lastName)
+    {
         this.memberID = memberID;
         this.firstName = firstName;
         this.lastName = lastName;
