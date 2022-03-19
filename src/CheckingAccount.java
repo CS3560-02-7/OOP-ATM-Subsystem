@@ -11,5 +11,11 @@ public class CheckingAccount extends Account
         this.monthlyFee = new BigDecimal(monthlyfee);
     }
 
-
+    /*
+    every month this method will be run and will deduct monthlyFee from balance
+     */
+    private void deductMontlyFee()
+    {
+        this.balance = this.balance.subtract(monthlyFee);
+    }
 }
