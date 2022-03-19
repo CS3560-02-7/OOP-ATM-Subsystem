@@ -19,4 +19,12 @@ public abstract class Account
         return this.balance;
     }
 
+    /*
+    This method will gather the transactions for this particular account and display them in the GUI.
+     */
+    protected void showTransactionHistory()
+    {
+
+    }
+
 }
