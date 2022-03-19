@@ -6,3 +6,4 @@ Members:<br />
 Mohammed Ibrahim<br />
 Shane Baxter<br />
 Daniel Rodriguez<br />
+Pj Kim />
