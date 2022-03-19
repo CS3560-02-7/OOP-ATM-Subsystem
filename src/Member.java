@@ -38,4 +38,16 @@ public class Member
         boolean validCredentials = false;
         return validCredentials;
     }
+
+    /*
+    This method will require the user to re-enter their login credentials, and then will display a message saying
+    that their request to change pin has been sent to the bank and they will receive their new pin in the mail
+    in the next few business days.
+     */
+    public boolean requestChangePin(int possibleMemberId, int possiblePin)
+    {
+        boolean requestMade = false;
+        //run verifyCredentials, and if they are valid, popup the message that the request was made
+        return requestMade;
+    }
 }
