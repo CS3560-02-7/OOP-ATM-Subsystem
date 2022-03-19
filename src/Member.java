@@ -50,4 +50,14 @@ public class Member
         //run verifyCredentials, and if they are valid, popup the message that the request was made
         return requestMade;
     }
+
+    /*
+    takes in a 1 for checking account and 2 for savings account. Is called when a button on the GUI is pressed
+    with the appropriate number. Based on the number will open the new correct GUI page
+     */
+    public void selectAccountType(int accountType)
+    {
+
+    }
+
 }
