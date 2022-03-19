@@ -23,6 +23,14 @@ public class Member
         return loginSuccessful;
     }
 
+    /*This method will log out a member and return true if the logout is successful
+     */
+    public boolean logMemberOut(int possibleMemberID, int possiblePin){
+        boolean logoutSuccessful = false;
+        return logoutSuccessful;
+    }
+
+
     /*This method will verify a members login information and return true if it is a valid combination
      */
     private boolean verifyCredentials(int possibleMemberId, int possiblePin)
