@@ -13,4 +13,17 @@ public class SavingsAccount extends Account
         this.interestRate = new BigDecimal(interestRate);
     }
 
+    /*
+    Every year apply the interest rate to the balance and increase it.
+
+    FOR STUDENTS:
+    see this link on how to calculate interest rate with BigDecimal
+    https://stackoverflow.com/questions/9188887/bigdecimal-class-java
+     */
+    private void applyInterestRate()
+    {
+        this.balance=this.balance;
+    }
+
+
 }
