@@ -1,8 +1,8 @@
 # OOP-ATM-Subsystem
 
 Group representative: Abdur Rahman
-
-Members:
-Mohammed Ibrahim
-Shane Baxter
-Daniel Rodriguez
+<br />
+Members:<br />
+Mohammed Ibrahim<br />
+Shane Baxter<br />
+Daniel Rodriguez<br />
