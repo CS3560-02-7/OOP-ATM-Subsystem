@@ -20,6 +20,7 @@ public class Member
     public boolean logMemberIn(int possibleMemberID, int possiblePin){
         boolean loginSuccessful = false;
         //calls verifyCredentials to make sure that the members account info is valid
+        
         return loginSuccessful;
     }
 
