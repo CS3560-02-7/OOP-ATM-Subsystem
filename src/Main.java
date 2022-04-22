@@ -11,7 +11,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception
     {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/UserInterface.fxml")));
-        Scene scene =  new Scene(root, 600, 400);
+        Scene scene =  new Scene(root, 800, 600);
 
         primaryStage.setTitle("Bank ATM");
         primaryStage.setScene(scene);

@@ -1,21 +1,23 @@
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Member
 {
-    private final int memberID;
+    private IntegerProperty memberID;
     private int pinNumber;
-    private final StringProperty firstName;
-    private final StringProperty lastName;
-    private StringProperty address;
+    private StringProperty firstName;
+    private StringProperty lastName;
+    private String address;
 
-    public Member(int memberID, int pinNumber, String firstName, String lastName, String address)
+    public Member(String firstName, int pinNumber, String lastName, int memberID, String address)
     {
-        this.memberID = memberID;
-        this.pinNumber = pinNumber;
         this.firstName = new SimpleStringProperty(firstName);
-        this.lastName = new SimpleStringProperty(lastName);;
-        this.address = new SimpleStringProperty(address);;
+        this.pinNumber = pinNumber;
+        this.lastName = new SimpleStringProperty(lastName);
+        this.memberID = new SimpleIntegerProperty(memberID);
+        this.address = address;
     }
 
     /*This method will attempt to log in a member and return true if the login is sucessful
@@ -33,7 +35,6 @@ public class Member
         boolean logoutSuccessful = false;
         return logoutSuccessful;
     }
-
 
     /*This method will verify a members login information and return true if it is a valid combination
      */
@@ -73,7 +74,7 @@ public class Member
         return lastName;
     }
 
-    public int getmemberID() {
+    public IntegerProperty getmemberID() {
         return memberID;
     }
 
@@ -81,9 +82,28 @@ public class Member
         return pinNumber;
     }
 
-    public StringProperty getAddress(){
+    public String getAddress(){
         return address;
     }
 
+    public StringProperty firstNameProperty() {
+        if (firstName == null) {
+            firstName = new SimpleStringProperty(this, "firstName");
+        }
+        return firstName;
+    }
 
+    public StringProperty lastNameProperty() {
+        if (lastName == null) {
+            lastName = new SimpleStringProperty(this, "lastName");
+        }
+        return lastName;
+    }
+
+    public IntegerProperty memberIDProperty() {
+        if (memberID == null) {
+            memberID = new SimpleIntegerProperty(this, "memberID");
+        }
+        return memberID;
+    }
 }
