@@ -3,16 +3,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller">
    <children>
       <Button fx:id="button" layoutX="379.0" layoutY="2.0" mnemonicParsing="false" onAction="#loadValues" text="Load" />
       <TableView fx:id="tableView" layoutY="32.0" prefHeight="573.0" prefWidth="800.0">
         <columns>
-          <TableColumn fx:id="firstName" prefWidth="120.0" text="firstName" />
-            <TableColumn fx:id="pinNumber" prefWidth="96.0" text="pinNumber" />
-          <TableColumn fx:id="lastName" prefWidth="133.0" text="lastName" />
-            <TableColumn fx:id="memberID" minWidth="80.0" prefWidth="169.0" text="memberID" />
-            <TableColumn fx:id="address" prefWidth="281.0" text="Address" />
+            <TableColumn fx:id="memberID" minWidth="80.0" prefWidth="145.0" text="memberID" />
+          <TableColumn fx:id="firstName" prefWidth="158.0" text="firstName" />
+          <TableColumn fx:id="lastName" prefWidth="147.0" text="lastName" />
+            <TableColumn fx:id="pinNumber" prefWidth="100.0" text="pinNumber" />
+            <TableColumn fx:id="address" prefWidth="249.0" text="Address" />
         </columns>
       </TableView>
    </children>

@@ -23,7 +23,7 @@ public class Controller implements Initializable {
     @FXML private TableView<Member> tableView;
     @FXML private TableColumn<Member, Integer> memberID;
     @FXML private TableColumn<Member, Integer> pinNumber;
-    @FXML private TableColumn<Member, String> firstName; // = new TableColumn<Member, String>("firstName");
+    @FXML private TableColumn<Member, String> firstName;
     @FXML private TableColumn<Member, String> lastName;
     @FXML private TableColumn<Member, String> address;
     @FXML private Button button;
@@ -45,31 +45,16 @@ public class Controller implements Initializable {
             Member mem;
 
             while (resultSet.next()) {
-                // System.out.println(resultSet.getString("firstName") + "\n");
-                // System.out.println(resultSet.getInt("pinNumber") + "\n");
-                // System.out.println(resultSet.getString("lastName") + "\n");
-                // System.out.println(resultSet.getInt("memberID") + "\n");
-                // System.out.println(resultSet.getString("address") + "\n");
-
-                // memberlist.add(new Member(resultSet.getString("firstName"),
-                //         resultSet.getInt("pinNumber"), resultSet.getString("lastName"),
-                //         resultSet.getInt("memberID"), resultSet.getString("address")));
-
-                mem = new Member(resultSet.getString("firstName"),
-                        resultSet.getInt("pinNumber"), resultSet.getString("lastName"),
-                        resultSet.getInt("memberID"), resultSet.getString("address"));
+                mem = new Member(resultSet.getInt("memberID"),
+                        resultSet.getString("firstName"),
+                        resultSet.getString("lastName"),
+                        resultSet.getInt("pinNumber"),
+                        resultSet.getString("address"));
                 memberlist.add(mem);
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
-
-        // firstName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Member, String>, ObservableValue<String>>(){
-        //     @Override
-        //     public ObservableValue<String> call(TableColumn.CellDataFeatures<Member, String> param) {
-        //         return param.getValue().firstNameProperty();
-        //     }
-        // });
 
          firstName.setCellValueFactory(new PropertyValueFactory<Member, String>("firstName"));
          pinNumber.setCellValueFactory(new PropertyValueFactory<Member, Integer>("pinNumber"));
@@ -81,3 +66,10 @@ public class Controller implements Initializable {
     }
 
 }
+
+// firstName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Member, String>, ObservableValue<String>>(){
+//     @Override
+//     public ObservableValue<String> call(TableColumn.CellDataFeatures<Member, String> param) {
+//         return param.getValue().firstNameProperty();
+//     }
+// });

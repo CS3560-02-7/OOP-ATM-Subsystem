@@ -4,13 +4,17 @@ public abstract class Transaction
 {
     protected int transactionID;
     protected BigDecimal amount;
-    protected int date;
+    protected String date;
 
 
-    public Transaction(int transactionID, BigDecimal amount, int date)
+    public Transaction(int transactionID, String amount, String date)
     {
         this.transactionID = transactionID;
-        this.amount = amount;
+        this.amount =  new BigDecimal(amount);
         this.date = date;
+    }
+
+    public BigDecimal getAmount(){
+        return this.amount;
     }
 }

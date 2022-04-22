@@ -16,32 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `withdrawal`
+-- Table structure for table `transfersourceaccount`
 --
 
-DROP TABLE IF EXISTS `withdrawal`;
+DROP TABLE IF EXISTS `transfersourceaccount`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `withdrawal` (
+CREATE TABLE `transfersourceaccount` (
   `transactionID` int NOT NULL,
   `sourceAccountID` int NOT NULL,
-  `amount` decimal(15,2) DEFAULT NULL,
-  `dateOfTransaction` date DEFAULT NULL,
-  `desiredBills` int DEFAULT NULL,
   PRIMARY KEY (`transactionID`,`sourceAccountID`),
   KEY `sourceAccountID` (`sourceAccountID`),
-  CONSTRAINT `withdrawal_ibfk_1` FOREIGN KEY (`sourceAccountID`) REFERENCES `account` (`accountID`)
+  CONSTRAINT `transfersourceaccount_ibfk_1` FOREIGN KEY (`transactionID`) REFERENCES `transfer` (`transactionID`),
+  CONSTRAINT `transfersourceaccount_ibfk_2` FOREIGN KEY (`sourceAccountID`) REFERENCES `account` (`accountID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `withdrawal`
+-- Dumping data for table `transfersourceaccount`
 --
 
-LOCK TABLES `withdrawal` WRITE;
-/*!40000 ALTER TABLE `withdrawal` DISABLE KEYS */;
-INSERT INTO `withdrawal` VALUES (2,98765432,300.00,'2022-04-21',100);
-/*!40000 ALTER TABLE `withdrawal` ENABLE KEYS */;
+LOCK TABLES `transfersourceaccount` WRITE;
+/*!40000 ALTER TABLE `transfersourceaccount` DISABLE KEYS */;
+INSERT INTO `transfersourceaccount` VALUES (3,12345678);
+/*!40000 ALTER TABLE `transfersourceaccount` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

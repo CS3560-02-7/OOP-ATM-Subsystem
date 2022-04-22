@@ -3,20 +3,24 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 public class Member
 {
     private IntegerProperty memberID;
-    private int pinNumber;
     private StringProperty firstName;
     private StringProperty lastName;
+    private int pinNumber;
     private String address;
 
-    public Member(String firstName, int pinNumber, String lastName, int memberID, String address)
-    {
-        this.firstName = new SimpleStringProperty(firstName);
-        this.pinNumber = pinNumber;
-        this.lastName = new SimpleStringProperty(lastName);
+    public Member(int memberID, String firstName, String lastName, int pinNumber, String address) {
         this.memberID = new SimpleIntegerProperty(memberID);
+        this.firstName = new SimpleStringProperty(firstName);
+        this.lastName = new SimpleStringProperty(lastName);
+        this.pinNumber = pinNumber;
         this.address = address;
     }
 
@@ -38,8 +42,7 @@ public class Member
 
     /*This method will verify a members login information and return true if it is a valid combination
      */
-    private boolean verifyCredentials(int possibleMemberId, int possiblePin)
-    {
+    private boolean verifyCredentials(int possibleMemberId, int possiblePin) {
         boolean validCredentials = false;
         return validCredentials;
     }
@@ -49,8 +52,7 @@ public class Member
     that their request to change pin has been sent to the bank and they will receive their new pin in the mail
     in the next few business days.
      */
-    public boolean requestChangePin(int possibleMemberId, int possiblePin)
-    {
+    public boolean requestChangePin(int possibleMemberId, int possiblePin) {
         boolean requestMade = false;
         //run verifyCredentials, and if they are valid, popup the message that the request was made
         return requestMade;
@@ -60,9 +62,27 @@ public class Member
     takes in a 1 for checking account and 2 for savings account. Is called when a button on the GUI is pressed
     with the appropriate number. Based on the number will open the new correct GUI page
      */
-    public void selectAccountType(int accountType)
-    {
+    public void selectAccountType(int accountType) {
 
+    }
+
+    /* This method will return a new instance of the Member class with data from the database, and return null
+        if there was no matching data based on the input memberID
+     */
+    public static Member createMemberFromDatabase(int memberID){
+        Member memberFromDatabase = null;
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+            Statement statement = connection.createStatement();
+            ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + memberID);
+            memberInfo.next();
+            memberFromDatabase = new Member(memberInfo.getInt(1),memberInfo.getString(3),
+                    memberInfo.getString(4), memberInfo.getInt(2), memberInfo.getString(5));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return memberFromDatabase;
     }
 
     // Getter methods

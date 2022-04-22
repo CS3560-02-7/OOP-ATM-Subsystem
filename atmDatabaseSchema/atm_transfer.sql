@@ -24,15 +24,9 @@ DROP TABLE IF EXISTS `transfer`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `transfer` (
   `transactionID` int NOT NULL,
-  `sourceAccountID` int NOT NULL,
-  `destinationAccountID` int NOT NULL,
   `amount` decimal(15,2) DEFAULT NULL,
   `dateOfTransaction` date DEFAULT NULL,
-  PRIMARY KEY (`transactionID`,`sourceAccountID`,`destinationAccountID`),
-  KEY `sourceAccountID` (`sourceAccountID`),
-  KEY `destinationAccountID` (`destinationAccountID`),
-  CONSTRAINT `transfer_ibfk_1` FOREIGN KEY (`sourceAccountID`) REFERENCES `account` (`accountID`),
-  CONSTRAINT `transfer_ibfk_2` FOREIGN KEY (`destinationAccountID`) REFERENCES `account` (`accountID`)
+  PRIMARY KEY (`transactionID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -42,7 +36,7 @@ CREATE TABLE `transfer` (
 
 LOCK TABLES `transfer` WRITE;
 /*!40000 ALTER TABLE `transfer` DISABLE KEYS */;
-INSERT INTO `transfer` VALUES (3,98765432,87654321,400.00,'2022-04-21');
+INSERT INTO `transfer` VALUES (3,400.00,'2022-04-21');
 /*!40000 ALTER TABLE `transfer` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-21 15:07:05
+-- Dump completed on 2022-04-22 15:03:33
