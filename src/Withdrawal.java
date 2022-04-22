@@ -1,18 +1,22 @@
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class Withdrawal extends Transaction
 {
     private final int sourceAccountID;
     private final BigDecimal maxWithdrawalAmount;
+    private int desiredBills;
 
-    public Withdrawal(int transactionID, BigDecimal amount, int date, int sourceAccountID,
-                      BigDecimal maxWithdrawalAmount)
+    public Withdrawal(int transactionID, String amount, String date, int sourceAccountID, int desiredBills)
     {
         super(transactionID, amount, date);
         this.sourceAccountID = sourceAccountID;
-        this.maxWithdrawalAmount = maxWithdrawalAmount;
-        this.amount = amount;
         withdrawCash();
+        maxWithdrawalAmount = new BigDecimal("1000.00");
+        this.desiredBills = desiredBills;
     }
 
 
@@ -40,5 +44,29 @@ public class Withdrawal extends Transaction
         boolean exceedsLimit = true;
         // return true if withdrawal amount is above the withdrawal limit, else return false
         return exceedsLimit;
+    }
+
+    /* Creates a new instance of withdrawal from database based on the given transactionID, returns null if this is not possible*/
+    public static Withdrawal createWithdrawalFromDatabase(int transactionID){
+        Withdrawal withdrawalFromDatabase = null;
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+
+            Statement statement = connection.createStatement();
+
+            ResultSet transactionInfo = statement.executeQuery("SELECT * FROM withdrawal WHERE transactionID = " + transactionID);
+
+            transactionInfo.next();
+            withdrawalFromDatabase = new Withdrawal(transactionInfo.getInt(1), transactionInfo.getString(3),
+                    transactionInfo.getString(4), transactionInfo.getInt(2), transactionInfo.getInt(5));
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return withdrawalFromDatabase;
+
     }
 }

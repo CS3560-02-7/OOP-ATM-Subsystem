@@ -1,14 +1,18 @@
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class CheckingAccount extends Account
 {
     private final BigDecimal monthlyFee;
 
-    public CheckingAccount(int accountID, String balance, String overdraftFee, String minimumBalance,
-                           String monthlyfee)
+    public CheckingAccount(int accountID, int memberID, String balance, String overdraftFee, String minimumBalance,
+                           String monthlyFee)
     {
-        super(accountID, balance, overdraftFee, minimumBalance);
-        this.monthlyFee = new BigDecimal(monthlyfee);
+        super(accountID, memberID, balance, overdraftFee, minimumBalance);
+        this.monthlyFee = new BigDecimal(monthlyFee);
     }
 
     /*
@@ -17,5 +21,30 @@ public class CheckingAccount extends Account
     private void deductMontlyFee()
     {
         this.balance = this.balance.subtract(monthlyFee);
+    }
+
+    /* create a new checking account instance from the database using acocuntID, returns null if not possible*/
+    public static CheckingAccount createCheckingAccountFromDatabase(int accountID){
+        CheckingAccount accountFromDatabase = null;
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+
+            Statement statement = connection.createStatement();
+
+            ResultSet accountInfo = statement.executeQuery("SELECT * FROM account WHERE accountID = " + accountID);
+
+            accountInfo.next();
+            accountFromDatabase = new CheckingAccount(accountInfo.getInt(1), accountInfo.getInt(2),
+                    accountInfo.getString(4), accountInfo.getString(5), accountInfo.getString(6),
+                    accountInfo.getString(9));
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return accountFromDatabase;
+
     }
 }
