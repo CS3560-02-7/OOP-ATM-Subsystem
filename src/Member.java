@@ -1,18 +1,21 @@
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Member
 {
     private final int memberID;
-    private int savingsAccountID;
-    private int checkingAccountID;
-    private int pin;
-    private final String firstName;
-    private final String lastName;
-    private String address;
+    private int pinNumber;
+    private final StringProperty firstName;
+    private final StringProperty lastName;
+    private StringProperty address;
 
-    public Member(int memberID, String firstName, String lastName)
+    public Member(int memberID, int pinNumber, String firstName, String lastName, String address)
     {
         this.memberID = memberID;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.pinNumber = pinNumber;
+        this.firstName = new SimpleStringProperty(firstName);
+        this.lastName = new SimpleStringProperty(lastName);;
+        this.address = new SimpleStringProperty(address);;
     }
 
     /*This method will attempt to log in a member and return true if the login is sucessful
@@ -60,5 +63,27 @@ public class Member
     {
 
     }
+
+    // Getter methods
+    public StringProperty getfirstName() {
+        return firstName;
+    }
+
+    public StringProperty getlastName() {
+        return lastName;
+    }
+
+    public int getmemberID() {
+        return memberID;
+    }
+
+    public int getPinNumber() {
+        return pinNumber;
+    }
+
+    public StringProperty getAddress(){
+        return address;
+    }
+
 
 }
