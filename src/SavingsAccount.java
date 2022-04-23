@@ -41,8 +41,8 @@ public class SavingsAccount extends Account
 
             accountInfo.next();
             accountFromDatabase = new SavingsAccount(accountInfo.getInt(1), accountInfo.getInt(2),
-                    accountInfo.getString(4), accountInfo.getString(5), accountInfo.getString(6),
-                    accountInfo.getString(7), accountInfo.getFloat(8));
+                    accountInfo.getString(3), accountInfo.getString(4), accountInfo.getString(5),
+                    accountInfo.getString(6), accountInfo.getFloat(7));
 
 
 

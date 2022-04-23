@@ -36,8 +36,8 @@ public class CheckingAccount extends Account
 
             accountInfo.next();
             accountFromDatabase = new CheckingAccount(accountInfo.getInt(1), accountInfo.getInt(2),
-                    accountInfo.getString(4), accountInfo.getString(5), accountInfo.getString(6),
-                    accountInfo.getString(9));
+                    accountInfo.getString(3), accountInfo.getString(4), accountInfo.getString(5),
+                    accountInfo.getString(8));
 
 
 

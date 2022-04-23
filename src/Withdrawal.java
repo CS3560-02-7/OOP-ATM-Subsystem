@@ -8,15 +8,13 @@ public class Withdrawal extends Transaction
 {
     private final int sourceAccountID;
     private final BigDecimal maxWithdrawalAmount;
-    private int desiredBills;
 
-    public Withdrawal(int transactionID, String amount, String date, int sourceAccountID, int desiredBills)
+    public Withdrawal(int transactionID, String amount, String date, int sourceAccountID)
     {
         super(transactionID, amount, date);
         this.sourceAccountID = sourceAccountID;
         withdrawCash();
         maxWithdrawalAmount = new BigDecimal("1000.00");
-        this.desiredBills = desiredBills;
     }
 
 
@@ -59,7 +57,7 @@ public class Withdrawal extends Transaction
 
             transactionInfo.next();
             withdrawalFromDatabase = new Withdrawal(transactionInfo.getInt(1), transactionInfo.getString(3),
-                    transactionInfo.getString(4), transactionInfo.getInt(2), transactionInfo.getInt(5));
+                    transactionInfo.getString(4), transactionInfo.getInt(2));
 
 
 

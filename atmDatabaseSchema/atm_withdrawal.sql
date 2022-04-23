@@ -27,7 +27,6 @@ CREATE TABLE `withdrawal` (
   `sourceAccountID` int NOT NULL,
   `amount` decimal(15,2) DEFAULT NULL,
   `dateOfTransaction` date DEFAULT NULL,
-  `desiredBills` int DEFAULT NULL,
   PRIMARY KEY (`transactionID`,`sourceAccountID`),
   KEY `sourceAccountID` (`sourceAccountID`),
   CONSTRAINT `withdrawal_ibfk_1` FOREIGN KEY (`sourceAccountID`) REFERENCES `account` (`accountID`)
@@ -40,7 +39,7 @@ CREATE TABLE `withdrawal` (
 
 LOCK TABLES `withdrawal` WRITE;
 /*!40000 ALTER TABLE `withdrawal` DISABLE KEYS */;
-INSERT INTO `withdrawal` VALUES (2,98765432,300.00,'2022-04-21',100);
+INSERT INTO `withdrawal` VALUES (2,98765432,300.00,'2022-04-21');
 /*!40000 ALTER TABLE `withdrawal` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-22 15:03:33
+-- Dump completed on 2022-04-22 18:26:51
