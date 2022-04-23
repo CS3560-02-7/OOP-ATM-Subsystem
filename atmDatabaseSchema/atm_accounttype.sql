@@ -16,31 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `withdrawal`
+-- Table structure for table `accounttype`
 --
 
-DROP TABLE IF EXISTS `withdrawal`;
+DROP TABLE IF EXISTS `accounttype`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `withdrawal` (
-  `transactionID` int NOT NULL,
-  `sourceAccountID` int NOT NULL,
-  `amount` decimal(15,2) DEFAULT NULL,
-  `dateOfTransaction` date DEFAULT NULL,
-  PRIMARY KEY (`transactionID`,`sourceAccountID`),
-  KEY `sourceAccountID` (`sourceAccountID`),
-  CONSTRAINT `withdrawal_ibfk_1` FOREIGN KEY (`sourceAccountID`) REFERENCES `account` (`accountID`)
+CREATE TABLE `accounttype` (
+  `accountType` varchar(45) NOT NULL,
+  `monthlyFee` decimal(15,2) DEFAULT NULL,
+  `withdrawLimit` decimal(15,2) DEFAULT NULL,
+  `minimumBalance` decimal(15,2) DEFAULT NULL,
+  `interestRate` decimal(5,2) DEFAULT NULL,
+  PRIMARY KEY (`accountType`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `withdrawal`
+-- Dumping data for table `accounttype`
 --
 
-LOCK TABLES `withdrawal` WRITE;
-/*!40000 ALTER TABLE `withdrawal` DISABLE KEYS */;
-INSERT INTO `withdrawal` VALUES (2,98765432,300.00,'2022-04-21');
-/*!40000 ALTER TABLE `withdrawal` ENABLE KEYS */;
+LOCK TABLES `accounttype` WRITE;
+/*!40000 ALTER TABLE `accounttype` DISABLE KEYS */;
+INSERT INTO `accounttype` VALUES ('checking',10.00,2000.00,0.00,0.00),('savings',0.00,1000.00,200.00,0.06);
+/*!40000 ALTER TABLE `accounttype` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-22 21:57:05
+-- Dump completed on 2022-04-22 21:57:06

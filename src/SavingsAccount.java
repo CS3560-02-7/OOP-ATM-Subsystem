@@ -9,12 +9,11 @@ public class SavingsAccount extends Account
     private final BigDecimal withdrawLimit;
     private final float interestRate;
 
-    public SavingsAccount(int accountID, int memberID, String balance, String overdraftFee, String minimumBalance,
-                          String withdrawLimit, float interestRate)
+    public SavingsAccount(int accountID, int memberID, String balance, String overdraftFee)
     {
-        super(accountID, memberID, balance, overdraftFee, minimumBalance);
-        this.withdrawLimit = new BigDecimal(withdrawLimit);
-        this.interestRate = interestRate;
+        super(accountID, memberID, balance, overdraftFee);
+        this.withdrawLimit = new BigDecimal("2000.00");
+        this.interestRate = (float) 0.06;
     }
 
     /*
@@ -41,8 +40,7 @@ public class SavingsAccount extends Account
 
             accountInfo.next();
             accountFromDatabase = new SavingsAccount(accountInfo.getInt(1), accountInfo.getInt(2),
-                    accountInfo.getString(3), accountInfo.getString(4), accountInfo.getString(5),
-                    accountInfo.getString(6), accountInfo.getFloat(7));
+                    accountInfo.getString(3), accountInfo.getString(4));
 
 
 
