@@ -8,7 +8,8 @@ public class main
     public static void main(String[] args)
     {
 
-        Member myMember = new Member(1, "s", "b", 1, "street");
+        Withdrawal myWithdrawal = new Withdrawal(7, "100.00", "2022-05-07", 12345678);
+        System.out.println(myWithdrawal.withdrawCash());
 
 
 

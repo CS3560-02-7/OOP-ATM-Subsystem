@@ -12,10 +12,9 @@ public class Deposit extends Transaction
     {
         super(transactionID, amount, date);
         this.destinationAccountID = destinationAccountID;
-        depositCash();
     }
 
-    private boolean depositCash()
+    public boolean depositCash()
     {
         //this.amount is the amount to deposit to the account
         //update amount in the bank account;

@@ -12,10 +12,9 @@ public class Transfer extends Transaction {
         super(transactionID, amount, date);
         this.destinationAccountID = destinationAccountID;
         this.sourceAccountID = sourceAccountID;
-        transferCash();
     }
 
-    private boolean transferCash() {
+    public boolean transferCash() {
         //this.amount is the amount to transfer to the destinationAccount
         //update amount in the bank accounts;
         //if transfer is successful, return true, else false
