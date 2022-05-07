@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="221.0" layoutY="149.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="131.0" text="Checking">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="400.0" layoutY="149.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="131.0" text="Savings">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="221.0" layoutY="273.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="131.0" text="Change PIN">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="400.0" layoutY="273.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="131.0" text="Help">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="341.0" layoutY="453.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="82.0" text="Back">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <TextField layoutX="298.0" layoutY="53.0" prefHeight="35.0" prefWidth="168.0" text="Select account type">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

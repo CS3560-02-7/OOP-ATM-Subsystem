@@ -7,12 +7,15 @@ import java.util.Objects;
 
 public class Main extends Application {
 
+    private static Stage primaryStage;
+
     @Override
     public void start(Stage primaryStage) throws Exception
     {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/UserInterface.fxml")));
         Scene scene =  new Scene(root, 800, 600);
 
+        Main.primaryStage = primaryStage;
         primaryStage.setTitle("Bank ATM");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -21,5 +24,9 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static Stage retStage(){
+        return primaryStage;
     }
 }
