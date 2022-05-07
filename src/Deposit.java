@@ -35,10 +35,13 @@ public class Deposit extends Transaction
 
             ResultSet transactionInfo = statement.executeQuery("SELECT * FROM deposit WHERE transactionID = " + transactionID);
 
-            transactionInfo.next();
-            depositFromDatabase = new Deposit(transactionInfo.getInt(1), transactionInfo.getString(3),
-                    transactionInfo.getString(4), transactionInfo.getInt(2));
 
+            if(transactionInfo.next() != false) {
+                depositFromDatabase = new Deposit(transactionInfo.getInt(1), transactionInfo.getString(3),
+                        transactionInfo.getString(4), transactionInfo.getInt(2));
+            } else {
+                return null;
+            }
 
 
         } catch (Exception e) {

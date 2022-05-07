@@ -21,12 +21,13 @@ public class Member
         this.address = address;
     }
 
+
     /*This method will attempt to log in a member and return true if the login is successful
      */
     public boolean logMemberIn(int possibleMemberID, int possiblePin){
-        boolean loginSuccessful = false;
         //calls verifyCredentials to make sure that the members account info is valid
-        
+
+        boolean loginSuccessful = verifyCredentials(possibleMemberID, possiblePin);
         return loginSuccessful;
     }
 
@@ -38,11 +39,18 @@ public class Member
     }
 
 
-    /*This method will verify a members login information and return true if it is a valid combination
+    /*This method will verify a member's login information and return true if it is a valid combination
      */
     private boolean verifyCredentials(int possibleMemberId, int possiblePin)
     {
         boolean validCredentials = false;
+
+        Member possibleMember = Member.createMemberFromDatabase(possibleMemberId);
+
+        if(possibleMember != null && possibleMember.getMemberID() == possibleMemberId && possibleMember.getPin() == possiblePin){
+            validCredentials = true;
+        }
+
         return validCredentials;
     }
 
@@ -53,7 +61,7 @@ public class Member
      */
     public boolean requestChangePin(int possibleMemberId, int possiblePin)
     {
-        boolean requestMade = false;
+        boolean requestMade = verifyCredentials(possibleMemberId, possiblePin);
         //run verifyCredentials, and if they are valid, popup the message that the request was made
         return requestMade;
     }
@@ -81,10 +89,14 @@ public class Member
 
             ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + memberID);
 
-            memberInfo.next();
-            memberFromDatabase = new Member(memberInfo.getInt(1),memberInfo.getString(3),
-                    memberInfo.getString(4), memberInfo.getInt(2), memberInfo.getString(5));
 
+
+            if (memberInfo.next() != false) {
+                memberFromDatabase = new Member(memberInfo.getInt(1), memberInfo.getString(3),
+                        memberInfo.getString(4), memberInfo.getInt(2), memberInfo.getString(5));
+            } else {
+                return null;
+            }
 
 
         } catch (Exception e) {

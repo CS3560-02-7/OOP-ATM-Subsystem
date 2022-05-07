@@ -55,10 +55,12 @@ public class Withdrawal extends Transaction
 
             ResultSet transactionInfo = statement.executeQuery("SELECT * FROM withdrawal WHERE transactionID = " + transactionID);
 
-            transactionInfo.next();
-            withdrawalFromDatabase = new Withdrawal(transactionInfo.getInt(1), transactionInfo.getString(3),
-                    transactionInfo.getString(4), transactionInfo.getInt(2));
-
+            if(transactionInfo.next() != false) {
+                withdrawalFromDatabase = new Withdrawal(transactionInfo.getInt(1), transactionInfo.getString(3),
+                        transactionInfo.getString(4), transactionInfo.getInt(2));
+            } else {
+                return null;
+            }
 
 
         } catch (Exception e) {

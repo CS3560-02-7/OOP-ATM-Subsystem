@@ -34,9 +34,13 @@ public class CheckingAccount extends Account
 
             ResultSet accountInfo = statement.executeQuery("SELECT * FROM account WHERE accountID = " + accountID);
 
-            accountInfo.next();
-            accountFromDatabase = new CheckingAccount(accountInfo.getInt(1), accountInfo.getInt(2),
-                    accountInfo.getString(3), accountInfo.getString(4));
+
+            if(accountInfo.next() != false) {
+                accountFromDatabase = new CheckingAccount(accountInfo.getInt(1), accountInfo.getInt(2),
+                        accountInfo.getString(3), accountInfo.getString(4));
+            } else {
+                return null;
+            }
 
 
 

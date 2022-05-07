@@ -43,17 +43,17 @@ public class Transfer extends Transaction {
             Statement statement3 = connection.createStatement();
 
             ResultSet transactionInfo = statement1.executeQuery("SELECT * FROM transfer WHERE transactionID = " + transactionID);
-            transactionInfo.next();
 
             ResultSet destinationInfo = statement2.executeQuery("SELECT * FROM transferdestinationaccount WHERE transactionID = " + transactionID);
-            destinationInfo.next();
 
             ResultSet sourceInfo = statement3.executeQuery("SELECT * FROM transfersourceaccount WHERE transactionID = " + transactionID);
-            sourceInfo.next();
 
-            transferFromDatabase = new Transfer(transactionInfo.getInt(1), transactionInfo.getString(2),
-                    transactionInfo.getString(3), destinationInfo.getInt(2), sourceInfo.getInt(2));
-
+            if(transactionInfo.next() != false && destinationInfo.next() != false && sourceInfo.next() != false) {
+                transferFromDatabase = new Transfer(transactionInfo.getInt(1), transactionInfo.getString(2),
+                        transactionInfo.getString(3), destinationInfo.getInt(2), sourceInfo.getInt(2));
+            } else {
+                return null;
+            }
 
 
         } catch (Exception e) {
