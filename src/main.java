@@ -8,8 +8,10 @@ public class main
     public static void main(String[] args)
     {
 
-        Withdrawal myWithdrawal = new Withdrawal(7, "100.00", "2022-05-07", 12345678);
-        System.out.println(myWithdrawal.withdrawCash());
+        Transfer myTransfer = new Transfer(7, "10", "today", 12345678, 23456789);
+        System.out.println(myTransfer.transferCash());
+
+
 
 
 

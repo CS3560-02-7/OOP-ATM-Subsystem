@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -20,13 +21,84 @@ public class Transfer extends Transaction {
         //if transfer is successful, return true, else false
         boolean transferSuccessful = false;
         //run availableBalanceInSourceAccount to check if there is enough money in the source account to attempt transfer
+
+        BigDecimal sourceBalance = new BigDecimal("0");
+        BigDecimal destinationBalance = new BigDecimal("0");
+
+       if(!availableBalanceInSourceAccount())
+           return transferSuccessful;
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+
+            Statement statement1 = connection.createStatement();
+            Statement statement2 = connection.createStatement();
+
+            ResultSet destinationAccountInfo = statement1.executeQuery("SELECT * FROM account WHERE accountID = " + this.destinationAccountID);
+            ResultSet sourceAccountInfo = statement2.executeQuery("SELECT * FROM account WHERE accountID = " + this.sourceAccountID);
+
+            if(destinationAccountInfo.next() == false)
+                return transferSuccessful;
+
+            destinationBalance = new BigDecimal(destinationAccountInfo.getString(3));
+
+            if(sourceAccountInfo.next() == false)
+                return transferSuccessful;
+
+            sourceBalance = new BigDecimal(sourceAccountInfo.getString(3));
+
+
+        } catch (Exception e){
+            System.out.println("connection not made");
+        }
+
+        BigDecimal newDestinationAccountBalance = destinationBalance.add(amount);
+        BigDecimal newSourceAccountBalance = sourceBalance.subtract(amount);
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+
+            Statement statement1 = connection.createStatement();
+            Statement statement2 = connection.createStatement();
+
+            statement1.execute("UPDATE atm.account SET balance = " + newDestinationAccountBalance.setScale(2, RoundingMode.CEILING).toString() + " WHERE accountID = " + this.destinationAccountID);
+            statement2.execute("UPDATE atm.account SET balance = " + newSourceAccountBalance.setScale(2, RoundingMode.CEILING).toString() + " WHERE accountID = " + this.sourceAccountID);
+
+            transferSuccessful = true;
+
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
         return transferSuccessful;
     }
 
     private boolean availableBalanceInSourceAccount()
     {
         boolean fundsAvailable = false;
+        BigDecimal accountBalance = new BigDecimal("0");
         //check if the transfer is possible, else return false
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+
+            Statement statement1 = connection.createStatement();
+
+            ResultSet accountInfo = statement1.executeQuery("SELECT * FROM account WHERE accountID = " + this.sourceAccountID);
+
+            if(accountInfo.next() == false)
+                return fundsAvailable;
+
+            accountBalance = new BigDecimal(accountInfo.getString(3));
+
+        } catch (Exception e){
+            System.out.println("connection not made");
+        }
+
+        if (accountBalance.compareTo(amount) > 0)
+            fundsAvailable = true;
+
         return fundsAvailable;
     }
 

@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -20,6 +21,39 @@ public class Deposit extends Transaction
         //update amount in the bank account;
         //if deposit is successful, return true, else false
         boolean depositSuccessful = false;
+        BigDecimal accountBalance = new BigDecimal("0");
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+
+            Statement statement = connection.createStatement();
+
+            ResultSet accountInfo = statement.executeQuery("SELECT * FROM account WHERE accountID = " + this.destinationAccountID);
+
+            if(accountInfo.next() == false)
+                return depositSuccessful;
+
+            accountBalance = new BigDecimal(accountInfo.getString(3));
+        } catch (Exception e){
+            System.out.println("connection not made");
+        }
+
+        BigDecimal newAccountBalance = accountBalance.add(this.amount);
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+
+            Statement statement = connection.createStatement();
+
+            statement.execute("UPDATE atm.account SET balance = " + newAccountBalance.setScale(2, RoundingMode.CEILING).toString() + " WHERE accountID = " + this.destinationAccountID);
+
+            depositSuccessful = true;
+
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
         return depositSuccessful;
     }
 
