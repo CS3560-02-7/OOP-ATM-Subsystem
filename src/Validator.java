@@ -12,7 +12,6 @@ public class Validator {
                 Matcher containsDigit = digit.matcher(pin);
             } else
                 return false;
-            return false;
         }
         //method reformats a float into a string with currency format ie $1.00
         public static String formatCurrency(Float number) {
@@ -23,6 +22,5 @@ public class Validator {
             int numberInt = (int) (Float.parseFloat(number)-0);
             return String.valueOf(numberInt);
         }
-    }
 
-}
+

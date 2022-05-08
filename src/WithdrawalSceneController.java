@@ -5,9 +5,9 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import Validator;
-import Member;
-import Withdrawal;
+//import Validator;
+//import Member;
+//import Withdrawal;
 
 public class WithdrawalSceneController implements Initializable {
 
@@ -82,7 +82,7 @@ public class WithdrawalSceneController implements Initializable {
     @FXML
     void withdraw(ActionEvent event) {
         float currentWithdrawalAmount = Float.parseFloat(getWithdrawalValueLabel().substring(1));
-        float customerFundsAfterWithdrawal = getMember().getBalance()-currentWithdrawalAmount;
+        //float customerFundsAfterWithdrawal = getMember().getBalance()-currentWithdrawalAmount;
 
     }
 
