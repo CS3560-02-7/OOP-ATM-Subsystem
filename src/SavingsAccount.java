@@ -9,20 +9,13 @@ public class SavingsAccount extends Account
     private final BigDecimal withdrawLimit;
     private final float interestRate;
 
-    public SavingsAccount(int accountID, int memberID, String balance, String overdraftFee, String minimumBalance,
-                          String withdrawLimit, float interestRate)
+    public SavingsAccount(int accountID, int memberID, String balance, String overdraftFee, String minimumBalance)
     {
         super(accountID, memberID, balance, overdraftFee, minimumBalance);
-        this.withdrawLimit = new BigDecimal(withdrawLimit);
-        this.interestRate = interestRate;
+        this.withdrawLimit = new BigDecimal("2000.00");
+        this.interestRate = (float) 0.06;
     }
 
-    /*
-    Every year apply the interest rate to the balance and increase it.
-    FOR STUDENTS:
-    see this link on how to calculate interest rate with BigDecimal
-    https://stackoverflow.com/questions/9188887/bigdecimal-class-java
-     */
     private void applyInterestRate()
     {
         this.balance=this.balance;
@@ -38,10 +31,12 @@ public class SavingsAccount extends Account
 
             ResultSet accountInfo = statement.executeQuery("SELECT * FROM account WHERE accountID = " + accountID);
 
-            accountInfo.next();
-            accountFromDatabase = new SavingsAccount(accountInfo.getInt(1), accountInfo.getInt(2),
-                    accountInfo.getString(4), accountInfo.getString(5), accountInfo.getString(6),
-                    accountInfo.getString(7), accountInfo.getFloat(8));
+            if(accountInfo.next() != false) {
+                accountFromDatabase = new SavingsAccount(accountInfo.getInt(1), accountInfo.getInt(2),
+                        accountInfo.getString(3), accountInfo.getString(4), accountInfo.getString(5));
+            } else {
+                return null;
+            }
 
 
 

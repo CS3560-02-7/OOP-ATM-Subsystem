@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="Controller">
+    <children>
+        <AnchorPane prefHeight="600.0" prefWidth="800.0">
+            <children>
+                <Button layoutX="113.0" layoutY="125.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Deposit">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button layoutX="431.0" layoutY="125.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Withdraw">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button layoutX="113.0" layoutY="239.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Transfer">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button alignment="CENTER" layoutX="431.0" layoutY="239.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="View Balance">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button layoutX="113.0" layoutY="350.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Transaction History">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <Button layoutX="431.0" layoutY="350.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Help">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <TextField alignment="CENTER" layoutX="550.0" layoutY="14.0" text="Savings Account">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </TextField>
+                <Button fx:id="savingsBackbtn" layoutX="586.0" layoutY="499.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="83.0" text="Back">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
