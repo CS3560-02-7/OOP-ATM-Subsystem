@@ -40,7 +40,10 @@ public class Controller implements Initializable {
     Button toChecking = new Button();
     @FXML
     Button toSavings = new Button();
-
+    @FXML
+    Button toWithdrawal = new Button();
+    @FXML
+    Button toDeposit = new Button();
     public void initialize(URL url, ResourceBundle rb) {
 
         dbconn = new dbConnection();
@@ -94,8 +97,27 @@ public class Controller implements Initializable {
                 }
             }
         });
+        toWithdrawal.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    changeScenes(2);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        toDeposit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    changeScenes(2);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
-
     private void changeScenes(int sceneNum) throws IOException {
 
         Parent page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/Login.fxml")));
@@ -110,6 +132,12 @@ public class Controller implements Initializable {
         }
         if (sceneNum == 3) {
             page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/SavingsAccount.fxml")));
+        }
+        if (sceneNum == 4) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/WithdrawalScene.fxml")));
+        }
+        if (sceneNum == 5) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/DepositScene.fxml")));
         }
         Scene scene = new Scene(page, 800, 600);
         Stage stage = Main.retStage();
