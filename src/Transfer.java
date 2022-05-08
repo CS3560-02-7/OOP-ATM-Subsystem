@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Transfer extends Transaction {
     private final int destinationAccountID;
@@ -133,4 +135,58 @@ public class Transfer extends Transaction {
         return transferFromDatabase;
 
     }
+
+    /* This method adds a new transfer to the database based on the accountIDs and amount of money that the user inputted. It also
+        creates new entries for transferDestinationAccount and transferSourceAccount*/
+    public static boolean addTransferToDatabase(int sourceID, int destinationID, String amount){
+
+        boolean transferSuccessful = false;
+        Date myDate = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+        BigDecimal transferAmount = new BigDecimal(amount);
+        int newTransactionID = Transaction.getNextTransactionID();
+
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+
+            Statement statement1 = connection.createStatement();
+            Statement statement2 = connection.createStatement();
+            Statement statement3 = connection.createStatement();
+
+            statement1.execute("INSERT INTO `atm`.`transfer`\n" +
+                    "(`transactionID`,\n" +
+                    "`amount`,\n" +
+                    "`dateOfTransaction`)\n" +
+                    "VALUES\n" +
+                    "(" + newTransactionID + ",\n" +
+                    transferAmount + ",\n'" +
+                    ft.format(myDate) + "');\n");
+
+            statement2.execute("INSERT INTO `atm`.`transfersourceaccount`\n" +
+                    "(`transactionID`,\n" +
+                    "`sourceAccountID`)\n" +
+                    "VALUES\n" +
+                    "(" + newTransactionID + ",\n" +
+                    sourceID + ");\n");
+
+            statement3.execute("INSERT INTO `atm`.`transferdestinationaccount`\n" +
+                    "(`transactionID`,\n" +
+                    "`destinationAccountID`)\n" +
+                    "VALUES\n" +
+                    "(" + newTransactionID + ",\n" +
+                    destinationID + ");\n");
+
+
+
+            transferSuccessful = true;
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return transferSuccessful;
+    }
+
 }

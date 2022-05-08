@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Withdrawal extends Transaction
 {
@@ -14,7 +16,7 @@ public class Withdrawal extends Transaction
     {
         super(transactionID, amount, date);
         this.sourceAccountID = sourceAccountID;
-        maxWithdrawalAmount = new BigDecimal("1000.00");
+        maxWithdrawalAmount = new BigDecimal("2000.00");
 
     }
 
@@ -138,5 +140,40 @@ public class Withdrawal extends Transaction
         }
         return withdrawalFromDatabase;
 
+    }
+
+    /* This method adds a new withdrawal to the database based on the accountID and amount of money that the user inputted*/
+    public static boolean addWithdrawalToDatabase(int sourceID, String amount){
+
+        boolean withdrawSuccessful = false;
+        Date myDate = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+        BigDecimal withdrawAmount = new BigDecimal(amount);
+
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+
+            Statement statement = connection.createStatement();
+
+            statement.execute("INSERT INTO `atm`.`withdrawal`\n" +
+                    "(`transactionID`,\n" +
+                    "`sourceAccountID`,\n" +
+                    "`amount`,\n" +
+                    "`dateOfTransaction`)\n" +
+                    "VALUES\n" +
+                    "(" + Transaction.getNextTransactionID() + ",\n" +
+                    sourceID + ",\n" +
+                    withdrawAmount + ",\n'" +
+                    ft.format(myDate) + "');\n");
+
+                    withdrawSuccessful = true;
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return withdrawSuccessful;
     }
 }
