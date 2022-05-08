@@ -101,7 +101,7 @@ public class Controller implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    changeScenes(2);
+                    changeScenes(4);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -111,7 +111,7 @@ public class Controller implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    changeScenes(2);
+                    changeScenes(5);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
