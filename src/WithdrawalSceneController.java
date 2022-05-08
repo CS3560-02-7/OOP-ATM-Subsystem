@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 //import Validator;
 //import Member;
 //import Withdrawal;
-
+//let
 public class WithdrawalSceneController implements Initializable {
 
     private Member member;
