@@ -1,130 +1,183 @@
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
+
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Controller implements Initializable {
 
-    // Variables for member
-    @FXML private TableView<Member> tableView;
-    @FXML private TableColumn<Member, Integer> memberID;
-    @FXML private TableColumn<Member, Integer> pinNumber;
-    @FXML private TableColumn<Member, String> firstName;
-    @FXML private TableColumn<Member, String> lastName;
-    @FXML private TableColumn<Member, String> address;
-
-    // Variables for Account
-    @FXML private TableView<Account> accView;
-    @FXML private TableColumn<Account, Integer> accountID;
-    @FXML private TableColumn<Account, Integer> accmemberID;
-    @FXML private TableColumn<Account, String> balance;
-    @FXML private TableColumn<Account, String> overdraftFee;
-    @FXML private TableColumn<Account, String> minimumBalance;
-
-    // Buttons
-    @FXML private Button button;
-    @FXML private Button button2;
-    @FXML private Button button3;
-
     private dbConnection dbconn;
-    ObservableList<Member> memberlist;
-    ObservableList<Account> accountlist;
+
+    // ObservableList<Member> memberlist;
+    // ObservableList<Account> accountlist;
+
+    @FXML
+    TextField memberIDfield = new TextField();
+    @FXML
+    PasswordField pinIDfield = new PasswordField();
+    @FXML
+    Button logins = new Button();
+    @FXML
+    Button savingsBackbtn = new Button();
+    @FXML
+    Button checkingBackbtn = new Button();
+    @FXML
+    Button logOut = new Button();
+    @FXML
+    Button toChecking = new Button();
+    @FXML
+    Button toSavings = new Button();
 
     public void initialize(URL url, ResourceBundle rb) {
+
         dbconn = new dbConnection();
-    }
-
-    public void loadValues(ActionEvent event) throws SQLException {
-        memberlist = FXCollections.observableArrayList();
-        Connection c = dbconn.dbConnect();
-
-        try{
-            String query = "SELECT * FROM member";
-            Statement statement = c.createStatement();;
-            ResultSet resultSet = statement.executeQuery(query);;
-            Member mem;
-
-            while (resultSet.next()) {
-                mem = new Member(resultSet.getInt("memberID"),
-                        resultSet.getString("firstName"),
-                        resultSet.getString("lastName"),
-                        resultSet.getInt("pinNumber"),
-                        resultSet.getString("address"));
-                memberlist.add(mem);
+        logOut.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    changeScenes(0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-
-         firstName.setCellValueFactory(new PropertyValueFactory<Member, String>("firstName"));
-         pinNumber.setCellValueFactory(new PropertyValueFactory<Member, Integer>("pinNumber"));
-         lastName.setCellValueFactory(new PropertyValueFactory<Member, String>("lastName"));
-         memberID.setCellValueFactory(new PropertyValueFactory<Member, Integer>("memberID"));
-         address.setCellValueFactory(new PropertyValueFactory<Member, String>("address"));
-         tableView.setItems(memberlist);
-    }
-
-    public void loadScene(ActionEvent event) throws IOException {
-        changeScenes();
-    }
-
-    public void loadAccounts(ActionEvent event) throws SQLException, IOException {
-        accountlist = FXCollections.observableArrayList();
-        Connection c = dbconn.dbConnect();
-
-        try{
-            String query = "SELECT * FROM account";
-            Statement statement = c.createStatement();;
-            ResultSet resultSet = statement.executeQuery(query);;
-            Account acc;
-
-            while (resultSet.next()) {
-                acc = new Account(resultSet.getInt("accountID"),
-                        resultSet.getInt("memberID"),
-                        resultSet.getString("balance"),
-                        resultSet.getString("overdraftFee"),
-                        resultSet.getString("minimumBalance")) {
-                };
-                accountlist.add(acc);
+        });
+        savingsBackbtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    changeScenes(1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-
-        accountID.setCellValueFactory(new PropertyValueFactory<Account, Integer>("accountID"));
-        accmemberID.setCellValueFactory(new PropertyValueFactory<Account, Integer>("memberID"));
-        balance.setCellValueFactory(new PropertyValueFactory<Account, String>("balance"));
-        overdraftFee.setCellValueFactory(new PropertyValueFactory<Account, String>("overdraftFee"));
-        minimumBalance.setCellValueFactory(new PropertyValueFactory<Account, String>("minimumBalance"));
-        accView.setItems(accountlist);
-
+        });
+        checkingBackbtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    changeScenes(1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        toChecking.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    changeScenes(2);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        toSavings.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    changeScenes(3);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
-    private void changeScenes() throws IOException {
-        Parent accounts = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/DisplayAccounts.fxml")));
-        Scene scene1 = new Scene(accounts, 800, 600);
+    private void changeScenes(int sceneNum) throws IOException {
+
+        Parent page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/Login.fxml")));
+        if (sceneNum == 0) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/Login.fxml")));
+        }
+        if (sceneNum == 1) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/AccountSelection.fxml")));
+        }
+        if (sceneNum == 2) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/CheckingAccount.fxml")));
+        }
+        if (sceneNum == 3) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/SavingsAccount.fxml")));
+        }
+        Scene scene = new Scene(page, 800, 600);
         Stage stage = Main.retStage();
-        stage.setScene(scene1);
+        stage.setScene(scene);
         stage.show();
     }
 
+    private void alertScene(int alerttype) throws IOException{
+
+        Stage alertWindow = new Stage();
+        alertWindow.initModality(Modality.APPLICATION_MODAL);
+        alertWindow.setTitle("Alert");
+        alertWindow.setMinWidth(250);
+        alertWindow.setMinHeight(130);
+        Label label = new Label();
+
+        if(alerttype == 1){
+            label.setText("Incorrect account credentials.\nPlease try again.\n");
+        }
+        if(alerttype == 2){
+            label.setText("");
+        }
+
+        Button close = new Button("OK\n");
+        close.setOnAction(event -> alertWindow.close());
+
+        VBox layout = new VBox(10);
+        layout.getChildren().addAll(label, close);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene alert = new Scene(layout);
+        alertWindow.setScene(alert);
+        alertWindow.showAndWait();
+
+    }
+
+    @FXML
+    public void login(ActionEvent event) throws IOException {
+
+        String mID = memberIDfield.getText().trim();
+        int memberID = Integer.parseInt(mID);
+        System.out.println(memberID); //testing
+
+        String pID = pinIDfield.getText().trim();
+        int pinID = Integer.parseInt(pID);
+        System.out.println(pinID);  //testing
+
+        Member myMember = Member.createMemberFromDatabase(memberID);
+        boolean istrue = false;
+        istrue = myMember.logMemberIn(memberID, pinID);
+
+        if(!istrue){
+            try {
+                alertScene(1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            try {
+                changeScenes(1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+
 }
+

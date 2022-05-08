@@ -24,12 +24,11 @@ public class Member
         this.address = address;
     }
 
-    /*This method will attempt to log in a member and return true if the login is sucessful
-     */
     public boolean logMemberIn(int possibleMemberID, int possiblePin){
-        boolean loginSuccessful = false;
         //calls verifyCredentials to make sure that the members account info is valid
-        
+        boolean loginSuccessful = false;
+        loginSuccessful = verifyCredentials(possibleMemberID, possiblePin);
+        if (!loginSuccessful){return false;}
         return loginSuccessful;
     }
 
@@ -40,12 +39,22 @@ public class Member
         return logoutSuccessful;
     }
 
-    /*This method will verify a members login information and return true if it is a valid combination
+
+    /*This method will verify a member's login information and return true if it is a valid combination
      */
-    private boolean verifyCredentials(int possibleMemberId, int possiblePin) {
+    private boolean verifyCredentials(int possibleMemberId, int possiblePin)
+    {
         boolean validCredentials = false;
+
+        Member possibleMember = Member.createMemberFromDatabase(possibleMemberId);
+
+        if(possibleMember != null && possibleMember.getMemberID() == possibleMemberId && possibleMember.getPin() == possiblePin){
+            validCredentials = true;
+        }
+
         return validCredentials;
     }
+
 
     /*
     This method will require the user to re-enter their login credentials, and then will display a message saying
@@ -70,7 +79,7 @@ public class Member
         if there was no matching data based on the input memberID
      */
     public static Member createMemberFromDatabase(int memberID){
-        Member memberFromDatabase = null;
+        Member memberFromDatabase = new Member(0,"","",0,"");
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
             Statement statement = connection.createStatement();
@@ -90,15 +99,15 @@ public class Member
         return firstName;
     }
 
-    public StringProperty getlastName() {
-        return lastName;
+    private int getMemberID() {
+        return memberID.getValue();
     }
 
-    public IntegerProperty getmemberID() {
-        return memberID;
+    public String getlastName() {
+        return lastName.toString();
     }
 
-    public int getPinNumber() {
+    public int getPin() {
         return pinNumber;
     }
 
