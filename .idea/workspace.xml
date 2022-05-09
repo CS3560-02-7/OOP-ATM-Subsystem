@@ -1,30 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ATMPackage/Transaction.java" afterDir="false" />
+    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Changed structure, added more fxml files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/CheckingAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/CheckingAccount.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/DisplayAccounts.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/SavingsAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/SavingsAccount.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/UserInterface.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/savingsDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/savingsDeposit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/savingsWithdrawal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/savingsWithdrawal.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CheckingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/CheckingAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Member.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Deposit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Deposit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DepositController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DepositController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/SavingsAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Transaction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Transfer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Withdrawal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Withdrawal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WithdrawalSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WithdrawalSceneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +113,7 @@
       <workItem from="1652051629559" duration="583000" />
       <workItem from="1652052237676" duration="5028000" />
       <workItem from="1652074853509" duration="5000" />
-      <workItem from="1652128273864" duration="1140000" />
+      <workItem from="1652128273864" duration="3155000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic GUI Implementation">
       <created>1650660445661</created>
@@ -175,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652057555712</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Changed structure, added more fxml files">
+      <created>1652129572582</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1652129572582</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,6 +187,7 @@
     <MESSAGE value="Merged shanes code and more edits" />
     <MESSAGE value="edits" />
     <MESSAGE value="Fix navigation in GUI and increase GUI functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix navigation in GUI and increase GUI functionality" />
+    <MESSAGE value="Changed structure, added more fxml files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed structure, added more fxml files" />
   </component>
 </project>

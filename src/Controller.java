@@ -20,6 +20,8 @@ import javafx.stage.Stage;
 
 public class Controller implements Initializable {
 
+    public static Member myMember = new Member(0,"","",0,"");
+
     private dbConnection dbconn;
 
     @FXML TextField memberIDfield = new TextField();
@@ -247,7 +249,7 @@ public class Controller implements Initializable {
             int pinID = Integer.parseInt(pID);
             System.out.println(pinID);  //testing
 
-            Member myMember = new Member(0,"","",0,"");
+            //myMember = new Member(0,"","",0,"");
             boolean istrue = myMember.logMemberIn(memberID, pinID);
 
             if(!istrue) {
@@ -265,8 +267,12 @@ public class Controller implements Initializable {
                 }
             }
         }
+        System.out.println(myMember.getMemberID());
     }
 
+    public static Member getMember(){
+        return myMember;
+    }
 
 }
 

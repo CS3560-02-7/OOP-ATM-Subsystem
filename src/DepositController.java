@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 public class DepositController implements Initializable {
 
+    public static Member myMember;
     private Member member;
     private dbConnection dbConn;
 
@@ -41,6 +42,9 @@ public class DepositController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
         dbConn = new dbConnection();
+        myMember = Controller.getMember();
+
+        System.out.println(myMember.getMemberID());
 
         backButton.setOnAction(event -> {
             try {

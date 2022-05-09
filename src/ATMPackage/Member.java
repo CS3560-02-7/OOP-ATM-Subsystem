@@ -27,7 +27,6 @@ public class Member
     }
 
     public boolean logMemberIn(int possibleMemberID, int possiblePin){
-
         //check if that account exists for that address
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
@@ -35,6 +34,7 @@ public class Member
             //grab all withdrawals that match the given account and the current date
             ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + possibleMemberID +" AND pinNumber = "+possiblePin);
             if (memberInfo.next() != false) {
+                this.memberID = new SimpleIntegerProperty(memberInfo.getInt(1));
                 return true;
             }
             else
@@ -118,6 +118,7 @@ public class Member
             //grab all withdrawals that match the given account and the current date
             ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + possibleID +" AND address = "+possibleAddress);
             if (memberInfo.next() != false) {
+                this.memberID = new SimpleIntegerProperty(memberInfo.getInt(1));
                 return true;
             }
             else
@@ -136,7 +137,7 @@ public class Member
         return firstName;
     }
 
-    private int getMemberID() {
+    public int getMemberID() {
         return memberID.getValue();
     }
 
