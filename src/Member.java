@@ -82,7 +82,7 @@ public class Member
      */
     public boolean requestChangePin(int possiblePin)
     {
-        if(this.pin==possiblePin)
+        if(this.pinNumber==possiblePin)
         {
             return true;
         }
