@@ -7,7 +7,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WithdrawalSceneController">
    <children>
 
-      <Button fx:id="resetButton" layoutX="346.0" layoutY="427.0" mnemonicParsing="false" onAction="#reset" prefHeight="44.0" prefWidth="100.0" text="Reset" textFill="#df2020">
+      <Button fx:id="resetButton" layoutX="346.0" layoutY="427.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Reset" textFill="#df2020">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -17,17 +17,17 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Button fx:id="fiveButton" layoutX="133.0" layoutY="315.0" mnemonicParsing="false" onAction="#processDeposit" prefHeight="50.0" prefWidth="100.0" text="\$5" />
-      <Button fx:id="tenButton" layoutX="241.0" layoutY="315.0" mnemonicParsing="false" onAction="#processDeposit" prefHeight="50.0" prefWidth="100.0" text="\$10" />
-      <Button fx:id="twentyButton" layoutX="348.0" layoutY="315.0" mnemonicParsing="false" onAction="#processDeposit" prefHeight="50.0" prefWidth="100.0" text="\$20" />
-      <Button fx:id="fiftyButton" layoutX="458.0" layoutY="315.0" mnemonicParsing="false" onAction="#processDeposit" prefHeight="50.0" prefWidth="100.0" text="\$50" />
-      <Button fx:id="hundredButton" layoutX="567.0" layoutY="315.0" mnemonicParsing="false" onAction="#processDeposit" prefHeight="50.0" prefWidth="100.0" text="\$100" />
+      <Button fx:id="fiveButton" layoutX="133.0" layoutY="315.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="\$5" />
+      <Button fx:id="tenButton" layoutX="241.0" layoutY="315.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="\$10" />
+      <Button fx:id="twentyButton" layoutX="348.0" layoutY="315.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="\$20" />
+      <Button fx:id="fiftyButton" layoutX="458.0" layoutY="315.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="\$50" />
+      <Button fx:id="hundredButton" layoutX="567.0" layoutY="315.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="\$100" />
       <Label fx:id="depositValueLabel" alignment="CENTER" layoutX="330.0" layoutY="206.0" prefHeight="18.0" prefWidth="139.0" text="\$0.00" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="depositButton" layoutX="467.0" layoutY="427.0" mnemonicParsing="false" onAction="#deposit" prefHeight="44.0" prefWidth="100.0" text="Deposit" textAlignment="CENTER" textFill="#20b93e">
+      <Button fx:id="depositButton" layoutX="467.0" layoutY="427.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Deposit" textAlignment="CENTER" textFill="#20b93e">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -37,7 +37,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button fx:id="backButtonSavings" alignment="CENTER" layoutX="225.0" layoutY="427.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Back">
+      <Button fx:id="toSavings" alignment="CENTER" layoutX="225.0" layoutY="427.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Back">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

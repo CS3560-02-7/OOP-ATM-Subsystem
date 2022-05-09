@@ -25,10 +25,27 @@ public class Member
     }
 
     public boolean logMemberIn(int possibleMemberID, int possiblePin){
-        //calls verifyCredentials to make sure that the members account info is valid
+        if(possibleMemberID == 0 ){
 
-        boolean loginSuccessful = verifyCredentials(possibleMemberID, possiblePin);
-        return loginSuccessful;
+        }
+
+        //check if that account exists for that address
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+            Statement statement = connection.createStatement();
+            //grab all withdrawals that match the given account and the current date
+            ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + possibleMemberID +" AND pinNumber = "+possiblePin);
+            if (memberInfo.next() != false) {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        } catch (Exception e){
+            System.out.println("connection not made");
+        }
+        return false;
     }
 
     /*This method will log out a member and return true if the logout is successful

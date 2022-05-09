@@ -163,13 +163,13 @@ public class Controller implements Initializable {
             page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/checkingDeposit.fxml")));
         }
         if (sceneNum == 5) {
-            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/checkingWithdraw.fxml")));
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/CheckingWithdraw.fxml")));
         }
         if (sceneNum == 6) {
             page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/savingsDeposit.fxml")));
         }
         if (sceneNum == 7) {
-            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/savingsWithdrawal.fxml")));
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/SavingsWithdrawal.fxml")));
         }
         Scene scene = new Scene(page, 800, 600);
         Stage stage = Main.retStage();
@@ -190,7 +190,7 @@ public class Controller implements Initializable {
             label.setText("Incorrect account credentials.\nPlease try again.\n");
         }
         if(alerttype == 2){
-            label.setText("");
+            label.setText("Field(s) empty");
         }
 
         Button close = new Button("OK\n");
@@ -210,32 +210,37 @@ public class Controller implements Initializable {
     public void login(ActionEvent event) throws IOException {
 
         String mID = memberIDfield.getText().trim();
-        int memberID = Integer.parseInt(mID);
-        System.out.println(memberID); //testing
-
         String pID = pinIDfield.getText().trim();
-        int pinID = Integer.parseInt(pID);
-        System.out.println(pinID);  //testing
 
-        Member myMember = Member.createMemberFromDatabase(memberID);
-        boolean istrue = false;
-        istrue = myMember.logMemberIn(memberID, pinID);
-
-        if(!istrue){
-            try {
-                alertScene(1);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if(mID.equals("")||pID.equals(""))
+        {
+            alertScene(2);
         }
         else{
-            try {
-                changeScenes(1);
-            } catch (IOException e) {
-                e.printStackTrace();
+            int memberID = Integer.parseInt(mID);
+            System.out.println(memberID); //testing
+
+            int pinID = Integer.parseInt(pID);
+            System.out.println(pinID);  //testing
+
+            Member myMember = new Member(0,"","",0,"");
+            boolean istrue = myMember.logMemberIn(memberID, pinID);
+
+            if(!istrue){
+                try {
+                    alertScene(1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else{
+                try {
+                    changeScenes(1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
-
     }
 
 
