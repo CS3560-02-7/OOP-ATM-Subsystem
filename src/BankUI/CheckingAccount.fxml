@@ -18,17 +18,17 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button layoutX="113.0" layoutY="239.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Transfer">
+            <Button fx:id="totransferChecking" layoutX="113.0" layoutY="239.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Transfer">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" layoutX="431.0" layoutY="239.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="View Balance">
+            <Button fx:id="tobalanceChecking" alignment="CENTER" layoutX="431.0" layoutY="239.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="View Balance">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button layoutX="113.0" layoutY="350.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Transaction History">
+            <Button fx:id="tohistoryChecking" layoutX="113.0" layoutY="350.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Transaction History">
                <font>
                   <Font size="24.0" />
                </font>

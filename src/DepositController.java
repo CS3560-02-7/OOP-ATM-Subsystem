@@ -1,6 +1,8 @@
+import ATMPackage.Member;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import ATMPackage.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,77 +22,39 @@ public class DepositController implements Initializable {
     private Member member;
     private dbConnection dbConn;
 
-    @FXML
-    Button backButton = new Button();
-
-    @FXML
-    Button backButtonSavings = new Button();
-
-    @FXML
-    Button eightButton = new Button();
-
-    @FXML
-    Label errorLabel = new Label();
-
-    @FXML
-    Button fiveButton = new Button();
-
-    @FXML
-    Button fourButton = new Button();
-
-    @FXML
-    Button nineButton = new Button();
-
-    @FXML
-    Button oneButton = new Button();
-
-    @FXML
-    Button resetButton = new Button();
-
-    @FXML
-    Button sevenButton = new Button();
-
-    @FXML
-    Button sixButton = new Button();
-
-    @FXML
-    Button threeButton = new Button();
-
-    @FXML
-    Button twoButton = new Button();
-
-    @FXML
-    Button withdrawButton = new Button();
-
-    @FXML
-    Label withdrawalValueLabel = new Label();
-
-    @FXML
-    Button zeroButton = new Button();
-
+    @FXML Button backButton = new Button();
+    @FXML Button backButtonSavings = new Button();
+    @FXML Button eightButton = new Button();
+    @FXML Label errorLabel = new Label();
+    @FXML Button fiveButton = new Button();
+    @FXML Button fourButton = new Button();
+    @FXML Button nineButton = new Button();
+    @FXML Button oneButton = new Button();
+    @FXML Button resetButton = new Button();
+    @FXML Button sevenButton = new Button();
+    @FXML Button sixButton = new Button();
+    @FXML Button threeButton = new Button();
+    @FXML Button twoButton = new Button();
+    @FXML Button withdrawButton = new Button();
+    @FXML Label withdrawalValueLabel = new Label();
+    @FXML Button zeroButton = new Button();
 
     public void initialize(URL url, ResourceBundle rb) {
         dbConn = new dbConnection();
 
-        backButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    changeScenes(0);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        backButton.setOnAction(event -> {
+            try {
+                changeScenes(0);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
 
-        backButtonSavings.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    changeScenes(1);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        backButtonSavings.setOnAction(event -> {
+            try {
+                changeScenes(1);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
     }
@@ -115,16 +79,18 @@ public class DepositController implements Initializable {
         return member;
     }
 
-
     public String getWithdrawalValueLabel(){
         return this.withdrawalValueLabel.getText();
     }
+
     public void setWithdrawalValueLabel(String number){
         this.withdrawalValueLabel.setText(number);
     }
+
     public void setErrorLabel(String text) {
         this.errorLabel.setText(text);
     }
+
     public dbConnection getDbconn() {
         return dbConn;
     }
