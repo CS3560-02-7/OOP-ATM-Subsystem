@@ -4,16 +4,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="Controller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
     <children>
         <AnchorPane prefHeight="600.0" prefWidth="800.0">
             <children>
-                <Button layoutX="113.0" layoutY="125.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Deposit">
+                <Button fx:id="toDeposit" layoutX="113.0" layoutY="125.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Deposit">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Button>
-                <Button layoutX="431.0" layoutY="125.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Withdraw">
+                <Button fx:id="toWithdrawal" layoutX="431.0" layoutY="125.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Withdraw">
                     <font>
                         <Font size="24.0" />
                     </font>
