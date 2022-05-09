@@ -76,14 +76,19 @@ public class Member
 
 
     /*
-    This method will require the user to re-enter their login credentials, and then will display a message saying
+    This method will require the user to re-enter their pin, and then will display a message saying
     that their request to change pin has been sent to the bank and they will receive their new pin in the mail
     in the next few business days.
      */
-    public boolean requestChangePin(int possibleMemberId, int possiblePin) {
-        boolean requestMade = false;
-        //run verifyCredentials, and if they are valid, popup the message that the request was made
-        return requestMade;
+    public boolean requestChangePin(int possiblePin)
+    {
+        if(this.pin==possiblePin)
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /*
