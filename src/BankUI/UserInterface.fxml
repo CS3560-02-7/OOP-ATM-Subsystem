@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller">
+   <children>
+      <Button fx:id="button" layoutX="360.0" layoutY="29.0" mnemonicParsing="false" onAction="#loadValues" text="Load entries" />
+      <TableView fx:id="tableView" layoutY="71.0" prefHeight="470.0" prefWidth="800.0">
+        <columns>
+            <TableColumn fx:id="memberID" minWidth="80.0" prefWidth="145.0" text="memberID" />
+          <TableColumn fx:id="firstName" prefWidth="158.0" text="firstName" />
+          <TableColumn fx:id="lastName" prefWidth="147.0" text="lastName" />
+            <TableColumn fx:id="pinNumber" prefWidth="100.0" text="pinNumber" />
+            <TableColumn fx:id="address" prefWidth="249.0" text="Address" />
+        </columns>
+      </TableView>
+      <Button fx:id="button2" layoutX="333.0" layoutY="549.0" mnemonicParsing="false" onAction="#loadScene" text="Click to view Accounts" />
+   </children>
+</AnchorPane>

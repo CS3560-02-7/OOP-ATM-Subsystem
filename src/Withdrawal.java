@@ -4,11 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 
 public class Withdrawal extends Transaction
 {
@@ -19,7 +14,7 @@ public class Withdrawal extends Transaction
     {
         super(transactionID, amount, date);
         this.sourceAccountID = sourceAccountID;
-        maxWithdrawalAmount = new BigDecimal("2000.00");
+        maxWithdrawalAmount = new BigDecimal("1000.00");
 
     }
 
@@ -113,43 +108,10 @@ public class Withdrawal extends Transaction
         boolean exceedsLimit = true;
         // return true if withdrawal amount is above the withdrawal limit, else return false
 
-        //get todays date
-        Date today = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
-        List<BigDecimal> bdList = new ArrayList<>();
+        if(this.amount.compareTo(maxWithdrawalAmount) < 0)
+            exceedsLimit = false;
 
-        //get all withdrawals made today from database
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
-
-            Statement statement = connection.createStatement();
-
-            //grab all withdrawls that match the given account and the current date
-            ResultSet withdrawalsToday = statement.executeQuery("SELECT * FROM withdrawal WHERE dateOfTransaction = " + ft.format(today)+" AND accountID = "+this.sourceAccountID);
-
-
-
-            while(withdrawalsToday.next())
-            {
-                BigDecimal currentAmount = new BigDecimal(withdrawalsToday.getString(3));
-                bdList.add(currentAmount);
-            }
-
-        } catch (Exception e){
-            System.out.println("connection not made");
-        }
-
-        //sum of all withdrawals made today by this account
-        BigDecimal result = bdList.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
-
-        if(maxWithdrawalAmount.compareTo(result)<=0)
-        {
-            return exceedsLimit;
-        }
-        else
-        {
-            return !exceedsLimit;
-        }
+        return exceedsLimit;
     }
 
     /* Creates a new instance of withdrawal from database based on the given transactionID, returns null if this is not possible*/
@@ -176,40 +138,5 @@ public class Withdrawal extends Transaction
         }
         return withdrawalFromDatabase;
 
-    }
-
-    /* This method adds a new withdrawal to the database based on the accountID and amount of money that the user inputted*/
-    public static boolean addWithdrawalToDatabase(int sourceID, String amount){
-
-        boolean withdrawSuccessful = false;
-        Date myDate = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
-        BigDecimal withdrawAmount = new BigDecimal(amount);
-
-        try {
-
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
-
-            Statement statement = connection.createStatement();
-
-            statement.execute("INSERT INTO `atm`.`withdrawal`\n" +
-                    "(`transactionID`,\n" +
-                    "`sourceAccountID`,\n" +
-                    "`amount`,\n" +
-                    "`dateOfTransaction`)\n" +
-                    "VALUES\n" +
-                    "(" + Transaction.getNextTransactionID() + ",\n" +
-                    sourceID + ",\n" +
-                    withdrawAmount + ",\n'" +
-                    ft.format(myDate) + "');\n");
-
-                    withdrawSuccessful = true;
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return withdrawSuccessful;
     }
 }

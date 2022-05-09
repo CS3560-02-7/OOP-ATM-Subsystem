@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller">
+   <children>
+      <Button fx:id="button3" layoutX="360.0" layoutY="574.0" mnemonicParsing="false" onAction="#loadAccounts" text="Load entries" />
+      <TableView fx:id="accView" prefHeight="570.0" prefWidth="800.0">
+        <columns>
+          <TableColumn fx:id="accountID" prefWidth="146.0" text="AccountID" />
+          <TableColumn fx:id="accmemberID" prefWidth="167.0" text="MemberID" />
+            <TableColumn fx:id="balance" prefWidth="152.0" text="Balance" />
+            <TableColumn fx:id="overdraftFee" prefWidth="170.0" text="Overdraft Fees" />
+            <TableColumn fx:id="minimumBalance" prefWidth="165.0" text="minimum Balance" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

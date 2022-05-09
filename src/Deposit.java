@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Deposit extends Transaction
 {
@@ -84,41 +82,6 @@ public class Deposit extends Transaction
         }
         return depositFromDatabase;
 
-    }
-
-    /* This method adds a new deposit to the database based on the accountID and amount of money that the user inputted*/
-    public static boolean addDepositToDatabase(int destinationID, String amount){
-
-        boolean depositSuccessful = false;
-        Date myDate = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
-        BigDecimal depositAmount = new BigDecimal(amount);
-
-        try {
-
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
-
-            Statement statement = connection.createStatement();
-
-            statement.execute("INSERT INTO `atm`.`deposit`\n" +
-                    "(`transactionID`,\n" +
-                    "`destinationAccountID`,\n" +
-                    "`amount`,\n" +
-                    "`dateOfTransaction`)\n" +
-                    "VALUES\n" +
-                    "(" + Transaction.getNextTransactionID() + ",\n" +
-                    destinationID + ",\n" +
-                    depositAmount + ",\n'" +
-                    ft.format(myDate) + "');\n");
-
-            depositSuccessful = true;
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return depositSuccessful;
     }
 
 }
