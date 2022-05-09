@@ -74,6 +74,28 @@ public class Member
     {
 
     }
+    
+    public boolean forgotPin(int possibleID, String possibleAddress)
+    {
+        //check if that account exists for that address
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+            Statement statement = connection.createStatement();
+            //grab all withdrawals that match the given account and the current date
+            ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + possibleID +" AND address = "+possibleAddress);
+            if (memberInfo.next() != false) {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        } catch (Exception e){
+            System.out.println("connection not made");
+        }
+        return false;
+    }
 
 
     /* This method will return a new instance of the Member class with data from the database, and return null
