@@ -25,10 +25,6 @@ public class Member
     }
 
     public boolean logMemberIn(int possibleMemberID, int possiblePin){
-        if(possibleMemberID == 0 ){
-
-        }
-
         //check if that account exists for that address
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
@@ -56,19 +52,26 @@ public class Member
     }
 
 
-    /*This method will verify a member's login information and return true if it is a valid combination
-     */
-    private boolean verifyCredentials(int possibleMemberId, int possiblePin)
+    public boolean forgotPin(int possibleID, String possibleAddress)
     {
-        boolean validCredentials = false;
+        //check if that account exists for that address
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+            Statement statement = connection.createStatement();
+            //grab all withdrawals that match the given account and the current date
+            ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + possibleID +" AND address = "+possibleAddress);
+            if (memberInfo.next() != false) {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
-        Member possibleMember = Member.createMemberFromDatabase(possibleMemberId);
-
-        if(possibleMember != null && possibleMember.getMemberID() == possibleMemberId && possibleMember.getPin() == possiblePin){
-            validCredentials = true;
+        } catch (Exception e){
+            System.out.println("connection not made");
         }
-
-        return validCredentials;
+        return false;
     }
 
 
