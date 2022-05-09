@@ -44,6 +44,11 @@ public class Controller implements Initializable {
     Button toWithdrawal = new Button();
     @FXML
     Button toDeposit = new Button();
+    @FXML
+    Button toWithdrawalSavings = new Button();
+    @FXML
+    Button toDepositSavings = new Button();
+
     public void initialize(URL url, ResourceBundle rb) {
 
         dbconn = new dbConnection();
@@ -101,7 +106,7 @@ public class Controller implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    changeScenes(4);
+                    changeScenes(5);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -111,13 +116,34 @@ public class Controller implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    changeScenes(5);
+                    changeScenes(4);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        toWithdrawalSavings.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    changeScenes(7);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        toDepositSavings.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    changeScenes(6);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         });
     }
+
     private void changeScenes(int sceneNum) throws IOException {
 
         Parent page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/Login.fxml")));
@@ -134,10 +160,16 @@ public class Controller implements Initializable {
             page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/SavingsAccount.fxml")));
         }
         if (sceneNum == 4) {
-            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/WithdrawalScene.fxml")));
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/checkingDeposit.fxml")));
         }
         if (sceneNum == 5) {
-            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/DepositScene.fxml")));
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/checkingWithdraw.fxml")));
+        }
+        if (sceneNum == 6) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/savingsDeposit.fxml")));
+        }
+        if (sceneNum == 7) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/savingsWithdrawal.fxml")));
         }
         Scene scene = new Scene(page, 800, 600);
         Stage stage = Main.retStage();

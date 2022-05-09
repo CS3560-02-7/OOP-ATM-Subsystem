@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/BankUI/AccountSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/AccountSelection.fxml" afterDir="false" />
+    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="edits">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/00d3bf86-24ce-4fec-9f2d-fb6330dfda09.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/00d3bf86-24ce-4fec-9f2d-fb6330dfda09.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BankUI/CheckingAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/CheckingAccount.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/Options.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CheckingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CheckingAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/DepositScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/SavingsAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/SavingsAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/WithdrawalScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingDeposit.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Deposit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Deposit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SavingsAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Transfer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Withdrawal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Withdrawal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DepositController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DepositController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WithdrawalSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WithdrawalSceneController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,6 +127,8 @@
       <workItem from="1651539613589" duration="15000" />
       <workItem from="1651881970648" duration="2811000" />
       <workItem from="1651958028058" duration="23429000" />
+      <workItem from="1652051629559" duration="583000" />
+      <workItem from="1652052237676" duration="5028000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic GUI Implementation">
       <created>1650660445661</created>

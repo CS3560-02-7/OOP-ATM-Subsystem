@@ -1,76 +1,139 @@
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-//import Validator;
-//import Member;
-//import Withdrawal;
-//let
+import javafx.fxml.Initializable;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+
 public class WithdrawalSceneController implements Initializable {
 
-    private Member member;
-    private dbConnection dbconn;
-
+    @FXML
+    Button backButton = new Button();
 
     @FXML
-    private Label errorLabel, withdrawalValueLabel;
+    Button backButtonSavings = new Button();
 
-    @Override
+    @FXML
+    Button depositButton = new Button();
+
+    @FXML
+    Text depositText = new Text();
+
+    @FXML
+    Label depositValueLabel = new Label();
+
+    @FXML
+    Button fiftyButton = new Button();
+
+    @FXML
+    Button fiveButton = new Button();
+
+    @FXML
+    Button hundredButton = new Button();
+
+    @FXML
+    Button resetButton = new Button();
+
+    @FXML
+    Button tenButton = new Button();
+
+    @FXML
+    Button twentyButton = new Button();
+
+
+    private float moneyToDeposit;
+
+    private Member member;
+
+
     public void initialize(URL url, ResourceBundle rb) {
-        dbConnection= new dbconn;
+        // dbconn = new dbConnection();
+
+        backButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    changeScenes(0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        backButtonSavings.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    changeScenes(1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
-    private Member getMember() {
+    private void changeScenes(int sceneNum) throws IOException {
+
+        Parent page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/Login.fxml")));
+        if (sceneNum == 0) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/CheckingAccount.fxml")));
+        }
+        if (sceneNum == 1) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/SavingsAccount.fxml")));
+        }
+
+        Scene scene = new Scene(page, 800, 600);
+        Stage stage = Main.retStage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public float getMoneyToDeposit(){
+        return this.moneyToDeposit;
+    }
+
+    public void setMoneyToDeposit(float moneyToDeposit) {
+        this.moneyToDeposit = moneyToDeposit;
+    }
+
+    public Member getMember() {
         return member;
     }
-    public void setMember(Member, member){
-        this.member = member;
+
+    public void setDepositValueLabel(String text){
+        this.depositValueLabel.setText(text);
     }
 
-    public String getWithdrawalValueLabel(){
-        return this.withdrawalValueLabel.getText();
-    }
-    public void setWithdrawalValueLabel(String number){
-        this.withdrawalValueLabel.setText(number);
-    }
-    public void setErrorLabel(String text) {
-        this.errorLabel.setText(text);
-    }
-    public dbConnection getDbconn() {
-        return dbconn;
-    }
+    public void processDeposit(ActionEvent event){
 
-    @FXML
-    void back(ActionEvent event) {
+        // get value to be added without the '+' symbol
+        float buttonPressed = Float.parseFloat(((Button) event.getSource()).getText().substring(1));
+        float newMoneyToDeposit = getMoneyToDeposit()+buttonPressed;
 
-    }
 
-    @FXML
-    void processNumber(ActionEvent event) {
-        //  we are recording the text set to the button once it is pressed
-        String buttonDigit = ((Button) event.getSource()).getText();
-
-        //  get withdrawal label without '$' symbol in int
-        String currentWithdrawalAmount = Validator.toCleanNumber(getWithdrawalValueLabel().substring(1));
-
-        if (Integer.parseInt(currentWithdrawalAmount) == 0) {
-            setWithdrawalValueLabel("$" + buttonDigit + ".00");
+        if (newMoneyToDeposit <= 2000){
+            setMoneyToDeposit(newMoneyToDeposit);
+            //setDepositValueLabel(Helper.formatCurrency(newMoneyToDeposit));
         } else {
-            String newWithdrawalAmount = currentWithdrawalAmount + buttonDigit;
-
-            if (Integer.parseInt(newWithdrawalAmount) < 2000) {
-                setWithdrawalValueLabel("$" + newWithdrawalAmount + ".00");
-
-            } else {
-                setErrorLabel("YOU ARE ONLY ALLOWED TO WITHDRAWAL $2000");
-                setWithdrawalValueLabel("$2000.00");
-            }
+            //displayError();
         }
     }
 
+
+    @FXML
+    void deposit(ActionEvent event) {
 
     }
 
@@ -80,10 +143,9 @@ public class WithdrawalSceneController implements Initializable {
     }
 
     @FXML
-    void withdraw(ActionEvent event) {
-        float currentWithdrawalAmount = Float.parseFloat(getWithdrawalValueLabel().substring(1));
-        //float customerFundsAfterWithdrawal = getMember().getBalance()-currentWithdrawalAmount;
+    void switchingBankScene(ActionEvent event) {
 
     }
 
 }
+

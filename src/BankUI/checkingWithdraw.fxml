@@ -3,8 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-//let
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DepositController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WithdrawalSceneController">
    <children>
 
       <Button fx:id="resetButton" layoutX="346.0" layoutY="427.0" mnemonicParsing="false" onAction="#reset" prefHeight="44.0" prefWidth="100.0" text="Reset" textFill="#df2020">
@@ -12,7 +12,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Text fx:id="depositText" layoutX="272.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Enter Deposit Amount" textAlignment="CENTER" underline="true" wrappingWidth="252.63746643066406">
+      <Text fx:id="depositText" layoutX="264.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Withdrawal Amount" textAlignment="CENTER" underline="true" wrappingWidth="272.63746643066406">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -37,7 +37,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button fx:id="backButton" alignment="CENTER" layoutX="225.0" layoutY="427.0" mnemonicParsing="false" onAction="#switchingBankScene" prefHeight="44.0" prefWidth="100.0" text="Back">
+      <Button fx:id="backButton" alignment="CENTER" layoutX="225.0" layoutY="427.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Back">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
