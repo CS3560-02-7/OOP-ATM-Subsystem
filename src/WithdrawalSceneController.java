@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 //import Validator;
 //import Member;
 //import Withdrawal;
-//let
+
 public class WithdrawalSceneController implements Initializable {
 
     private Member member;
@@ -20,15 +20,13 @@ public class WithdrawalSceneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        dbConnection= new dbconn;
+        dbconn= new dbConnection();
     }
 
     private Member getMember() {
         return member;
     }
-    public void setMember(Member, member){
-        this.member = member;
-    }
+
 
     public String getWithdrawalValueLabel(){
         return this.withdrawalValueLabel.getText();
@@ -72,7 +70,6 @@ public class WithdrawalSceneController implements Initializable {
     }
 
 
-    }
 
     @FXML
     void reset(ActionEvent event) {
