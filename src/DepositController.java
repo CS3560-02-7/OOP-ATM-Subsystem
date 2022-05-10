@@ -20,6 +20,8 @@ import javafx.stage.Stage;
 public class DepositController implements Initializable {
 
     public static Member myMember;
+    public static CheckingAccount myCheckingAccount;
+    public static SavingsAccount mySavingsAccount;
     private Member member;
     private dbConnection dbConn;
 
@@ -36,15 +38,17 @@ public class DepositController implements Initializable {
     @FXML Button sixButton = new Button();
     @FXML Button threeButton = new Button();
     @FXML Button twoButton = new Button();
-    @FXML Button withdrawButton = new Button();
-    @FXML Label withdrawalValueLabel = new Label();
+    @FXML Button depositButton = new Button();
+    @FXML Label depositValueLabel = new Label();
     @FXML Button zeroButton = new Button();
 
     public void initialize(URL url, ResourceBundle rb) {
         dbConn = new dbConnection();
         myMember = Controller.getMember();
+        myCheckingAccount = Controller.retChecking();
+        mySavingsAccount = Controller.retSavings();
 
-        System.out.println(myMember.getMemberID());
+        depositValueLabel.setText("$0");
 
         backButton.setOnAction(event -> {
             try {
@@ -79,16 +83,12 @@ public class DepositController implements Initializable {
         stage.show();
     }
 
-    private Member getMember() {
-        return member;
+    public String getDepositValueLabel(){
+        return this.depositValueLabel.getText();
     }
 
-    public String getWithdrawalValueLabel(){
-        return this.withdrawalValueLabel.getText();
-    }
-
-    public void setWithdrawalValueLabel(String number){
-        this.withdrawalValueLabel.setText(number);
+    public void setDepositValueLabel(String number){
+        this.depositValueLabel.setText(number);
     }
 
     public void setErrorLabel(String text) {
@@ -100,43 +100,59 @@ public class DepositController implements Initializable {
     }
 
     @FXML
-    void back(ActionEvent event) {
-
-    }
-
-    @FXML
-    public void processNumber(ActionEvent event) throws IOException {
-        //  we are recording the text set to the button once it is pressed
+    public void processNumber(ActionEvent event){
         String buttonDigit = ((Button) event.getSource()).getText();
 
-        //  get withdrawal label without '$' symbol in int
-        String currentWithdrawalAmount = getWithdrawalValueLabel().substring(0);
-
-        if (Integer.parseInt(currentWithdrawalAmount) == 0) {
-            setWithdrawalValueLabel(buttonDigit);
-        } else {
-            String newWithdrawalAmount = currentWithdrawalAmount + buttonDigit;
-
-            if (Integer.parseInt(newWithdrawalAmount) < 2000) {
-                setWithdrawalValueLabel(newWithdrawalAmount);
-
-            } else {
-                setErrorLabel("YOU ARE ONLY ALLOWED TO WITHDRAWAL $2000");
-                setWithdrawalValueLabel("$2000.00");
-            }
+        if(getDepositValueLabel()=="$0")
+        {
+            setDepositValueLabel("$"+buttonDigit);
+        }
+        //check if a decimal and two values have been entered
+        else if (getDepositValueLabel().length()>2 && getDepositValueLabel().substring(getDepositValueLabel().length()-3).matches("[.][0-9][0-9]"))
+        {
+            setDepositValueLabel(getDepositValueLabel());
+        }
+        else
+        {
+            setDepositValueLabel(getDepositValueLabel()+buttonDigit);
         }
     }
 
     @FXML
-    void reset(ActionEvent event) {
-
+    public void backSpace(ActionEvent event){
+        if(getDepositValueLabel().equals("$"))
+        {
+            setDepositValueLabel("$");
+        }
+        else
+        {
+            setDepositValueLabel(getDepositValueLabel().substring(0,getDepositValueLabel().length()-1));
+        }
     }
 
     @FXML
-    void withdraw(ActionEvent event) {
-        float currentWithdrawalAmount = Float.parseFloat(getWithdrawalValueLabel().substring(1));
-        //float customerFundsAfterWithdrawal = getMember().getBalance()-currentWithdrawalAmount;
-
+    public void addDecimal(ActionEvent event){
+        if(getDepositValueLabel().contains("."))
+        {
+            setDepositValueLabel(getDepositValueLabel());
+        }
+        else
+        {
+            setDepositValueLabel(getDepositValueLabel()+".");
+        }
     }
 
+
+
+    @FXML
+    void reset(ActionEvent event) {
+        setDepositValueLabel("$0");
+    }
+
+
+    public void depositToSavings(ActionEvent event) {
+    }
+
+    public void depositToCheckings(ActionEvent event) {
+    }
 }

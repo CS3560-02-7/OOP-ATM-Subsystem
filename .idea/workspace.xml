@@ -3,14 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="updated login system and implemented popup message for empty login input">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP-ATM-Subsystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OOP-ATM-Subsystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMPackage/CheckingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/CheckingAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMPackage/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/SavingsAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/AccountSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/AccountSelection.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/CheckingAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/CheckingAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/SavingsAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/SavingsAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/checkingDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingDeposit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/savingsDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/savingsDeposit.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DepositController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DepositController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,13 +17,19 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -174,7 +177,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652129572582</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added checking and savings account to controller">
+      <created>1652193205698</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1652193205698</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added checking and savings account to controller">
+      <created>1652193312964</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1652193312964</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,6 +216,7 @@
     <MESSAGE value="edits" />
     <MESSAGE value="Fix navigation in GUI and increase GUI functionality" />
     <MESSAGE value="Changed structure, added more fxml files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed structure, added more fxml files" />
+    <MESSAGE value="Added checking and savings account to controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added checking and savings account to controller" />
   </component>
 </project>

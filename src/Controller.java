@@ -289,6 +289,7 @@ public class Controller implements Initializable {
         }
     }
 
+
     public static Member getMember(){
         return myMember;
     }
