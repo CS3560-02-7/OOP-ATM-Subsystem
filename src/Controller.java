@@ -49,20 +49,6 @@ public class Controller implements Initializable {
 
         dbconn = new dbConnection();
 
-/*        toChecking.setOnAction(event -> {
-            try {
-                changeScenes(2);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        toSavings.setOnAction(event -> {
-            try {
-                changeScenes(3);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });*/
         toDeposit.setOnAction(event -> {
             try {
                 changeScenes(4);
@@ -201,6 +187,10 @@ public class Controller implements Initializable {
         if(alerttype == 2) {
             label.setText("Field(s) empty");
         }
+        if(alerttype==3)
+        {
+            label.setText("You do not have a savings account.");
+        }
 
         Button close = new Button("OK\n");
         close.setOnAction(event -> alertWindow.close());
@@ -271,12 +261,22 @@ public class Controller implements Initializable {
 
     public void getSavingsAccount(ActionEvent event)throws IOException {
         mySavingsAccount = myMember.getSavingsAccount();
-        try {
-            changeScenes(3);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(mySavingsAccount!=null)
+        {
+            try {
+                changeScenes(3);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        System.out.println(mySavingsAccount.balanceProperty());
+        else
+        {
+            try {
+                alertScene(3);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void exitAccounts(ActionEvent event) throws IOException{
