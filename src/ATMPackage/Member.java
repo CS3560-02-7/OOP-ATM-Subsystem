@@ -1,3 +1,5 @@
+package ATMPackage;
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -32,6 +34,7 @@ public class Member
             //grab all withdrawals that match the given account and the current date
             ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + possibleMemberID +" AND pinNumber = "+possiblePin);
             if (memberInfo.next() != false) {
+                this.memberID = new SimpleIntegerProperty(memberInfo.getInt(1));
                 return true;
             }
             else
@@ -52,43 +55,31 @@ public class Member
     }
 
 
-    public boolean forgotPin(int possibleID, String possibleAddress)
+    /*This method will verify a member's login information and return true if it is a valid combination
+     */
+    private boolean verifyCredentials(int possibleMemberId, int possiblePin)
     {
-        //check if that account exists for that address
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
-            Statement statement = connection.createStatement();
-            //grab all withdrawals that match the given account and the current date
-            ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + possibleID +" AND address = "+possibleAddress);
-            if (memberInfo.next() != false) {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+        boolean validCredentials = false;
 
-        } catch (Exception e){
-            System.out.println("connection not made");
+        Member possibleMember = Member.createMemberFromDatabase(possibleMemberId);
+
+        if(possibleMember != null && possibleMember.getMemberID() == possibleMemberId && possibleMember.getPin() == possiblePin){
+            validCredentials = true;
         }
-        return false;
+
+        return validCredentials;
     }
 
 
     /*
-    This method will require the user to re-enter their pin, and then will display a message saying
+    This method will require the user to re-enter their login credentials, and then will display a message saying
     that their request to change pin has been sent to the bank and they will receive their new pin in the mail
     in the next few business days.
      */
-    public boolean requestChangePin(int possiblePin)
-    {
-        if(this.pinNumber==possiblePin)
-        {
-            return true;
-        }
-        else{
-            return false;
-        }
+    public boolean requestChangePin(int possibleMemberId, int possiblePin) {
+        boolean requestMade = false;
+        //run verifyCredentials, and if they are valid, popup the message that the request was made
+        return requestMade;
     }
 
     /*
@@ -99,7 +90,7 @@ public class Member
 
     }
 
-    /* This method will return a new instance of the Member class with data from the database, and return null
+    /* This method will return a new instance of the ATMPackage.Member class with data from the database, and return null
         if there was no matching data based on the input memberID
      */
     public static Member createMemberFromDatabase(int memberID){
@@ -118,12 +109,35 @@ public class Member
         return memberFromDatabase;
     }
 
+    public boolean forgotPin(int possibleID, String possibleAddress)
+    {
+        //check if that account exists for that address
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+            Statement statement = connection.createStatement();
+            //grab all withdrawals that match the given account and the current date
+            ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + possibleID +" AND address = "+possibleAddress);
+            if (memberInfo.next() != false) {
+                this.memberID = new SimpleIntegerProperty(memberInfo.getInt(1));
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        } catch (Exception e){
+            System.out.println("connection not made");
+        }
+        return false;
+    }
+
     // Getter methods
     public StringProperty getfirstName() {
         return firstName;
     }
 
-    private int getMemberID() {
+    public int getMemberID() {
         return memberID.getValue();
     }
 

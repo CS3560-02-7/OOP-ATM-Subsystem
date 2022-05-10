@@ -27,7 +27,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="depositButton" layoutX="467.0" layoutY="427.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Deposit" textAlignment="CENTER" textFill="#20b93e">
+      <Button fx:id="depositButton" layoutX="467.0" layoutY="427.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="ATMPackage.Deposit" textAlignment="CENTER" textFill="#20b93e">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

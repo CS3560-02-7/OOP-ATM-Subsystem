@@ -1,31 +1,30 @@
+package ATMPackage;
+
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class CheckingAccount extends Account
+public class SavingsAccount extends Account
 {
-    private final BigDecimal monthlyFee;
+    private final BigDecimal withdrawLimit;
+    private final float interestRate;
 
-    public CheckingAccount(int accountID, int memberID, String balance, String overdraftFee, String minimumBalance)
+    public SavingsAccount(int accountID, int memberID, String balance, String overdraftFee, String minimumBalance)
     {
         super(accountID, memberID, balance, overdraftFee, minimumBalance);
-        this.minimumBalance = new BigDecimal("50.00");
-        this.monthlyFee = new BigDecimal("10.00");
+        this.withdrawLimit = new BigDecimal("2000.00");
+        this.interestRate = (float) 0.06;
     }
 
-    /*
-    every month this method will be run and will deduct monthlyFee from balance
-     */
-    private void deductMontlyFee()
+    private void applyInterestRate()
     {
-        this.balance = this.balance.subtract(monthlyFee);
+        this.balance=this.balance;
     }
 
-    /* create a new checking account instance from the database using acocuntID, returns null if not possible*/
-    public static CheckingAccount createCheckingAccountFromDatabase(int accountID){
-        CheckingAccount accountFromDatabase = null;
+    public static SavingsAccount createSavingsAccountFromDatabase(int accountID){
+        SavingsAccount accountFromDatabase = null;
         try {
 
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
@@ -34,9 +33,8 @@ public class CheckingAccount extends Account
 
             ResultSet accountInfo = statement.executeQuery("SELECT * FROM account WHERE accountID = " + accountID);
 
-
             if(accountInfo.next() != false) {
-                accountFromDatabase = new CheckingAccount(accountInfo.getInt(1), accountInfo.getInt(2),
+                accountFromDatabase = new SavingsAccount(accountInfo.getInt(1), accountInfo.getInt(2),
                         accountInfo.getString(3), accountInfo.getString(4), accountInfo.getString(5));
             } else {
                 return null;
@@ -50,4 +48,6 @@ public class CheckingAccount extends Account
         return accountFromDatabase;
 
     }
+
+
 }

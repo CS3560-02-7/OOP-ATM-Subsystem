@@ -1,3 +1,5 @@
+package ATMPackage;
+
 import javafx.beans.property.*;
 
 import java.math.BigDecimal;
