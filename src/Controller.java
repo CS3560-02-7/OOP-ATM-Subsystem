@@ -21,6 +21,8 @@ import javafx.stage.Stage;
 public class Controller implements Initializable {
 
     public static Member myMember = new Member(0,"","",0,"");
+    public static CheckingAccount myCheckingAccount;
+    public static SavingsAccount mySavingsAccount;
 
     private dbConnection dbconn;
 
@@ -47,28 +49,7 @@ public class Controller implements Initializable {
 
         dbconn = new dbConnection();
 
-        logOut.setOnAction(event -> {
-            try {
-                changeScenes(0);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        savingsBackbtn.setOnAction(event -> {
-            try {
-                changeScenes(1);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        checkingBackbtn.setOnAction(event -> {
-            try {
-                changeScenes(1);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        toChecking.setOnAction(event -> {
+/*        toChecking.setOnAction(event -> {
             try {
                 changeScenes(2);
             } catch (IOException e) {
@@ -81,7 +62,7 @@ public class Controller implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        });
+        });*/
         toDeposit.setOnAction(event -> {
             try {
                 changeScenes(4);
@@ -267,11 +248,59 @@ public class Controller implements Initializable {
                 }
             }
         }
-        System.out.println(myMember.getMemberID());
+    }
+
+    public void logout(ActionEvent event)throws IOException {
+        myMember.logMemberOut();
+        try {
+            changeScenes(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getCheckingAccount(ActionEvent event)throws IOException {
+        myCheckingAccount = myMember.getCheckingAccount();
+        try {
+            changeScenes(2);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(myCheckingAccount.balanceProperty());
+    }
+
+    public void getSavingsAccount(ActionEvent event)throws IOException {
+        mySavingsAccount = myMember.getSavingsAccount();
+        try {
+            changeScenes(3);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(mySavingsAccount.balanceProperty());
+    }
+
+    public void exitAccounts(ActionEvent event) throws IOException{
+        myCheckingAccount = null;
+        mySavingsAccount = null;
+        try {
+            changeScenes(1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static Member getMember(){
         return myMember;
+    }
+
+    public static CheckingAccount retChecking()
+    {
+        return myCheckingAccount;
+    }
+
+    public static SavingsAccount retSavings()
+    {
+        return mySavingsAccount;
     }
 
 }

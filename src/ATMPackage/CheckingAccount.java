@@ -1,5 +1,7 @@
 package ATMPackage;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,10 +12,11 @@ public class CheckingAccount extends Account
 {
     private final BigDecimal monthlyFee;
 
-    public CheckingAccount(int accountID, int memberID, String balance, String overdraftFee, String minimumBalance)
+    public CheckingAccount(int accountID, int memberID, String balance, String overdraftFee)
     {
-        super(accountID, memberID, balance, overdraftFee, minimumBalance);
-        this.minimumBalance = new BigDecimal("50.00");
+        super(accountID, memberID, balance, overdraftFee);
+        this.minimumBalance = new BigDecimal("0.00");
+        this.mBal = new SimpleStringProperty("0.00");
         this.monthlyFee = new BigDecimal("10.00");
     }
 
@@ -39,7 +42,7 @@ public class CheckingAccount extends Account
 
             if(accountInfo.next() != false) {
                 accountFromDatabase = new CheckingAccount(accountInfo.getInt(1), accountInfo.getInt(2),
-                        accountInfo.getString(3), accountInfo.getString(4), accountInfo.getString(5));
+                        accountInfo.getString(3), accountInfo.getString(4));
             } else {
                 return null;
             }

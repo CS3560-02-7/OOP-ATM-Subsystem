@@ -47,27 +47,14 @@ public class Member
         return false;
     }
 
-    /*This method will log out a member and return true if the logout is successful
+    /*This method will log out a member
      */
-    public boolean logMemberOut(int possibleMemberID, int possiblePin){
-        boolean logoutSuccessful = false;
-        return logoutSuccessful;
-    }
-
-
-    /*This method will verify a member's login information and return true if it is a valid combination
-     */
-    private boolean verifyCredentials(int possibleMemberId, int possiblePin)
-    {
-        boolean validCredentials = false;
-
-        Member possibleMember = Member.createMemberFromDatabase(possibleMemberId);
-
-        if(possibleMember != null && possibleMember.getMemberID() == possibleMemberId && possibleMember.getPin() == possiblePin){
-            validCredentials = true;
-        }
-
-        return validCredentials;
+    public void logMemberOut(){
+        this.memberID = new SimpleIntegerProperty(0);
+        this.firstName = new SimpleStringProperty("");
+        this.lastName = new SimpleStringProperty("");
+        this.pinNumber = 0;
+        this.address = "";
     }
 
 
@@ -83,11 +70,48 @@ public class Member
     }
 
     /*
-    takes in a 1 for checking account and 2 for savings account. Is called when a button on the GUI is pressed
-    with the appropriate number. Based on the number will open the new correct GUI page
+    Get checking account for this member
      */
-    public void selectAccountType(int accountType) {
+    public CheckingAccount getCheckingAccount() {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+            Statement statement = connection.createStatement();
+            //grab the account for this member
+            //SimpleStringProperty accountType = new SimpleStringProperty("\'checking\'");
+            ResultSet accountInfo = statement.executeQuery("SELECT * FROM account WHERE accountType = \"checking\" AND memberID = "+this.memberID.getValue().intValue());
+            if(accountInfo.next() != false) {
+                CheckingAccount myCheckingAccount = new CheckingAccount(accountInfo.getInt(1), accountInfo.getInt(2),
+                        accountInfo.getString(3), accountInfo.getString(4));
+                return myCheckingAccount;
+            } else {
+                return null;
+            }
+        } catch (Exception e){
+            System.out.println("connection not made");
+        }
+        return null;
+    }
 
+    /*
+    Get savings account for this member
+     */
+    public SavingsAccount getSavingsAccount() {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+            Statement statement = connection.createStatement();
+            //grab the account for this member
+            ResultSet accountInfo = statement.executeQuery("SELECT * FROM account WHERE accountType = \"savings\" AND memberID = "+this.memberID.getValue().intValue());
+            if(accountInfo.next() != false) {
+                SavingsAccount mySavingsAccount = new SavingsAccount(accountInfo.getInt(1), accountInfo.getInt(2),
+                        accountInfo.getString(3), accountInfo.getString(4));
+                return mySavingsAccount;
+            } else {
+                return null;
+            }
+        } catch (Exception e){
+            System.out.println("connection not made");
+        }
+        return null;
     }
 
     /* This method will return a new instance of the ATMPackage.Member class with data from the database, and return null

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Changed structure, added more fxml files">
+    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="updated login system and implemented popup message for empty login input">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP-ATM-Subsystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OOP-ATM-Subsystem.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ATMPackage/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMPackage/CheckingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/CheckingAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ATMPackage/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMPackage/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/SavingsAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/AccountSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/AccountSelection.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/CheckingAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/CheckingAccount.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DepositController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DepositController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,14 +40,20 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="288cxdC79e9GxdBC7lvsf2FWZVP" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mysql-connector-java-8.0.28.jar" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -180,6 +190,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added basic GUI Implementation" />
