@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DepositController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="38.0" layoutX="300.0" layoutY="156.0" stroke="BLACK" strokeType="INSIDE" width="169.0" />
+      <Button fx:id="eightButton" layoutX="358.0" layoutY="224.0" mnemonicParsing="false" onAction="#processNumber" prefHeight="37.0" prefWidth="52.0" text="8" />
+      <Button fx:id="nineButton" layoutX="417.0" layoutY="224.0" mnemonicParsing="false" onAction="#processNumber" prefHeight="37.0" prefWidth="52.0" text="9" />
+      <Button fx:id="fourButton" layoutX="297.0" layoutY="271.0" mnemonicParsing="false" onAction="#processNumber" prefHeight="37.0" prefWidth="52.0" text="4" />
+      <Button fx:id="sevenButton" layoutX="297.0" layoutY="224.0" mnemonicParsing="false" onAction="#processNumber" prefHeight="37.0" prefWidth="52.0" text="7" />
+      <Button fx:id="fiveButton" layoutX="358.0" layoutY="271.0" mnemonicParsing="false" onAction="#processNumber" prefHeight="37.0" prefWidth="52.0" text="5" />
+      <Button fx:id="sixButton" layoutX="417.0" layoutY="271.0" mnemonicParsing="false" onAction="#processNumber" prefHeight="37.0" prefWidth="52.0" text="6" />
+      <Button fx:id="oneButton" layoutX="297.0" layoutY="318.0" mnemonicParsing="false" onAction="#processNumber" prefHeight="37.0" prefWidth="52.0" text="1" />
+      <Button fx:id="twoButton" layoutX="358.0" layoutY="318.0" mnemonicParsing="false" onAction="#processNumber" prefHeight="37.0" prefWidth="52.0" text="2" />
+      <Button fx:id="threeButton" layoutX="417.0" layoutY="318.0" mnemonicParsing="false" onAction="#processNumber" prefHeight="37.0" prefWidth="52.0" text="3" />
+      <Button fx:id="zeroButton" layoutX="358.0" layoutY="365.0" mnemonicParsing="false" onAction="#processNumber" prefHeight="37.0" prefWidth="52.0" text="0" />
+      <Button fx:id="backSpace" layoutX="417.0" layoutY="365.0" mnemonicParsing="false" onAction="#backSpace" prefHeight="37.0" prefWidth="52.0" text="⌫" />
+      <Button fx:id="decimal" layoutX="297.0" layoutY="365.0" mnemonicParsing="false" onAction="#addDecimal" prefHeight="37.0" prefWidth="52.0" text="." />
+      <Button fx:id="backButtonSavings" layoutX="221.0" layoutY="434.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" text="Back" />
+      <Button fx:id="resetButton" layoutX="346.0" layoutY="434.0" mnemonicParsing="false" onAction="#reset" prefHeight="30.0" prefWidth="76.0" text="Reset" />
+      <Button fx:id="depositSavingsButton" layoutX="469.0" layoutY="434.0" mnemonicParsing="false" onAction="#depositToSavings" prefHeight="30.0" prefWidth="76.0" text="Deposit" />
+      <Label fx:id="depositValueLabel" alignment="CENTER" layoutX="299.0" layoutY="156.0" prefHeight="38.0" prefWidth="169.0" textFill="#101010">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Text layoutX="218.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Enter Amount You Wish to Deposit">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="errorLabel" alignment="CENTER" layoutX="259.0" layoutY="194.0" prefHeight="24.0" prefWidth="250.0" textFill="#fc0404">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
