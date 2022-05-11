@@ -1,0 +1,106 @@
+Index: src/WithdrawalSceneController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import javafx.event.ActionEvent;\r\nimport javafx.event.EventHandler;\r\nimport javafx.fxml.FXML;\r\n\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.util.Objects;\r\nimport java.util.ResourceBundle;\r\n\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.Button;\r\nimport javafx.scene.control.Label;\r\nimport javafx.stage.Stage;\r\n//import Validator;\r\n//import Member;\r\n//import Withdrawal;\r\n\r\npublic class WithdrawalSceneController implements Initializable {\r\n\r\n    private Member member;\r\n    private dbConnection dbconn;\r\n\r\n    @FXML\r\n    Button toChecking = new Button();\r\n\r\n    @FXML\r\n    Button toSavings = new Button();\r\n\r\n    @FXML\r\n    private Label errorLabel, withdrawalValueLabel;\r\n\r\n    @Override\r\n    public void initialize(URL url, ResourceBundle rb) {\r\n        dbconn= new dbConnection();\r\n\r\n        toChecking.setOnAction(new EventHandler<ActionEvent>() {\r\n            @Override\r\n            public void handle(ActionEvent event) {\r\n                try {\r\n                    changeScenes(2);\r\n                } catch (IOException e) {\r\n                    e.printStackTrace();\r\n                }\r\n            }\r\n        });\r\n        toSavings.setOnAction(new EventHandler<ActionEvent>() {\r\n            @Override\r\n            public void handle(ActionEvent event) {\r\n                try {\r\n                    changeScenes(3);\r\n                } catch (IOException e) {\r\n                    e.printStackTrace();\r\n                }\r\n            }\r\n        });\r\n    }\r\n\r\n    private Member getMember() {\r\n        return member;\r\n    }\r\n    private void changeScenes(int sceneNum) throws IOException {\r\n\r\n        Parent page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(\"BankUI/Login.fxml\")));\r\n        if (sceneNum == 2) {\r\n            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(\"BankUI/CheckingAccount.fxml\")));\r\n        }\r\n        if (sceneNum == 3) {\r\n            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(\"BankUI/SavingsAccount.fxml\")));\r\n        }\r\n        Scene scene = new Scene(page, 800, 600);\r\n        Stage stage = Main.retStage();\r\n        stage.setScene(scene);\r\n        stage.show();\r\n    }\r\n\r\n    public String getWithdrawalValueLabel(){\r\n        return this.withdrawalValueLabel.getText();\r\n    }\r\n    public void setWithdrawalValueLabel(String number){\r\n        this.withdrawalValueLabel.setText(number);\r\n    }\r\n    public void setErrorLabel(String text) {\r\n        this.errorLabel.setText(text);\r\n    }\r\n    public dbConnection getDbconn() {\r\n        return dbconn;\r\n    }\r\n\r\n    @FXML\r\n    void back(ActionEvent event) {\r\n\r\n    }\r\n\r\n    @FXML\r\n    void processNumber(ActionEvent event) {\r\n        //  we are recording the text set to the button once it is pressed\r\n        String buttonDigit = ((Button) event.getSource()).getText();\r\n\r\n        //  get withdrawal label without '$' symbol in int\r\n        String currentWithdrawalAmount = Validator.toCleanNumber(getWithdrawalValueLabel().substring(1));\r\n\r\n        if (Integer.parseInt(currentWithdrawalAmount) == 0) {\r\n            setWithdrawalValueLabel(\"$\" + buttonDigit + \".00\");\r\n        } else {\r\n            String newWithdrawalAmount = currentWithdrawalAmount + buttonDigit;\r\n\r\n            if (Integer.parseInt(newWithdrawalAmount) < 2000) {\r\n                setWithdrawalValueLabel(\"$\" + newWithdrawalAmount + \".00\");\r\n\r\n            } else {\r\n                setErrorLabel(\"YOU ARE ONLY ALLOWED TO WITHDRAWAL $2000\");\r\n                setWithdrawalValueLabel(\"$2000.00\");\r\n            }\r\n        }\r\n    }\r\n\r\n\r\n\r\n    @FXML\r\n    void reset(ActionEvent event) {\r\n\r\n    }\r\n\r\n    @FXML\r\n    void withdraw(ActionEvent event) {\r\n        float currentWithdrawalAmount = Float.parseFloat(getWithdrawalValueLabel().substring(1));\r\n        //float customerFundsAfterWithdrawal = getMember().getBalance()-currentWithdrawalAmount;\r\n\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/WithdrawalSceneController.java b/src/WithdrawalSceneController.java
+--- a/src/WithdrawalSceneController.java	(revision 2c3049eed578e30a93db3cb4f5ccb58304778a6e)
++++ b/src/WithdrawalSceneController.java	(date 1652199754577)
+@@ -30,7 +30,10 @@
+     Button toSavings = new Button();
+ 
+     @FXML
+-    private Label errorLabel, withdrawalValueLabel;
++    private Label errorLabel;
++    @FXML
++    private Label withdrawalValueLabel result;
++    private boolean start = true;
+ 
+     @Override
+     public void initialize(URL url, ResourceBundle rb) {
+@@ -97,6 +100,7 @@
+     @FXML
+     void processNumber(ActionEvent event) {
+         //  we are recording the text set to the button once it is pressed
++
+         String buttonDigit = ((Button) event.getSource()).getText();
+ 
+         //  get withdrawal label without '$' symbol in int
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"2221fe26-eeca-49e7-af85-443c712e06e2\" name=\"Changes\" comment=\"updated login system and implemented popup message for empty login input\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/BankUI/savingsWithdrawal.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BankUI/savingsWithdrawal.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Controller.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Controller.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Member.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Member.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/WithdrawalSceneController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/WithdrawalSceneController.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n        <option value=\"FxmlFile\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"288cxdC79e9GxdBC7lvsf2FWZVP\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\Wok\\Projects\\OOP-ATM-Subsystem\\src\\BankUI\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\Wok\\Projects\\OOP-ATM-Subsystem\\src\\BankUI\" />\r\n      <recent name=\"D:\\Wok\\Projects\\OOP-ATM-Subsystem\\src\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"OOP-ATM-Subsystem\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"UI\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"BankUI.UI\" />\r\n      <module name=\"OOP-ATM-Subsystem\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\".*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"dbConnection\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"dbConnection\" />\r\n      <module name=\"OOP-ATM-Subsystem\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.UI\" />\r\n        <item itemvalue=\"Application.dbConnection\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"2221fe26-eeca-49e7-af85-443c712e06e2\" name=\"Changes\" comment=\"\" />\r\n      <created>1650601907925</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1650601907925</updated>\r\n      <workItem from=\"1650601912354\" duration=\"12308000\" />\r\n      <workItem from=\"1650614277673\" duration=\"1587000\" />\r\n      <workItem from=\"1650654359220\" duration=\"16846000\" />\r\n      <workItem from=\"1650673388125\" duration=\"4230000\" />\r\n      <workItem from=\"1650682473784\" duration=\"2793000\" />\r\n      <workItem from=\"1650688636090\" duration=\"3349000\" />\r\n      <workItem from=\"1650694760991\" duration=\"596000\" />\r\n      <workItem from=\"1650776626767\" duration=\"880000\" />\r\n      <workItem from=\"1651220427345\" duration=\"596000\" />\r\n      <workItem from=\"1651539613589\" duration=\"15000\" />\r\n      <workItem from=\"1651881970648\" duration=\"2811000\" />\r\n      <workItem from=\"1651958028058\" duration=\"23429000\" />\r\n      <workItem from=\"1652051629559\" duration=\"583000\" />\r\n      <workItem from=\"1652052237676\" duration=\"5028000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Added basic GUI Implementation\">\r\n      <created>1650660445661</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1650660445661</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Added basic GUI Implementation\">\r\n      <created>1650660843954</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1650660843954</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"edits to gui\">\r\n      <created>1650667622671</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1650667622671</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Merged shanes code and more edits\">\r\n      <created>1650670100147</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1650670100147</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"edits\">\r\n      <created>1651959572554</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651959572554</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Fix navigation in GUI and increase GUI functionality\">\r\n      <created>1652057555712</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652057555712</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"7\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Added basic GUI Implementation\" />\r\n    <MESSAGE value=\"edits to gui\" />\r\n    <MESSAGE value=\"Merged shanes code and more edits\" />\r\n    <MESSAGE value=\"edits\" />\r\n    <MESSAGE value=\"Fix navigation in GUI and increase GUI functionality\" />\r\n    <MESSAGE value=\"updated login system and implemented popup message for empty login input\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"updated login system and implemented popup message for empty login input\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 409ccb8b1940107c33e28a7cb70d93a9265bd7ca)
++++ b/.idea/workspace.xml	(date 1652248424130)
+@@ -1,12 +1,8 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="updated login system and implemented popup message for empty login input">
++    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="adding checking and savings Transfer Scene">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BankUI/savingsWithdrawal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/savingsWithdrawal.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Member.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/WithdrawalSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WithdrawalSceneController.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -42,12 +38,12 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="D:\Wok\Projects\OOP-ATM-Subsystem\src\BankUI" />
+@@ -158,7 +154,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1652057555712</updated>
+     </task>
+-    <option name="localTasksCounter" value="7" />
++    <task id="LOCAL-00007" summary="redid Withdrawal.fxml">
++      <created>1652245899460</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1652245899460</updated>
++    </task>
++    <task id="LOCAL-00008" summary="adding checking and savings Transfer Scene">
++      <created>1652248338042</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1652248338042</updated>
++    </task>
++    <option name="localTasksCounter" value="9" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -182,6 +192,8 @@
+     <MESSAGE value="edits" />
+     <MESSAGE value="Fix navigation in GUI and increase GUI functionality" />
+     <MESSAGE value="updated login system and implemented popup message for empty login input" />
+-    <option name="LAST_COMMIT_MESSAGE" value="updated login system and implemented popup message for empty login input" />
++    <MESSAGE value="redid Withdrawal.fxml" />
++    <MESSAGE value="adding checking and savings Transfer Scene" />
++    <option name="LAST_COMMIT_MESSAGE" value="adding checking and savings Transfer Scene" />
+   </component>
+ </project>
+\ No newline at end of file
