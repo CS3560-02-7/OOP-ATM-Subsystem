@@ -3,8 +3,9 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import ATMPackage.Member;
 import javafx.geometry.Pos;
-
+import ATMPackage.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -19,127 +20,103 @@ import javafx.stage.Stage;
 
 public class Controller implements Initializable {
 
+    private static Member myMember = new Member(0,"","",0,"");
+    private static CheckingAccount myCheckingAccount;
+    private static SavingsAccount mySavingsAccount;
+
     private dbConnection dbconn;
 
-    // ObservableList<Member> memberlist;
-    // ObservableList<Account> accountlist;
-
-    @FXML
-    TextField memberIDfield = new TextField();
-    @FXML
-    PasswordField pinIDfield = new PasswordField();
-    @FXML
-    Button logins = new Button();
-    @FXML
-    Button savingsBackbtn = new Button();
-    @FXML
-    Button checkingBackbtn = new Button();
-    @FXML
-    Button logOut = new Button();
-    @FXML
-    Button toChecking = new Button();
-    @FXML
-    Button toSavings = new Button();
-    @FXML
-    Button toWithdrawal = new Button();
-    @FXML
-    Button toDeposit = new Button();
-    @FXML
-    Button toWithdrawalSavings = new Button();
-    @FXML
-    Button toDepositSavings = new Button();
+    @FXML TextField memberIDfield = new TextField();
+    @FXML PasswordField pinIDfield = new PasswordField();
+    @FXML Button logins = new Button();
+    @FXML Button savingsBackbtn = new Button();
+    @FXML Button checkingBackbtn = new Button();
+    @FXML Button logOut = new Button();
+    @FXML Button toChecking = new Button();
+    @FXML Button toSavings = new Button();
+    @FXML Button toWithdrawal = new Button();
+    @FXML Button toDeposit = new Button();
+    @FXML Button toWithdrawalSavings = new Button();
+    @FXML Button toDepositSavings = new Button();
+    @FXML Button tohistoryChecking = new Button();
+    @FXML Button tohistorySavings = new Button();
+    @FXML Button tobalanceChecking = new Button();
+    @FXML Button tobalanceSavings = new Button();
+    @FXML Button totransferChecking = new Button();
+    @FXML Button totrasnferSavings = new Button();
 
     public void initialize(URL url, ResourceBundle rb) {
 
         dbconn = new dbConnection();
-        logOut.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    changeScenes(0);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+
+        toDeposit.setOnAction(event -> {
+            try {
+                changeScenes(4);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
-        savingsBackbtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    changeScenes(1);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        toDepositSavings.setOnAction(event -> {
+            try {
+                changeScenes(5);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
-        checkingBackbtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    changeScenes(1);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        toWithdrawal.setOnAction(event -> {
+            try {
+                changeScenes(6);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
-        toChecking.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    changeScenes(2);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        toWithdrawalSavings.setOnAction(event -> {
+            try {
+                changeScenes(7);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
-        toSavings.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    changeScenes(3);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        tohistoryChecking.setOnAction(event -> {
+            try {
+                changeScenes(8);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
-        toWithdrawal.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    changeScenes(5);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        tohistorySavings.setOnAction(event -> {
+            try {
+                changeScenes(9);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
-        toDeposit.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    changeScenes(4);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        tobalanceChecking.setOnAction(event -> {
+            try {
+                changeScenes(10);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
-        toWithdrawalSavings.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    changeScenes(7);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        tobalanceSavings.setOnAction(event -> {
+            try {
+                changeScenes(11);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
-        toDepositSavings.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    changeScenes(6);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        totransferChecking.setOnAction(event -> {
+            try {
+                changeScenes(12);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        totrasnferSavings.setOnAction(event -> {
+            try {
+                changeScenes(13);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
     }
@@ -163,13 +140,31 @@ public class Controller implements Initializable {
             page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/checkingDeposit.fxml")));
         }
         if (sceneNum == 5) {
-            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/CheckingWithdraw.fxml")));
-        }
-        if (sceneNum == 6) {
             page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/savingsDeposit.fxml")));
         }
+        if (sceneNum == 6) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/checkingWithdraw.fxml")));
+        }
         if (sceneNum == 7) {
-            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/SavingsWithdrawal.fxml")));
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/savingsWithdrawal.fxml")));
+        }
+        if (sceneNum == 8) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/checkingHistory.fxml")));
+        }
+        if (sceneNum == 9) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/savingsHistory.fxml")));
+        }
+        if (sceneNum == 10) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/checkingBalance.fxml")));
+        }
+        if (sceneNum == 11) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/savingsBalance.fxml")));
+        }
+        if (sceneNum == 12) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/checkingTransfer.fxml")));
+        }
+        if (sceneNum == 13) {
+            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/savingsTransfer.fxml")));
         }
         Scene scene = new Scene(page, 800, 600);
         Stage stage = Main.retStage();
@@ -181,16 +176,20 @@ public class Controller implements Initializable {
 
         Stage alertWindow = new Stage();
         alertWindow.initModality(Modality.APPLICATION_MODAL);
-        alertWindow.setTitle("Alert");
+        alertWindow.setTitle("Warning");
         alertWindow.setMinWidth(250);
         alertWindow.setMinHeight(130);
         Label label = new Label();
 
-        if(alerttype == 1){
+        if(alerttype == 1) {
             label.setText("Incorrect account credentials.\nPlease try again.\n");
         }
-        if(alerttype == 2){
+        if(alerttype == 2) {
             label.setText("Field(s) empty");
+        }
+        if(alerttype==3)
+        {
+            label.setText("You do not have a savings account.");
         }
 
         Button close = new Button("OK\n");
@@ -203,7 +202,6 @@ public class Controller implements Initializable {
         Scene alert = new Scene(layout);
         alertWindow.setScene(alert);
         alertWindow.showAndWait();
-
     }
 
     @FXML
@@ -212,28 +210,27 @@ public class Controller implements Initializable {
         String mID = memberIDfield.getText().trim();
         String pID = pinIDfield.getText().trim();
 
-        if(mID.equals("")||pID.equals(""))
-        {
+        if(mID.equals("")||pID.equals("")) {
             alertScene(2);
         }
-        else{
+        else {
             int memberID = Integer.parseInt(mID);
             System.out.println(memberID); //testing
 
             int pinID = Integer.parseInt(pID);
             System.out.println(pinID);  //testing
 
-            Member myMember = new Member(0,"","",0,"");
+            //myMember = new Member(0,"","",0,"");
             boolean istrue = myMember.logMemberIn(memberID, pinID);
 
-            if(!istrue){
+            if(!istrue) {
                 try {
                     alertScene(1);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            else{
+            else {
                 try {
                     changeScenes(1);
                 } catch (IOException e) {
@@ -243,6 +240,69 @@ public class Controller implements Initializable {
         }
     }
 
+    public void logout(ActionEvent event)throws IOException {
+        myMember.logMemberOut();
+        try {
+            changeScenes(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getCheckingAccount(ActionEvent event)throws IOException {
+        myCheckingAccount = myMember.getCheckingAccount();
+        try {
+            changeScenes(2);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(myCheckingAccount.balanceProperty());
+    }
+
+    public void getSavingsAccount(ActionEvent event)throws IOException {
+        mySavingsAccount = myMember.getSavingsAccount();
+        if(mySavingsAccount!=null)
+        {
+            try {
+                changeScenes(3);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            try {
+                alertScene(3);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void exitAccounts(ActionEvent event) throws IOException{
+        myCheckingAccount = null;
+        mySavingsAccount = null;
+        try {
+            changeScenes(1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static Member getMember(){
+        return myMember;
+    }
+
+    public static CheckingAccount retChecking()
+    {
+        return myCheckingAccount;
+    }
+
+    public static SavingsAccount retSavings()
+    {
+        return mySavingsAccount;
+    }
 
 }
 

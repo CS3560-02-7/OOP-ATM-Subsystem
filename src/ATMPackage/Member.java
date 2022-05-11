@@ -1,3 +1,5 @@
+package ATMPackage;
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -32,6 +34,7 @@ public class Member
             //grab all withdrawals that match the given account and the current date
             ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + possibleMemberID +" AND pinNumber = "+possiblePin);
             if (memberInfo.next() != false) {
+                this.memberID = new SimpleIntegerProperty(memberInfo.getInt(1));
                 return true;
             }
             else
@@ -44,62 +47,74 @@ public class Member
         return false;
     }
 
-    /*This method will log out a member and return true if the logout is successful
+    /*This method will log out a member
      */
-    public boolean logMemberOut(int possibleMemberID, int possiblePin){
-        boolean logoutSuccessful = false;
-        return logoutSuccessful;
-    }
-
-
-    public boolean forgotPin(int possibleID, String possibleAddress)
-    {
-        //check if that account exists for that address
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
-            Statement statement = connection.createStatement();
-            //grab all withdrawals that match the given account and the current date
-            ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + possibleID +" AND address = "+possibleAddress);
-            if (memberInfo.next() != false) {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
-        } catch (Exception e){
-            System.out.println("connection not made");
-        }
-        return false;
+    public void logMemberOut(){
+        this.memberID = new SimpleIntegerProperty(0);
+        this.firstName = new SimpleStringProperty("");
+        this.lastName = new SimpleStringProperty("");
+        this.pinNumber = 0;
+        this.address = "";
     }
 
 
     /*
-    This method will require the user to re-enter their pin, and then will display a message saying
+    This method will require the user to re-enter their login credentials, and then will display a message saying
     that their request to change pin has been sent to the bank and they will receive their new pin in the mail
     in the next few business days.
      */
-    public boolean requestChangePin(int possiblePin)
-    {
-        if(this.pinNumber==possiblePin)
-        {
-            return true;
-        }
-        else{
-            return false;
-        }
+    public boolean requestChangePin(int possibleMemberId, int possiblePin) {
+        boolean requestMade = false;
+        //run verifyCredentials, and if they are valid, popup the message that the request was made
+        return requestMade;
     }
 
     /*
-    takes in a 1 for checking account and 2 for savings account. Is called when a button on the GUI is pressed
-    with the appropriate number. Based on the number will open the new correct GUI page
+    Get checking account for this member
      */
-    public void selectAccountType(int accountType) {
-
+    public CheckingAccount getCheckingAccount() {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+            Statement statement = connection.createStatement();
+            //grab the account for this member
+            //SimpleStringProperty accountType = new SimpleStringProperty("\'checking\'");
+            ResultSet accountInfo = statement.executeQuery("SELECT * FROM account WHERE accountType = \"checking\" AND memberID = "+this.memberID.getValue().intValue());
+            if(accountInfo.next() != false) {
+                CheckingAccount myCheckingAccount = new CheckingAccount(accountInfo.getInt(1), accountInfo.getInt(2),
+                        accountInfo.getString(3), accountInfo.getString(4));
+                return myCheckingAccount;
+            } else {
+                return null;
+            }
+        } catch (Exception e){
+            System.out.println("connection not made");
+        }
+        return null;
     }
 
-    /* This method will return a new instance of the Member class with data from the database, and return null
+    /*
+    Get savings account for this member
+     */
+    public SavingsAccount getSavingsAccount() {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+            Statement statement = connection.createStatement();
+            //grab the account for this member
+            ResultSet accountInfo = statement.executeQuery("SELECT * FROM account WHERE accountType = \"savings\" AND memberID = "+this.memberID.getValue().intValue());
+            if(accountInfo.next() != false) {
+                SavingsAccount mySavingsAccount = new SavingsAccount(accountInfo.getInt(1), accountInfo.getInt(2),
+                        accountInfo.getString(3), accountInfo.getString(4));
+                return mySavingsAccount;
+            } else {
+                return null;
+            }
+        } catch (Exception e){
+            System.out.println("connection not made");
+        }
+        return null;
+    }
+
+    /* This method will return a new instance of the ATMPackage.Member class with data from the database, and return null
         if there was no matching data based on the input memberID
      */
     public static Member createMemberFromDatabase(int memberID){
@@ -118,12 +133,35 @@ public class Member
         return memberFromDatabase;
     }
 
+    public boolean forgotPin(int possibleID, String possibleAddress)
+    {
+        //check if that account exists for that address
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+            Statement statement = connection.createStatement();
+            //grab all withdrawals that match the given account and the current date
+            ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + possibleID +" AND address = "+possibleAddress);
+            if (memberInfo.next() != false) {
+                this.memberID = new SimpleIntegerProperty(memberInfo.getInt(1));
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        } catch (Exception e){
+            System.out.println("connection not made");
+        }
+        return false;
+    }
+
     // Getter methods
     public StringProperty getfirstName() {
         return firstName;
     }
 
-    private int getMemberID() {
+    public int getMemberID() {
         return memberID.getValue();
     }
 

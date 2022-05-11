@@ -1,3 +1,7 @@
+package ATMPackage;
+
+import javafx.beans.property.SimpleStringProperty;
+
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,10 +13,12 @@ public class SavingsAccount extends Account
     private final BigDecimal withdrawLimit;
     private final float interestRate;
 
-    public SavingsAccount(int accountID, int memberID, String balance, String overdraftFee, String minimumBalance)
+    public SavingsAccount(int accountID, int memberID, String balance, String overdraftFee)
     {
-        super(accountID, memberID, balance, overdraftFee, minimumBalance);
+        super(accountID, memberID, balance, overdraftFee);
         this.withdrawLimit = new BigDecimal("2000.00");
+        this.minimumBalance = new BigDecimal("200.00");
+        this.mBal = new SimpleStringProperty("200.00");
         this.interestRate = (float) 0.06;
     }
 
@@ -33,7 +39,7 @@ public class SavingsAccount extends Account
 
             if(accountInfo.next() != false) {
                 accountFromDatabase = new SavingsAccount(accountInfo.getInt(1), accountInfo.getInt(2),
-                        accountInfo.getString(3), accountInfo.getString(4), accountInfo.getString(5));
+                        accountInfo.getString(3), accountInfo.getString(4));
             } else {
                 return null;
             }

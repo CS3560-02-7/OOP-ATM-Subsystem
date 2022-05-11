@@ -1,3 +1,5 @@
+package ATMPackage;
+
 import javafx.beans.property.*;
 
 import java.math.BigDecimal;
@@ -13,7 +15,7 @@ public abstract class Account
     protected BigDecimal minimumBalance;
     protected StringProperty mBal;
 
-    public Account(int accountID, int memberID, String balance, String overdraftFee, String minimumBalance)
+    public Account(int accountID, int memberID, String balance, String overdraftFee)
     {
         this.accountID = new SimpleIntegerProperty(accountID);
         this.memberID = new SimpleIntegerProperty(memberID);
@@ -21,8 +23,6 @@ public abstract class Account
         this.bal = new SimpleStringProperty(balance);
         this.overdraftFee = new BigDecimal(overdraftFee);
         this.oFee = new SimpleStringProperty(overdraftFee);
-        this.minimumBalance = new BigDecimal(minimumBalance);
-        this.mBal = new SimpleStringProperty(minimumBalance);
     }
 
     /*
