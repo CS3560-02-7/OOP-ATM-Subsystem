@@ -13,17 +13,14 @@ public class Deposit extends Transaction
 {
     private final int destinationAccountID;
 
-    public Deposit(int transactionID, String amount, String date, int destinationAccountID)
+    public Deposit(int transactionID, String amount,Date myDate, int destinationAccountID)
     {
-        super(transactionID, amount, date);
+        super(transactionID, amount, myDate);
         this.destinationAccountID = destinationAccountID;
     }
 
     public boolean depositCash()
     {
-        //this.amount is the amount to deposit to the account
-        //update amount in the bank account;
-        //if deposit is successful, return true, else false
         boolean depositSuccessful = false;
         BigDecimal accountBalance = new BigDecimal("0");
 
@@ -61,11 +58,10 @@ public class Deposit extends Transaction
         return depositSuccessful;
     }
 
-    /* Creates a new instance of deposit from database based on the given transactionID, returns null if this is not possible*/
+/*    *//* Creates a new instance of deposit from database based on the given transactionID, returns null if this is not possible*//*
     public static Deposit createDepositFromDatabase(int transactionID){
         Deposit depositFromDatabase = null;
         try {
-
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
 
             Statement statement = connection.createStatement();
@@ -86,15 +82,12 @@ public class Deposit extends Transaction
         }
         return depositFromDatabase;
 
-    }
+    }*/
 
     /* This method adds a new deposit to the database based on the accountID and amount of money that the user inputted*/
-    public static boolean addDepositToDatabase(int destinationID, String amount){
-
+    public boolean addDepositToDatabase(){
         boolean depositSuccessful = false;
-        Date myDate = new Date();
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
-        BigDecimal depositAmount = new BigDecimal(amount);
 
         try {
 
@@ -108,10 +101,10 @@ public class Deposit extends Transaction
                     "`amount`,\n" +
                     "`dateOfTransaction`)\n" +
                     "VALUES\n" +
-                    "(" + Transaction.getNextTransactionID() + ",\n" +
-                    destinationID + ",\n" +
-                    depositAmount + ",\n'" +
-                    ft.format(myDate) + "');\n");
+                    "(" + this.transactionID + ",\n" +
+                    this.destinationAccountID + ",\n" +
+                    this.amount.intValue() + ",\n'" +
+                    ft.format(this.myDate) + "');\n");
 
             depositSuccessful = true;
 

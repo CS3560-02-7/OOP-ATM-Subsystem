@@ -5,19 +5,20 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Date;
 
 public abstract class Transaction
 {
     protected int transactionID;
     protected BigDecimal amount;
-    protected String date;
+    protected Date myDate;
 
 
-    public Transaction(int transactionID, String amount, String date)
+    public Transaction(int transactionID, String amount, Date myDate)
     {
         this.transactionID = transactionID;
         this.amount =  new BigDecimal(amount);
-        this.date = date;
+        this.myDate = myDate;
     }
 
     public BigDecimal getAmount(){

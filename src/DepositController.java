@@ -6,6 +6,8 @@ import ATMPackage.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -155,5 +157,10 @@ public class DepositController implements Initializable {
     }
 
     public void depositToCheckings(ActionEvent event) {
+        int transactionID = Transaction.getNextTransactionID();
+        Date currentDate = new Date();
+        Deposit newDeposit = new Deposit(transactionID,getDepositValueLabel().substring(1),currentDate,myCheckingAccount.getaccountID().intValue());
+
+
     }
 }
