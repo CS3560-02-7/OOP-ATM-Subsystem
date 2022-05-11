@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Added current balance to deposit scenes">
+    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Fixed logic issues with displaying balance in deposit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingTransfer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingTransfer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingWithdraw.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingWithdraw.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsTransfer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsTransfer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsWithdrawal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsWithdrawal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/checkingTransfer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingTransfer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/savingsTransfer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/savingsTransfer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/savingsWithdrawal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/savingsWithdrawal.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DepositController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DepositController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WithdrawalSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WithdrawalSceneController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +63,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -230,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652248285927</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Fixed logic issues with displaying balance in deposit">
+      <created>1652248944946</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1652248944946</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,7 +278,8 @@
     <MESSAGE value="Added functionality to deposit page." />
     <MESSAGE value="Deposit works now" />
     <MESSAGE value="Added current balance to deposit scenes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added current balance to deposit scenes" />
+    <MESSAGE value="Fixed logic issues with displaying balance in deposit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed logic issues with displaying balance in deposit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

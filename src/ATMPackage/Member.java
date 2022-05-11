@@ -63,10 +63,26 @@ public class Member
     that their request to change pin has been sent to the bank and they will receive their new pin in the mail
     in the next few business days.
      */
-    public boolean requestChangePin(int possibleMemberId, int possiblePin) {
-        boolean requestMade = false;
-        //run verifyCredentials, and if they are valid, popup the message that the request was made
-        return requestMade;
+    public boolean requestChangePin(int possiblePin) {
+        //check if that account exists for that address
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+            Statement statement = connection.createStatement();
+            //grab all withdrawals that match the given account and the current date
+            ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + this.memberID +" AND pinNumber = "+possiblePin);
+            if (memberInfo.next() != false) {
+                this.memberID = new SimpleIntegerProperty(memberInfo.getInt(1));
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        } catch (Exception e){
+            System.out.println("connection not made");
+        }
+        return false;
     }
 
     /*
@@ -140,7 +156,7 @@ public class Member
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
             Statement statement = connection.createStatement();
             //grab all withdrawals that match the given account and the current date
-            ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + possibleID +" AND address = "+possibleAddress);
+            ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + possibleID +" AND address = \'"+possibleAddress+"\'");
             if (memberInfo.next() != false) {
                 this.memberID = new SimpleIntegerProperty(memberInfo.getInt(1));
                 return true;

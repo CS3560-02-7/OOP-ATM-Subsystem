@@ -11,10 +11,13 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 //import Validator;
 //import ATMPackage.Member;
@@ -22,17 +25,33 @@ import javafx.stage.Stage;
 
 public class WithdrawalSceneController implements Initializable {
 
-    private Member member;
-    private dbConnection dbconn;
+    public static CheckingAccount myCheckingAccount;
+    public static SavingsAccount mySavingsAccount;
+    private dbConnection dbConn;
 
     @FXML Button toChecking = new Button();
-
     @FXML Button toSavings = new Button();
+    @FXML Label withdrawValueLabel = new Label();
+    @FXML Label savingsCurrentBal = new Label();
+    @FXML Label checkingCurrentBal = new Label();
 
-    @FXML private Label errorLabel, withdrawalValueLabel;
 
     public void initialize(URL url, ResourceBundle rb) {
-        dbconn= new dbConnection();
+        dbConn = new dbConnection();
+        myCheckingAccount = Controller.getMember().getCheckingAccount();
+        mySavingsAccount = Controller.getMember().getSavingsAccount();
+
+        withdrawValueLabel.setText("$0");
+        if(!Objects.isNull(mySavingsAccount))
+        {
+            System.out.println(mySavingsAccount.balanceProperty().get());
+            savingsCurrentBal.setText("$"+mySavingsAccount.balanceProperty().get());
+        }
+        if(!Objects.isNull(myCheckingAccount))
+        {
+            System.out.println(myCheckingAccount.balanceProperty().get());
+            checkingCurrentBal.setText("$"+myCheckingAccount.balanceProperty().get());
+        }
 
         toChecking.setOnAction(event -> {
             try {
@@ -66,58 +85,48 @@ public class WithdrawalSceneController implements Initializable {
     }
 
     public String getWithdrawalValueLabel(){
-        return this.withdrawalValueLabel.getText();
+        return this.withdrawValueLabel.getText();
     }
 
     public void setWithdrawalValueLabel(String number){
-        this.withdrawalValueLabel.setText(number);
+        this.withdrawValueLabel.setText(number);
     }
 
-    public void setErrorLabel(String text) {
-        this.errorLabel.setText(text);
+    private void alertScene(int alerttype) throws IOException{
+
+        Stage alertWindow = new Stage();
+        alertWindow.initModality(Modality.APPLICATION_MODAL);
+        alertWindow.setTitle("Withdrawal info");
+        alertWindow.setMinWidth(250);
+        alertWindow.setMinHeight(130);
+        Label label = new Label();
+
+        if(alerttype == 1) {
+            label.setText("Your withdrawal of "+getWithdrawalValueLabel()+" was successful");
+        }
+
+
+        Button close = new Button("OK\n");
+        close.setOnAction(event -> alertWindow.close());
+
+        VBox layout = new VBox(10);
+        layout.getChildren().addAll(label, close);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene alert = new Scene(layout);
+        alertWindow.setScene(alert);
+        alertWindow.showAndWait();
     }
 
     public dbConnection getDbconn() {
-        return dbconn;
+        return dbConn;
     }
 
-    @FXML
-    void back(ActionEvent event) {
 
-    }
-
-    @FXML
-    void processNumber(ActionEvent event) {
-        //  we are recording the text set to the button once it is pressed
-        String buttonDigit = ((Button) event.getSource()).getText();
-
-        //  get withdrawal label without '$' symbol in int
-        String currentWithdrawalAmount = Validator.toCleanNumber(getWithdrawalValueLabel().substring(1));
-
-        if (Integer.parseInt(currentWithdrawalAmount) == 0) {
-            setWithdrawalValueLabel("$" + buttonDigit + ".00");
-        } else {
-            String newWithdrawalAmount = currentWithdrawalAmount + buttonDigit;
-
-            if (Integer.parseInt(newWithdrawalAmount) < 2000) {
-                setWithdrawalValueLabel("$" + newWithdrawalAmount + ".00");
-
-            } else {
-                setErrorLabel("YOU ARE ONLY ALLOWED TO WITHDRAWAL $2000");
-                setWithdrawalValueLabel("$2000.00");
-            }
-        }
-    }
 
     @FXML
     void reset(ActionEvent event) {
-
-    }
-
-    @FXML
-    void withdraw(ActionEvent event) {
-        float currentWithdrawalAmount = Float.parseFloat(getWithdrawalValueLabel().substring(1));
-        //float customerFundsAfterWithdrawal = getMember().getBalance()-currentWithdrawalAmount;
+        setWithdrawalValueLabel("$0");
     }
 
 }

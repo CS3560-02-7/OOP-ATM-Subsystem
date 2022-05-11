@@ -106,10 +106,6 @@ public class DepositController implements Initializable {
         this.depositValueLabel.setText(number);
     }
 
-    public void setErrorLabel(String text) {
-        this.errorLabel.setText(text);
-    }
-
     public dbConnection getDbconn() {
         return dbConn;
     }

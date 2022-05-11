@@ -7,37 +7,43 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WithdrawalSceneController">
    <children>
-      <Text fx:id="depositText" layoutX="134.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Withdrawal Amount" textAlignment="CENTER" wrappingWidth="506.63746643066406">
+      <Text fx:id="Title" layoutX="134.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Withdrawal Amount" textAlignment="CENTER" wrappingWidth="506.63746643066406">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="84.0" layoutY="364.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="84.0" layoutY="413.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="84.0" layoutY="211.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="84.0" layoutY="311.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="84.0" layoutY="262.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="84.0" layoutY="213.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="84.0" layoutY="314.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="84.0" layoutY="363.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="84.0" layoutY="163.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-      <Text fx:id="depositText100" layoutX="102.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$100" textAlignment="CENTER" wrappingWidth="62.99999237060547">
+      <Text layoutX="102.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$100" textAlignment="CENTER" wrappingWidth="62.99999237060547">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text fx:id="depositText20" layoutX="103.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$20" textAlignment="CENTER" wrappingWidth="62.99999237060547">
+      <Text layoutX="102.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$50" textAlignment="CENTER" wrappingWidth="62.99999237060547">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text fx:id="depositText1" layoutX="103.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="2.0" text="\$1" textAlignment="CENTER" wrappingWidth="62.99999237060547">
+      <Text layoutX="103.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$20" textAlignment="CENTER" wrappingWidth="62.99999237060547">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text fx:id="depositText10" layoutX="104.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$10" textAlignment="CENTER" wrappingWidth="62.99999237060547">
+      <Text layoutX="103.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="2.0" text="\$1" textAlignment="CENTER" wrappingWidth="62.99999237060547">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text fx:id="depositText5" layoutX="106.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$5" textAlignment="CENTER" wrappingWidth="62.99999237060547">
+      <Text layoutX="104.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$10" textAlignment="CENTER" wrappingWidth="62.99999237060547">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="106.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$5" textAlignment="CENTER" wrappingWidth="62.99999237060547">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -53,12 +59,12 @@
          </font>
       </Text>
 
-      <Button fx:id="resetButton" layoutX="343.0" layoutY="471.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Reset" textFill="#df2020">
+      <Button fx:id="resetButton" layoutX="343.0" layoutY="471.0" mnemonicParsing="false" onAction="#reset" prefHeight="44.0" prefWidth="100.0" text="Reset" textFill="#df2020">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="withdrawButton" layoutX="538.0" layoutY="471.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Withdraw" textAlignment="CENTER" textFill="#20b93e">
+      <Button fx:id="checkingWithdraw" layoutX="538.0" layoutY="471.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Withdraw" textAlignment="CENTER" textFill="#20b93e">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -69,16 +75,18 @@
          </font>
       </Button>
       <Button fx:id="hundredPlus" layoutX="247.0" layoutY="166.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="+" />
-      <Button fx:id="twentyPlus" layoutX="247.0" layoutY="218.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="31.0" text="+" />
-      <Button fx:id="tenPlus" layoutX="247.0" layoutY="266.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="+" />
-      <Button fx:id="fivePlus" layoutX="247.0" layoutY="318.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" text="+" />
-      <Button fx:id="onePlus" layoutX="247.0" layoutY="368.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" text="+" />
+      <Button fx:id="fiftyPlus" layoutX="247.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="+" />
+      <Button fx:id="twentyPlus" layoutX="247.0" layoutY="267.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="31.0" text="+" />
+      <Button fx:id="tenPlus" layoutX="247.0" layoutY="315.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="+" />
+      <Button fx:id="fivePlus" layoutX="247.0" layoutY="367.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" text="+" />
+      <Button fx:id="onePlus" layoutX="247.0" layoutY="417.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" text="+" />
       <Button fx:id="hundredMinus" layoutX="188.0" layoutY="166.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="-" />
-      <Button fx:id="twentyMinus" layoutX="188.0" layoutY="217.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="-" />
-      <Button fx:id="tenMinus" layoutX="188.0" layoutY="266.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="-" />
-      <Button fx:id="fiveMinus" layoutX="188.0" layoutY="318.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" text="-" />
-      <Button fx:id="oneMinus" layoutX="188.0" layoutY="367.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" text="-" />
-      <Label fx:id="balanceLabel" layoutX="427.0" layoutY="107.0" prefHeight="27.0" prefWidth="120.0">
+      <Button fx:id="fiftyMinus" layoutX="188.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="-" />
+      <Button fx:id="twentyMinus" layoutX="188.0" layoutY="266.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="-" />
+      <Button fx:id="tenMinus" layoutX="188.0" layoutY="315.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="-" />
+      <Button fx:id="fiveMinus" layoutX="188.0" layoutY="367.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" text="-" />
+      <Button fx:id="oneMinus" layoutX="188.0" layoutY="416.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" text="-" />
+      <Label fx:id="checkingCurrentBal" layoutX="427.0" layoutY="107.0" prefHeight="27.0" prefWidth="120.0">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
@@ -88,10 +96,11 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Label fx:id="incrementLabel" layoutX="229.0" layoutY="171.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
-      <Label fx:id="incrementLabel" layoutX="229.0" layoutY="222.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
-      <Label fx:id="incren" layoutX="229.0" layoutY="270.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
-      <Label layoutX="229.0" layoutY="322.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
-      <Label layoutX="229.0" layoutY="372.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
+      <Label fx:id="hundredTracker" layoutX="229.0" layoutY="171.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
+      <Label fx:id="twentyTracker" layoutX="229.0" layoutY="271.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
+      <Label fx:id="tenTracker" layoutX="229.0" layoutY="319.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
+      <Label fx:id="fiftyTracker" layoutX="229.0" layoutY="223.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
+      <Label fx:id="fiveTracker" layoutX="229.0" layoutY="371.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
+      <Label fx:id="oneTracker" layoutX="229.0" layoutY="421.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
    </children>
 </AnchorPane>
