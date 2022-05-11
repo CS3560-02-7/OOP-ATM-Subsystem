@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Deposit works now">
+    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Added current balance to deposit scenes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingDeposit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingWithdraw.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingWithdraw.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsDeposit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/checkingDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingDeposit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/savingsDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/savingsDeposit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DepositController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DepositController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -230,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652244931368</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added current balance to deposit scenes">
+      <created>1652248285927</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1652248285927</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,7 +260,8 @@
     <MESSAGE value="Added condition for when savings account doesn't exist" />
     <MESSAGE value="Added functionality to deposit page." />
     <MESSAGE value="Deposit works now" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deposit works now" />
+    <MESSAGE value="Added current balance to deposit scenes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added current balance to deposit scenes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

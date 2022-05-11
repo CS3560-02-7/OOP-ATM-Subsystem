@@ -294,15 +294,6 @@ public class Controller implements Initializable {
         return myMember;
     }
 
-    public static CheckingAccount retChecking()
-    {
-        return myCheckingAccount;
-    }
-
-    public static SavingsAccount retSavings()
-    {
-        return mySavingsAccount;
-    }
 
 }
 

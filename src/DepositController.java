@@ -24,10 +24,8 @@ import javafx.stage.Stage;
 
 public class DepositController implements Initializable {
 
-    public static Member myMember;
     public static CheckingAccount myCheckingAccount;
     public static SavingsAccount mySavingsAccount;
-    private Member member;
     private dbConnection dbConn;
 
     @FXML Button backButton = new Button();
@@ -51,9 +49,8 @@ public class DepositController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
         dbConn = new dbConnection();
-        myMember = Controller.getMember();
-        myCheckingAccount = Controller.retChecking();
-        mySavingsAccount = Controller.retSavings();
+        myCheckingAccount = Controller.getMember().getCheckingAccount();
+        mySavingsAccount = Controller.getMember().getSavingsAccount();
 
         depositValueLabel.setText("$0");
         if(!Objects.isNull(mySavingsAccount))
