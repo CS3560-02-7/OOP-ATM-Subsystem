@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Fixed logic issues with displaying balance in deposit">
+    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Changed GUI for deposit and withdrawal. Added some code to withdrawal controller">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingTransfer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingTransfer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/SavingsAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/SavingsAccount.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingWithdraw.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingWithdraw.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsTransfer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsTransfer.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsWithdrawal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsWithdrawal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMPackage/CheckingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/CheckingAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ATMPackage/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/checkingTransfer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingTransfer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMPackage/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/SavingsAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Withdrawal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Withdrawal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/SavingsAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/SavingsAccount.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/savingsTransfer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/savingsTransfer.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BankUI/savingsWithdrawal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/savingsWithdrawal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DepositController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DepositController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WithdrawalSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WithdrawalSceneController.java" afterDir="false" />
     </list>
@@ -247,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652248944946</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Changed GUI for deposit and withdrawal. Added some code to withdrawal controller">
+      <created>1652254766389</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1652254766389</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,15 +289,20 @@
     <MESSAGE value="Deposit works now" />
     <MESSAGE value="Added current balance to deposit scenes" />
     <MESSAGE value="Fixed logic issues with displaying balance in deposit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed logic issues with displaying balance in deposit" />
+    <MESSAGE value="Changed GUI for deposit and withdrawal. Added some code to withdrawal controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed GUI for deposit and withdrawal. Added some code to withdrawal controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="3" />
-        </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Controller.java</url>
+          <line>254</line>
+          <properties class="Controller" method="getCheckingAccount">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

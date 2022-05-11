@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 
 public class Controller implements Initializable {
 
-    private static Member myMember = new Member(0,"","",0,"");
+    private static Member myMember;
     private static CheckingAccount myCheckingAccount;
     private static SavingsAccount mySavingsAccount;
 
@@ -209,7 +209,7 @@ public class Controller implements Initializable {
 
         String mID = memberIDfield.getText().trim();
         String pID = pinIDfield.getText().trim();
-
+        myMember =  new Member(0,"","",0,"");
         if(mID.equals("")||pID.equals("")) {
             alertScene(2);
         }
@@ -229,6 +229,7 @@ public class Controller implements Initializable {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                myMember = null;
             }
             else {
                 try {
@@ -236,6 +237,7 @@ public class Controller implements Initializable {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
             }
         }
     }
@@ -247,6 +249,7 @@ public class Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        myMember = null;
     }
 
     public void getCheckingAccount(ActionEvent event)throws IOException {
@@ -256,7 +259,7 @@ public class Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(myCheckingAccount.balanceProperty());
+        mySavingsAccount = null;
     }
 
     public void getSavingsAccount(ActionEvent event)throws IOException {
@@ -268,6 +271,7 @@ public class Controller implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            myCheckingAccount = null;
         }
         else
         {
@@ -292,6 +296,16 @@ public class Controller implements Initializable {
 
     public static Member getMember(){
         return myMember;
+    }
+
+    public static CheckingAccount retChecking()
+    {
+        return myCheckingAccount;
+    }
+
+    public static SavingsAccount retSavings()
+    {
+        return mySavingsAccount;
     }
 
 

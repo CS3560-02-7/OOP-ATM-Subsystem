@@ -13,7 +13,7 @@
                         <Font size="24.0" />
                     </font>
                 </Button>
-                <Button fx:id="toWithdrawal" layoutX="431.0" layoutY="125.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Withdraw">
+                <Button fx:id="toWithdrawalSavings" layoutX="431.0" layoutY="125.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="Withdraw">
                     <font>
                         <Font size="24.0" />
                     </font>

@@ -3,23 +3,22 @@ package ATMPackage;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class SavingsAccount extends Account
 {
-    private final BigDecimal withdrawLimit;
+
     private final float interestRate;
 
-    public SavingsAccount(int accountID, int memberID, String balance, String overdraftFee)
-    {
-        super(accountID, memberID, balance, overdraftFee);
-        this.withdrawLimit = new BigDecimal("2000.00");
-        this.minimumBalance = new BigDecimal("200.00");
-        this.mBal = new SimpleStringProperty("200.00");
-        this.interestRate = (float) 0.06;
+    //get withdraw limit from database?
+    public SavingsAccount(int accountID, int memberID, String balance, String overdraftFee, BigDecimal withdrawLimit, BigDecimal minimumBalance, BigDecimal interestRate) throws SQLException {
+        super(accountID, memberID, balance, overdraftFee, withdrawLimit, minimumBalance);
+        this.mBal = new SimpleStringProperty(minimumBalance.toString());
+        this.interestRate = interestRate.floatValue();
     }
 
     private void applyInterestRate()
@@ -27,7 +26,7 @@ public class SavingsAccount extends Account
         this.balance=this.balance;
     }
 
-    public static SavingsAccount createSavingsAccountFromDatabase(int accountID){
+/*    public static SavingsAccount createSavingsAccountFromDatabase(int accountID){
         SavingsAccount accountFromDatabase = null;
         try {
 
@@ -51,7 +50,6 @@ public class SavingsAccount extends Account
         }
         return accountFromDatabase;
 
-    }
-
+    }*/
 
 }

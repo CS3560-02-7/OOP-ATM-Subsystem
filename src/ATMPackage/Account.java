@@ -3,6 +3,14 @@ package ATMPackage;
 import javafx.beans.property.*;
 
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public abstract class Account
 {
@@ -14,8 +22,9 @@ public abstract class Account
     protected StringProperty oFee;
     protected BigDecimal minimumBalance;
     protected StringProperty mBal;
+    protected final BigDecimal withdrawLimit;
 
-    public Account(int accountID, int memberID, String balance, String overdraftFee)
+    public Account(int accountID, int memberID, String balance, String overdraftFee, BigDecimal withdrawLimit, BigDecimal minimumBalance)
     {
         this.accountID = new SimpleIntegerProperty(accountID);
         this.memberID = new SimpleIntegerProperty(memberID);
@@ -23,6 +32,7 @@ public abstract class Account
         this.bal = new SimpleStringProperty(balance);
         this.overdraftFee = new BigDecimal(overdraftFee);
         this.oFee = new SimpleStringProperty(overdraftFee);
+        this.withdrawLimit = withdrawLimit;
     }
 
     /*
@@ -81,5 +91,44 @@ public abstract class Account
             mBal = new SimpleStringProperty(mBal.toString());
         }
         return mBal;
+    }
+
+    public BigDecimal getDailyRemainingWithdraw()
+    {
+        //get todays date
+        Date today = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+        List<BigDecimal> bdList = new ArrayList<>();
+
+        //get all withdrawals made today from database
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+
+            Statement statement = connection.createStatement();
+
+            //grab all withdrawls that match the given account and the current date
+            ResultSet withdrawalsToday = statement.executeQuery("SELECT * FROM withdrawal WHERE dateOfTransaction = \'" + ft.format(today)+"\' AND sourceAccountID = "+this.accountID.get());
+
+            while(withdrawalsToday.next())
+            {
+                BigDecimal currentAmount = new BigDecimal(withdrawalsToday.getString(3));
+                bdList.add(currentAmount);
+            }
+
+        } catch (Exception e){
+            System.out.println("connection not made");
+        }
+
+        //sum of all withdrawals made today by this account
+        BigDecimal result = bdList.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        if(result.floatValue()>=withdrawLimit.floatValue())
+        {
+            return new BigDecimal(0);
+        }
+        else
+        {
+            return withdrawLimit.subtract(result);
+        }
     }
 }

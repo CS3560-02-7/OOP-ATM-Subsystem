@@ -7,17 +7,20 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class CheckingAccount extends Account
 {
     private final BigDecimal monthlyFee;
 
-    public CheckingAccount(int accountID, int memberID, String balance, String overdraftFee)
+    public CheckingAccount(int accountID, int memberID, String balance, String overdraftFee,BigDecimal withdrawLimit, BigDecimal monthlyFee, BigDecimal minimumBalance)
     {
-        super(accountID, memberID, balance, overdraftFee);
-        this.minimumBalance = new BigDecimal("0.00");
-        this.mBal = new SimpleStringProperty("0.00");
-        this.monthlyFee = new BigDecimal("10.00");
+        super(accountID, memberID, balance, overdraftFee, withdrawLimit, minimumBalance);
+        this.mBal = new SimpleStringProperty(minimumBalance.toString());
+        this.monthlyFee = monthlyFee;
     }
 
     /*
@@ -28,7 +31,7 @@ public class CheckingAccount extends Account
         this.balance = this.balance.subtract(monthlyFee);
     }
 
-    /* create a new checking account instance from the database using acocuntID, returns null if not possible*/
+/*    *//* create a new checking account instance from the database using acocuntID, returns null if not possible*//*
     public static CheckingAccount createCheckingAccountFromDatabase(int accountID){
         CheckingAccount accountFromDatabase = null;
         try {
@@ -54,5 +57,7 @@ public class CheckingAccount extends Account
         }
         return accountFromDatabase;
 
-    }
+    }*/
+
+
 }

@@ -92,12 +92,15 @@ public class Member
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
             Statement statement = connection.createStatement();
+            Statement statement2 = connection.createStatement();
+
             //grab the account for this member
             //SimpleStringProperty accountType = new SimpleStringProperty("\'checking\'");
             ResultSet accountInfo = statement.executeQuery("SELECT * FROM account WHERE accountType = \"checking\" AND memberID = "+this.memberID.getValue().intValue());
-            if(accountInfo.next() != false) {
+            ResultSet accountTypeInfo = statement2.executeQuery("SELECT * FROM accounttype WHERE accountType = \"checking\"");
+            if(accountInfo.next() != false && accountTypeInfo.next()!=false) {
                 CheckingAccount myCheckingAccount = new CheckingAccount(accountInfo.getInt(1), accountInfo.getInt(2),
-                        accountInfo.getString(3), accountInfo.getString(4));
+                        accountInfo.getString(3), accountInfo.getString(4),accountTypeInfo.getBigDecimal(3), accountInfo.getBigDecimal(2),accountTypeInfo.getBigDecimal(4));
                 return myCheckingAccount;
             } else {
                 return null;
@@ -115,11 +118,13 @@ public class Member
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
             Statement statement = connection.createStatement();
+            Statement statement2 = connection.createStatement();
             //grab the account for this member
             ResultSet accountInfo = statement.executeQuery("SELECT * FROM account WHERE accountType = \"savings\" AND memberID = "+this.memberID.getValue().intValue());
-            if(accountInfo.next() != false) {
+            ResultSet accountTypeInfo = statement2.executeQuery("SELECT * FROM accounttype WHERE accountType = \"savings\"");
+            if(accountInfo.next() != false && accountTypeInfo.next()!=false) {
                 SavingsAccount mySavingsAccount = new SavingsAccount(accountInfo.getInt(1), accountInfo.getInt(2),
-                        accountInfo.getString(3), accountInfo.getString(4));
+                        accountInfo.getString(3), accountInfo.getString(4),accountTypeInfo.getBigDecimal(3),accountTypeInfo.getBigDecimal(4),accountTypeInfo.getBigDecimal(5));
                 return mySavingsAccount;
             } else {
                 return null;

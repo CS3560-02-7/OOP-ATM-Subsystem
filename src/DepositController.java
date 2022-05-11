@@ -24,8 +24,8 @@ import javafx.stage.Stage;
 
 public class DepositController implements Initializable {
 
-    public static CheckingAccount myCheckingAccount;
-    public static SavingsAccount mySavingsAccount;
+    private static CheckingAccount myCheckingAccount;
+    private static SavingsAccount mySavingsAccount;
     private dbConnection dbConn;
 
     @FXML Button backButton = new Button();
@@ -49,17 +49,19 @@ public class DepositController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
         dbConn = new dbConnection();
-        myCheckingAccount = Controller.getMember().getCheckingAccount();
-        mySavingsAccount = Controller.getMember().getSavingsAccount();
+        myCheckingAccount = Controller.retChecking();
+        mySavingsAccount = Controller.retSavings();
 
         depositValueLabel.setText("$0");
         if(!Objects.isNull(mySavingsAccount))
         {
+            mySavingsAccount = Controller.getMember().getSavingsAccount();
             System.out.println(mySavingsAccount.balanceProperty().get());
             savingsCurrentBal.setText("$"+mySavingsAccount.balanceProperty().get());
         }
         if(!Objects.isNull(myCheckingAccount))
         {
+            myCheckingAccount = Controller.getMember().getCheckingAccount();
             System.out.println(myCheckingAccount.balanceProperty().get());
             checkingCurrentBal.setText("$"+myCheckingAccount.balanceProperty().get());
         }
@@ -98,16 +100,12 @@ public class DepositController implements Initializable {
         stage.show();
     }
 
-    public String getDepositValueLabel(){
+    private String getDepositValueLabel(){
         return this.depositValueLabel.getText();
     }
 
-    public void setDepositValueLabel(String number){
+    private void setDepositValueLabel(String number){
         this.depositValueLabel.setText(number);
-    }
-
-    public dbConnection getDbconn() {
-        return dbConn;
     }
 
     private void alertScene(int alerttype) throws IOException{
@@ -137,7 +135,7 @@ public class DepositController implements Initializable {
     }
 
     @FXML
-    public void processNumber(ActionEvent event){
+    private void processNumber(ActionEvent event){
         String buttonDigit = ((Button) event.getSource()).getText();
 
         if(getDepositValueLabel()=="$0")
@@ -156,7 +154,7 @@ public class DepositController implements Initializable {
     }
 
     @FXML
-    public void backSpace(ActionEvent event){
+    private void backSpace(ActionEvent event){
         if(getDepositValueLabel().equals("$"))
         {
             setDepositValueLabel("$");
@@ -168,7 +166,7 @@ public class DepositController implements Initializable {
     }
 
     @FXML
-    public void addDecimal(ActionEvent event){
+    private void addDecimal(ActionEvent event){
         if(getDepositValueLabel().contains("."))
         {
             setDepositValueLabel(getDepositValueLabel());
@@ -182,12 +180,12 @@ public class DepositController implements Initializable {
 
 
     @FXML
-    void reset(ActionEvent event) {
+    private void reset(ActionEvent event) {
         setDepositValueLabel("$0");
     }
 
-
-    public void depositToSavings(ActionEvent event) throws IOException {
+    @FXML
+    private void depositToSavings(ActionEvent event) throws IOException {
         int transactionID = Transaction.getNextTransactionID();
         Date currentDate = new Date();
         Deposit newDeposit = new Deposit(transactionID,getDepositValueLabel().substring(1),currentDate,mySavingsAccount.getaccountID().intValue());
@@ -201,7 +199,8 @@ public class DepositController implements Initializable {
         }
     }
 
-    public void depositToCheckings(ActionEvent event) throws IOException {
+    @FXML
+    private void depositToCheckings(ActionEvent event) throws IOException {
         int transactionID = Transaction.getNextTransactionID();
         Date currentDate = new Date();
 
