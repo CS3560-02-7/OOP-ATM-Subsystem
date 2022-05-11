@@ -13,10 +13,13 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class DepositController implements Initializable {
@@ -42,6 +45,8 @@ public class DepositController implements Initializable {
     @FXML Button twoButton = new Button();
     @FXML Button depositButton = new Button();
     @FXML Label depositValueLabel = new Label();
+    @FXML Label savingsCurrentBal = new Label();
+    @FXML Label checkingCurrentBal = new Label();
     @FXML Button zeroButton = new Button();
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -51,6 +56,17 @@ public class DepositController implements Initializable {
         mySavingsAccount = Controller.retSavings();
 
         depositValueLabel.setText("$0");
+        if(!Objects.isNull(mySavingsAccount))
+        {
+            System.out.println(mySavingsAccount.balanceProperty().get());
+            savingsCurrentBal.setText("$"+mySavingsAccount.balanceProperty().get());
+        }
+        if(!Objects.isNull(myCheckingAccount))
+        {
+            System.out.println(myCheckingAccount.balanceProperty().get());
+            checkingCurrentBal.setText("$"+myCheckingAccount.balanceProperty().get());
+        }
+
 
         backButton.setOnAction(event -> {
             try {
@@ -99,6 +115,32 @@ public class DepositController implements Initializable {
 
     public dbConnection getDbconn() {
         return dbConn;
+    }
+
+    private void alertScene(int alerttype) throws IOException{
+
+        Stage alertWindow = new Stage();
+        alertWindow.initModality(Modality.APPLICATION_MODAL);
+        alertWindow.setTitle("Deposit successful");
+        alertWindow.setMinWidth(250);
+        alertWindow.setMinHeight(130);
+        Label label = new Label();
+
+        if(alerttype == 1) {
+            label.setText("Your deposit of "+getDepositValueLabel()+" was successful");
+        }
+
+
+        Button close = new Button("OK\n");
+        close.setOnAction(event -> alertWindow.close());
+
+        VBox layout = new VBox(10);
+        layout.getChildren().addAll(label, close);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene alert = new Scene(layout);
+        alertWindow.setScene(alert);
+        alertWindow.showAndWait();
     }
 
     @FXML
@@ -152,20 +194,32 @@ public class DepositController implements Initializable {
     }
 
 
-    public void depositToSavings(ActionEvent event) {
-
-    }
-
-    public void depositToCheckings(ActionEvent event) {
+    public void depositToSavings(ActionEvent event) throws IOException {
         int transactionID = Transaction.getNextTransactionID();
         Date currentDate = new Date();
-/*        System.out.println(transactionID);
-        System.out.println(getDepositValueLabel().substring(1));
-        System.out.println(currentDate);
-        System.out.println(myCheckingAccount.getaccountID().intValue());*/
+        Deposit newDeposit = new Deposit(transactionID,getDepositValueLabel().substring(1),currentDate,mySavingsAccount.getaccountID().intValue());
+        newDeposit.depositCash();
+        newDeposit.addDepositToDatabase();
+        alertScene(1);
+        try {
+            changeScenes(1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void depositToCheckings(ActionEvent event) throws IOException {
+        int transactionID = Transaction.getNextTransactionID();
+        Date currentDate = new Date();
 
         Deposit newDeposit = new Deposit(transactionID,getDepositValueLabel().substring(1),currentDate,myCheckingAccount.getaccountID().intValue());
         newDeposit.depositCash();
         newDeposit.addDepositToDatabase();
+        alertScene(1);
+        try {
+            changeScenes(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

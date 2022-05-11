@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Added functionality to deposit page.">
+    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Deposit works now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Deposit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Deposit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Transfer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Withdrawal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Withdrawal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingDeposit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingWithdraw.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingWithdraw.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsDeposit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/checkingDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingDeposit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingWithdraw.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/savingsDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/savingsDeposit.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DepositController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DepositController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -219,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652243070528</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Deposit works now">
+      <created>1652244931368</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1652244931368</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +259,17 @@
     <MESSAGE value="Added functionality to the deposit page, in checkings and savings" />
     <MESSAGE value="Added condition for when savings account doesn't exist" />
     <MESSAGE value="Added functionality to deposit page." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added functionality to deposit page." />
+    <MESSAGE value="Deposit works now" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deposit works now" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
