@@ -3,11 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Added functionality to deposit page.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Deposit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Deposit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Transfer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Withdrawal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Withdrawal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atmDatabaseSchema/atm_account.sql" beforeDir="false" afterPath="$PROJECT_DIR$/atmDatabaseSchema/atm_account.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atmDatabaseSchema/atm_accounttype.sql" beforeDir="false" afterPath="$PROJECT_DIR$/atmDatabaseSchema/atm_accounttype.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atmDatabaseSchema/atm_deposit.sql" beforeDir="false" afterPath="$PROJECT_DIR$/atmDatabaseSchema/atm_deposit.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atmDatabaseSchema/atm_member.sql" beforeDir="false" afterPath="$PROJECT_DIR$/atmDatabaseSchema/atm_member.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atmDatabaseSchema/atm_transfer.sql" beforeDir="false" afterPath="$PROJECT_DIR$/atmDatabaseSchema/atm_transfer.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atmDatabaseSchema/atm_transferdestinationaccount.sql" beforeDir="false" afterPath="$PROJECT_DIR$/atmDatabaseSchema/atm_transferdestinationaccount.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atmDatabaseSchema/atm_transfersourceaccount.sql" beforeDir="false" afterPath="$PROJECT_DIR$/atmDatabaseSchema/atm_transfersourceaccount.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atmDatabaseSchema/atm_withdrawal.sql" beforeDir="false" afterPath="$PROJECT_DIR$/atmDatabaseSchema/atm_withdrawal.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/AccountSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/AccountSelection.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/AccountSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/AccountSelection.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/Login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DepositController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DepositController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +61,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mysql-connector-java-8.0.28.jar" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -235,7 +244,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added basic GUI Implementation" />
@@ -249,5 +257,16 @@
     <MESSAGE value="Added condition for when savings account doesn't exist" />
     <MESSAGE value="Added functionality to deposit page." />
     <option name="LAST_COMMIT_MESSAGE" value="Added functionality to deposit page." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Controller.java</url>
+          <line>324</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

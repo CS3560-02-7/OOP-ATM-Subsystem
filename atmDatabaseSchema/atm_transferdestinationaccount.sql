@@ -38,7 +38,7 @@ CREATE TABLE `transferdestinationaccount` (
 
 LOCK TABLES `transferdestinationaccount` WRITE;
 /*!40000 ALTER TABLE `transferdestinationaccount` DISABLE KEYS */;
-INSERT INTO `transferdestinationaccount` VALUES (3,23456789);
+INSERT INTO `transferdestinationaccount` VALUES (3,23456789),(7,23456789);
 /*!40000 ALTER TABLE `transferdestinationaccount` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-22 15:03:33
+-- Dump completed on 2022-05-08 15:30:42

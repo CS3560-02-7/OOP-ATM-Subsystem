@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 import ATMPackage.Member;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import ATMPackage.*;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -21,6 +23,9 @@ import javafx.stage.Stage;
 public class Controller implements Initializable {
 
     private static Member myMember = new Member(0,"","",0,"");
+    private static Member myMember2 = new Member(0,"","",0,"");
+    private static Member myMember3 = new Member(0,"","",0,"");
+
     private static CheckingAccount myCheckingAccount;
     private static SavingsAccount mySavingsAccount;
 
@@ -28,6 +33,8 @@ public class Controller implements Initializable {
 
     @FXML TextField memberIDfield = new TextField();
     @FXML PasswordField pinIDfield = new PasswordField();
+    @FXML TextField street = new TextField();
+    @FXML TextField memID = new TextField();
     @FXML Button logins = new Button();
     @FXML Button savingsBackbtn = new Button();
     @FXML Button checkingBackbtn = new Button();
@@ -44,6 +51,8 @@ public class Controller implements Initializable {
     @FXML Button tobalanceSavings = new Button();
     @FXML Button totransferChecking = new Button();
     @FXML Button totrasnferSavings = new Button();
+    @FXML Button submit = new Button("Submit");
+    @FXML Button closepin = new Button("Close");
 
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -177,7 +186,7 @@ public class Controller implements Initializable {
         Stage alertWindow = new Stage();
         alertWindow.initModality(Modality.APPLICATION_MODAL);
         alertWindow.setTitle("Warning");
-        alertWindow.setMinWidth(250);
+        alertWindow.setMinWidth(300);
         alertWindow.setMinHeight(130);
         Label label = new Label();
 
@@ -187,9 +196,13 @@ public class Controller implements Initializable {
         if(alerttype == 2) {
             label.setText("Field(s) empty");
         }
-        if(alerttype==3)
+        if(alerttype == 3)
         {
             label.setText("You do not have a savings account.");
+        }
+        if(alerttype == 4)
+        {
+            label.setText("Request Recieved. New pin will be mailed out.");
         }
 
         Button close = new Button("OK\n");
@@ -202,6 +215,138 @@ public class Controller implements Initializable {
         Scene alert = new Scene(layout);
         alertWindow.setScene(alert);
         alertWindow.showAndWait();
+    }
+
+    @FXML
+    public void forgotPin(ActionEvent event) throws IOException {
+
+        Stage forgotpin = new Stage();
+
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(5);
+        grid.setHgap(5);
+
+        street.setPromptText("Enter Address ");
+        street.setPrefColumnCount(10);
+        street.getText();
+        GridPane.setConstraints(street, 0, 0);
+        grid.getChildren().add(street);
+
+        memID.setPrefColumnCount(15);
+        memID.setPromptText("Enter Member ID");
+        GridPane.setConstraints(memID, 0, 1);
+        grid.getChildren().add(memID);
+
+        //Button submit = new Button("Submit");
+        GridPane.setConstraints(submit, 1, 0);
+        grid.getChildren().add(submit);
+
+        //Button close = new Button("Close\n");
+        GridPane.setConstraints(closepin, 1, 1);
+        grid.getChildren().add(closepin);
+        closepin.setOnAction(eee -> forgotpin.close());
+
+        // Button clear = new Button("Clear");
+        // GridPane.setConstraints(clear, 1, 1);
+        // grid.getChildren().add(clear);
+
+        submit.setOnAction(ee -> {
+            try {
+                String addr = street.getText().trim();
+                String mid = memID.getText().trim();
+                if(mid.equals("")||addr.equals("")) {
+                    alertScene(2);
+                }else{
+                    int memberID = Integer.parseInt(mid);
+                    boolean istrue = myMember2.forgotPin(memberID, addr);
+
+                    if(!istrue) {
+                        try {
+                            alertScene(1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else {
+                        try {
+                            alertScene(4);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        Scene alert = new Scene(grid);
+        forgotpin.setScene(alert);
+        forgotpin.showAndWait();
+    }
+
+    @FXML
+    public void changePin(ActionEvent event) throws IOException {
+
+        Stage forgotpin = new Stage();
+
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(5);
+        grid.setHgap(5);
+
+        street.setPromptText("Enter PIN ");
+        street.setPrefColumnCount(10);
+        street.getText();
+        GridPane.setConstraints(street, 0, 0);
+        grid.getChildren().add(street);
+
+        //Button submit = new Button("Submit");
+        GridPane.setConstraints(submit, 1, 0);
+        grid.getChildren().add(submit);
+
+        //Button close = new Button("Close\n");
+        GridPane.setConstraints(closepin, 1, 1);
+        grid.getChildren().add(closepin);
+        closepin.setOnAction(eee -> forgotpin.close());
+
+        // Button clear = new Button("Clear");
+        // GridPane.setConstraints(clear, 1, 1);
+        // grid.getChildren().add(clear);
+
+        submit.setOnAction(ee -> {
+            try {
+                String addr = street.getText().trim();
+                if(addr.equals("")) {
+                    alertScene(2);
+                }else{
+                    int pID = Integer.parseInt(addr);
+                    boolean istrue = myMember.requestChangePin(pID);
+
+                    if(!istrue) {
+                        try {
+                            alertScene(1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else {
+                        try {
+                            alertScene(4);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        Scene alert = new Scene(grid);
+        forgotpin.setScene(alert);
+        forgotpin.showAndWait();
     }
 
     @FXML

@@ -25,13 +25,9 @@ DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
   `accountID` int NOT NULL,
   `memberID` int NOT NULL,
-  `accountType` varchar(9) DEFAULT NULL,
   `balance` decimal(15,2) DEFAULT NULL,
   `overdraftFee` decimal(15,2) DEFAULT NULL,
-  `minimumBalance` decimal(15,2) DEFAULT NULL,
-  `withdrawLimit` decimal(15,2) DEFAULT NULL,
-  `interestRate` decimal(5,3) DEFAULT NULL,
-  `monthlyFee` decimal(15,2) DEFAULT NULL,
+  `accountType` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`accountID`,`memberID`),
   KEY `memberID` (`memberID`),
   CONSTRAINT `account_ibfk_1` FOREIGN KEY (`memberID`) REFERENCES `member` (`memberID`)
@@ -44,7 +40,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (12345678,123456,'checking',5697.38,5.00,50.00,NULL,NULL,10.00),(23456789,123456,'savings',11254.37,10.00,200.00,5000.00,0.060,NULL),(87654321,654321,'checking',7267.44,5.00,50.00,NULL,NULL,7.00),(98765432,654321,'savings',37469.82,5.00,2000.00,10000.00,0.070,NULL);
+INSERT INTO `account` VALUES (12345678,123456,5327.00,5.00,'checking'),(23456789,123456,11194.37,10.00,'savings'),(87654321,654321,7267.44,5.00,'checking'),(98765432,654321,37469.82,5.00,'savings');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-22 15:03:33
+-- Dump completed on 2022-05-08 15:30:42

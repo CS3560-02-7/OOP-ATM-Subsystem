@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
       <Button fx:id="toChecking" layoutX="221.0" layoutY="149.0" mnemonicParsing="false" onAction="#getCheckingAccount" prefHeight="55.0" prefWidth="131.0" text="Checking">
          <font>
@@ -16,7 +16,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="221.0" layoutY="273.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="131.0" text="Change PIN">
+      <Button layoutX="221.0" layoutY="273.0" mnemonicParsing="false" onAction="#changePin" prefHeight="55.0" prefWidth="131.0" text="Change PIN">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
