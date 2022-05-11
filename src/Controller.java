@@ -334,6 +334,73 @@ public class Controller implements Initializable {
         myMember = null;
     }
 
+    @FXML
+    public void changePin(ActionEvent event) throws IOException {
+
+        Stage forgotpin = new Stage();
+
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(10, 10, 10, 10));
+        grid.setVgap(5);
+        grid.setHgap(5);
+
+        street.setPromptText("Enter PIN ");
+        street.setPrefColumnCount(10);
+        street.getText();
+
+        GridPane.setConstraints(street, 0, 0);
+        grid.getChildren().add(street);
+
+        //Button submit = new Button("Submit");
+        GridPane.setConstraints(submit, 1, 0);
+        grid.getChildren().add(submit);
+
+        //Button close = new Button("Close\n");
+        GridPane.setConstraints(closepin, 1, 1);
+        grid.getChildren().add(closepin);
+        closepin.setOnAction(eee -> forgotpin.close());
+
+        // Button clear = new Button("Clear");
+        // GridPane.setConstraints(clear, 1, 1);
+        // grid.getChildren().add(clear);
+
+        submit.setOnAction(ee -> {
+            try {
+                String addr = street.getText().trim();
+                if(addr.equals("")) {
+                    alertScene(2);
+                }else{
+                    int pID = Integer.parseInt(addr);
+                    boolean istrue = myMember.requestChangePin(pID);
+
+                    if(!istrue) {
+                        try {
+                            alertScene(1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else {
+                        try {
+                            alertScene(4);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        forgotpin.close();
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+
+        Scene alert = new Scene(grid);
+        forgotpin.setScene(alert);
+        forgotpin.showAndWait();
+        closepin.requestFocus();
+    }
+
 
     public void getCheckingAccount(ActionEvent event)throws IOException {
         myCheckingAccount = myMember.getCheckingAccount();

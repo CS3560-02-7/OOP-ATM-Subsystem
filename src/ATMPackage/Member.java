@@ -69,7 +69,7 @@ public class Member
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
             Statement statement = connection.createStatement();
             //grab all withdrawals that match the given account and the current date
-            ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + this.memberID +" AND pinNumber = "+possiblePin);
+            ResultSet memberInfo = statement.executeQuery("SELECT * FROM member WHERE memberID = " + this.memberID.get() +" AND pinNumber = "+possiblePin);
             if (memberInfo.next() != false) {
                 this.memberID = new SimpleIntegerProperty(memberInfo.getInt(1));
                 return true;
