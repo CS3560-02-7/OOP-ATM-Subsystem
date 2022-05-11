@@ -30,7 +30,7 @@
                <font>
                   <Font size="16.0" />
                </font></Text>
-            <Button fx:id="forgotPin" layoutX="347.0" layoutY="276.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="107.0" text="Forgot Pin?">
+            <Button fx:id="forgotPin" layoutX="347.0" layoutY="276.0" mnemonicParsing="false" onAction="#forgotPin" prefHeight="48.0" prefWidth="107.0" text="Forgot Pin?">
                <font>
                   <Font size="16.0" />
                </font>

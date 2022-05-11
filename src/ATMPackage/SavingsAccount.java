@@ -52,4 +52,47 @@ public class SavingsAccount extends Account
 
     }*/
 
+/*    @Override
+    public BigDecimal getDailyRemainingWithdraw()
+    {
+        //get todays date
+        Date today = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+        List<BigDecimal> bdList = new ArrayList<>();
+
+        //get all withdrawals made today from database
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
+
+            Statement statement = connection.createStatement();
+            Statement statement2 = connection.createStatement();
+
+            //grab all withdrawls that match the given account and the current date
+            ResultSet withdrawalsToday = statement.executeQuery("SELECT * FROM withdrawal WHERE dateOfTransaction = \'" + ft.format(today)+"\' AND sourceAccountID = "+this.accountID.get());
+            //grab all outgoing transfers from savings
+            ResultSet transferOuts = statement.executeQuery("SELECT * FROM ")
+
+            while(withdrawalsToday.next())
+            {
+                BigDecimal currentAmount = new BigDecimal(withdrawalsToday.getString(3));
+                bdList.add(currentAmount);
+            }
+
+        } catch (Exception e){
+            System.out.println("connection not made");
+        }
+
+        //sum of all withdrawals made today by this account
+        BigDecimal result = bdList.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        if(result.floatValue()>=withdrawLimit.floatValue())
+        {
+            return new BigDecimal(0);
+        }
+        else
+        {
+            return withdrawLimit.subtract(result);
+        }
+    }*/
+
 }
