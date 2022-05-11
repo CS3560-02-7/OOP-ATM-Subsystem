@@ -165,10 +165,10 @@ public class transferviewController implements Initializable {
         Label label = new Label();
 
         if(alerttype == 1) {
-            label.setText("Incorrect account credentials.\nPlease try again.\n");
+            label.setText(gettransferValueLabel()+" was transferred to your savings account.");
         }
         if(alerttype == 2) {
-            label.setText("Field(s) empty");
+            label.setText(gettransferValueLabel()+" was transferred to your checking account.");
         }
 
         Button close = new Button("OK\n");
