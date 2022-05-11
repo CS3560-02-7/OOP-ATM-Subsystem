@@ -20,9 +20,9 @@ import javafx.stage.Stage;
 
 public class Controller implements Initializable {
 
-    public static Member myMember = new Member(0,"","",0,"");
-    public static CheckingAccount myCheckingAccount;
-    public static SavingsAccount mySavingsAccount;
+    private static Member myMember = new Member(0,"","",0,"");
+    private static CheckingAccount myCheckingAccount;
+    private static SavingsAccount mySavingsAccount;
 
     private dbConnection dbconn;
 

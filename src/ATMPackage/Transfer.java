@@ -13,7 +13,7 @@ public class Transfer extends Transaction {
     private final int destinationAccountID;
     private final int sourceAccountID;
 
-    public Transfer(int transactionID, String amount, String date, int destinationAccountID, int sourceAccountID) {
+    public Transfer(int transactionID, String amount, Date  date, int destinationAccountID, int sourceAccountID) {
         super(transactionID, amount, date);
         this.destinationAccountID = destinationAccountID;
         this.sourceAccountID = sourceAccountID;
@@ -106,7 +106,7 @@ public class Transfer extends Transaction {
         return fundsAvailable;
     }
 
-    /* Creates an instance of ATMPackage.Transfer with data from the database, returns null if this is not possible */
+/*    *//* Creates an instance of ATMPackage.Transfer with data from the database, returns null if this is not possible *//*
     public static Transfer createTransferFromDatabase(int transactionID){
         Transfer transferFromDatabase = null;
         try {
@@ -136,7 +136,7 @@ public class Transfer extends Transaction {
         }
         return transferFromDatabase;
 
-    }
+    }*/
 
     /* This method adds a new transfer to the database based on the accountIDs and amount of money that the user inputted. It also
         creates new entries for transferDestinationAccount and transferSourceAccount*/

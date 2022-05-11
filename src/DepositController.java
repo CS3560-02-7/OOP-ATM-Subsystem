@@ -159,8 +159,13 @@ public class DepositController implements Initializable {
     public void depositToCheckings(ActionEvent event) {
         int transactionID = Transaction.getNextTransactionID();
         Date currentDate = new Date();
+/*        System.out.println(transactionID);
+        System.out.println(getDepositValueLabel().substring(1));
+        System.out.println(currentDate);
+        System.out.println(myCheckingAccount.getaccountID().intValue());*/
+
         Deposit newDeposit = new Deposit(transactionID,getDepositValueLabel().substring(1),currentDate,myCheckingAccount.getaccountID().intValue());
-
-
+        newDeposit.depositCash();
+        newDeposit.addDepositToDatabase();
     }
 }

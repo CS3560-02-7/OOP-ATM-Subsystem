@@ -17,7 +17,7 @@ public class Withdrawal extends Transaction
     private final int sourceAccountID;
     private final BigDecimal maxWithdrawalAmount;
 
-    public Withdrawal(int transactionID, String amount, String date, int sourceAccountID)
+    public Withdrawal(int transactionID, String amount, Date date, int sourceAccountID)
     {
         super(transactionID, amount, date);
         this.sourceAccountID = sourceAccountID;
@@ -152,32 +152,6 @@ public class Withdrawal extends Transaction
         {
             return !exceedsLimit;
         }
-    }
-
-    /* Creates a new instance of withdrawal from database based on the given transactionID, returns null if this is not possible*/
-    public static Withdrawal createWithdrawalFromDatabase(int transactionID){
-        Withdrawal withdrawalFromDatabase = null;
-        try {
-
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
-
-            Statement statement = connection.createStatement();
-
-            ResultSet transactionInfo = statement.executeQuery("SELECT * FROM withdrawal WHERE transactionID = " + transactionID);
-
-            if(transactionInfo.next() != false) {
-                withdrawalFromDatabase = new Withdrawal(transactionInfo.getInt(1), transactionInfo.getString(3),
-                        transactionInfo.getString(4), transactionInfo.getInt(2));
-            } else {
-                return null;
-            }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return withdrawalFromDatabase;
-
     }
 
     /* This method adds a new withdrawal to the database based on the accountID and amount of money that the user inputted*/

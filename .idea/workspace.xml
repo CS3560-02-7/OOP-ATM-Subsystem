@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Added condition for when savings account doesn't exist">
+    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Added functionality to deposit page.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ATMPackage/Deposit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Deposit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Transfer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Withdrawal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Withdrawal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DepositController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DepositController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="GUI" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -210,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652200623590</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added functionality to deposit page.">
+      <created>1652243070528</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1652243070528</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +247,7 @@
     <MESSAGE value="Added checking and savings account to controller" />
     <MESSAGE value="Added functionality to the deposit page, in checkings and savings" />
     <MESSAGE value="Added condition for when savings account doesn't exist" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added condition for when savings account doesn't exist" />
+    <MESSAGE value="Added functionality to deposit page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added functionality to deposit page." />
   </component>
 </project>

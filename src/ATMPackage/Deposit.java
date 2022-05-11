@@ -58,31 +58,6 @@ public class Deposit extends Transaction
         return depositSuccessful;
     }
 
-/*    *//* Creates a new instance of deposit from database based on the given transactionID, returns null if this is not possible*//*
-    public static Deposit createDepositFromDatabase(int transactionID){
-        Deposit depositFromDatabase = null;
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm", "root", "Sjkh83lasd87ds0por7Gjjd6l4");
-
-            Statement statement = connection.createStatement();
-
-            ResultSet transactionInfo = statement.executeQuery("SELECT * FROM deposit WHERE transactionID = " + transactionID);
-
-
-            if(transactionInfo.next() != false) {
-                depositFromDatabase = new Deposit(transactionInfo.getInt(1), transactionInfo.getString(3),
-                        transactionInfo.getString(4), transactionInfo.getInt(2));
-            } else {
-                return null;
-            }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return depositFromDatabase;
-
-    }*/
 
     /* This method adds a new deposit to the database based on the accountID and amount of money that the user inputted*/
     public boolean addDepositToDatabase(){
@@ -103,7 +78,7 @@ public class Deposit extends Transaction
                     "VALUES\n" +
                     "(" + this.transactionID + ",\n" +
                     this.destinationAccountID + ",\n" +
-                    this.amount.intValue() + ",\n'" +
+                    this.amount + ",\n'" +
                     ft.format(this.myDate) + "');\n");
 
             depositSuccessful = true;
