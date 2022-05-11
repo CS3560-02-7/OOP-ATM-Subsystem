@@ -2,45 +2,105 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WithdrawalSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="WithdrawalSceneController">
    <children>
-
-      <Button fx:id="resetButton" layoutX="346.0" layoutY="427.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Reset" textFill="#df2020">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="34.0" layoutY="204.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Text fx:id="withdrawalText" layoutX="134.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Withdrawal Amount" textAlignment="CENTER" wrappingWidth="506.63746643066406">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
-      </Button>
-      <Text fx:id="depositText" layoutX="264.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Withdrawal Amount" textAlignment="CENTER" underline="true" wrappingWidth="272.63746643066406">
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="34.0" layoutY="403.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="34.0" layoutY="303.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="35.0" layoutY="254.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="34.0" layoutY="352.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="35.0" layoutX="34.0" layoutY="151.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Text fx:id="withdrawalText100" layoutX="53.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$100" textAlignment="CENTER" wrappingWidth="62.99999237060547">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Button fx:id="fiveButton" layoutX="133.0" layoutY="315.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="\$5" />
-      <Button fx:id="tenButton" layoutX="241.0" layoutY="315.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="\$10" />
-      <Button fx:id="twentyButton" layoutX="348.0" layoutY="315.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="\$20" />
-      <Button fx:id="fiftyButton" layoutX="458.0" layoutY="315.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="\$50" />
-      <Button fx:id="hundredButton" layoutX="567.0" layoutY="315.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="\$100" />
-      <Label fx:id="depositValueLabel" alignment="CENTER" layoutX="330.0" layoutY="206.0" prefHeight="18.0" prefWidth="139.0" text="\$0.00" textAlignment="CENTER">
+      <Text fx:id="withdrawalText50" layoutX="56.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$50" textAlignment="CENTER" wrappingWidth="62.99999237060547">
          <font>
             <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="Text20" layoutX="56.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$20" textAlignment="CENTER" wrappingWidth="62.99999237060547">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="withdrawalText1" layoutX="53.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="2.0" text="\$1" textAlignment="CENTER" wrappingWidth="62.99999237060547">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="withdrawalText10" layoutX="54.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$10" textAlignment="CENTER" wrappingWidth="62.99999237060547">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="withdrawalText5" layoutX="56.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$5" textAlignment="CENTER" wrappingWidth="62.99999237060547">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="withdrawValueLabel" alignment="CENTER" layoutX="318.0" layoutY="189.0" prefHeight="44.0" prefWidth="139.0" text="\$0.00" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="depositButton" layoutX="467.0" layoutY="427.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="ATMPackage.Deposit" textAlignment="CENTER" textFill="#20b93e">
+      <Text layoutX="277.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="will be withdrawn" textAlignment="CENTER" wrappingWidth="220.99999237060547">
          <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Text layoutX="332.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="will be deposited">
-         <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Text>
-      <Button fx:id="toChecking" alignment="CENTER" layoutX="225.0" layoutY="427.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Back">
+
+      <Button fx:id="resetButton" layoutX="343.0" layoutY="471.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Reset" textFill="#df2020">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <Button fx:id="withdrawButton" layoutX="538.0" layoutY="471.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Withdraw" textAlignment="CENTER" textFill="#20b93e">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="toChecking" alignment="CENTER" layoutX="147.0" layoutY="471.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Back">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="hundredPlus" layoutX="203.0" layoutY="154.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="+" />
+      <Button fx:id="twentyPlus" layoutX="203.0" layoutY="259.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="31.0" text="+" />
+      <Button fx:id="tenPlus" layoutX="203.0" layoutY="307.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="+" />
+      <Button fx:id="fivePlus" layoutX="203.0" layoutY="356.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" text="+" />
+      <Button fx:id="onePlus" layoutX="203.0" layoutY="407.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" text="+" />
+      <Button fx:id="hundredMinus" layoutX="143.0" layoutY="154.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="-" />
+      <Button fx:id="twentyMinus" layoutX="143.0" layoutY="258.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="-" />
+      <Button fx:id="tenMinus" layoutX="143.0" layoutY="307.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="-" />
+      <Button fx:id="fiveMinus" layoutX="143.0" layoutY="356.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" text="-" />
+      <Button fx:id="oneMinus" layoutX="143.0" layoutY="407.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="31.0" text="-" />
+      <Button fx:id="fiftyPlus" layoutX="203.0" layoutY="208.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="+" />
+      <Label fx:id="balanceLabel" layoutX="427.0" layoutY="107.0" prefHeight="27.0" prefWidth="120.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Text fx:id="currentBalance" layoutX="277.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Account Balance:" textAlignment="CENTER" wrappingWidth="220.99999237060547">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="incrementLabel100" layoutX="183.0" layoutY="158.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
+      <Label fx:id="incrementLabel20" layoutX="183.0" layoutY="262.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
+      <Label fx:id="incrementLabel10" layoutX="181.0" layoutY="311.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
+      <Label fx:id="incrementLabel5" layoutX="181.0" layoutY="359.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
+      <Label fx:id="incrementLabel1" layoutX="183.0" layoutY="411.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
+      <Button fx:id="fiftyMinus" layoutX="143.0" layoutY="208.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="31.0" text="-" />
+      <Label fx:id="incrementLabel50" layoutX="181.0" layoutY="212.0" prefHeight="18.0" prefWidth="14.0" text="0" textAlignment="CENTER" />
    </children>
 </AnchorPane>
