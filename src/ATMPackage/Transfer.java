@@ -140,13 +140,10 @@ public class Transfer extends Transaction {
 
     /* This method adds a new transfer to the database based on the accountIDs and amount of money that the user inputted. It also
         creates new entries for transferDestinationAccount and transferSourceAccount*/
-    public static boolean addTransferToDatabase(int sourceID, int destinationID, String amount){
+    public boolean addTransferToDatabase(){
 
         boolean transferSuccessful = false;
-        Date myDate = new Date();
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
-        BigDecimal transferAmount = new BigDecimal(amount);
-        int newTransactionID = Transaction.getNextTransactionID();
 
         try {
 
@@ -156,28 +153,28 @@ public class Transfer extends Transaction {
             Statement statement2 = connection.createStatement();
             Statement statement3 = connection.createStatement();
 
-            statement1.execute("INSERT INTO `atm`.`transfer`\n" +
-                    "(`transactionID`,\n" +
-                    "`amount`,\n" +
-                    "`dateOfTransaction`)\n" +
+            statement1.execute("INSERT INTO atm.`transfer`\n" +
+                    "(transactionID,\n" +
+                    "amount,\n" +
+                    "dateOfTransaction)\n" +
                     "VALUES\n" +
-                    "(" + newTransactionID + ",\n" +
-                    transferAmount + ",\n'" +
-                    ft.format(myDate) + "');\n");
+                    "(" + this.transactionID + ",\n" +
+                    this.amount + ",\n'" +
+                    ft.format(this.myDate) + "');\n");
 
-            statement2.execute("INSERT INTO `atm`.`transfersourceaccount`\n" +
-                    "(`transactionID`,\n" +
-                    "`sourceAccountID`)\n" +
+            statement2.execute("INSERT INTO atm.`transfersourceaccount`\n" +
+                    "(transactionID,\n" +
+                    "sourceAccountID)\n" +
                     "VALUES\n" +
-                    "(" + newTransactionID + ",\n" +
-                    sourceID + ");\n");
+                    "(" + this.transactionID + ",\n" +
+                    this.sourceAccountID + ");\n");
 
-            statement3.execute("INSERT INTO `atm`.`transferdestinationaccount`\n" +
-                    "(`transactionID`,\n" +
-                    "`destinationAccountID`)\n" +
+            statement3.execute("INSERT INTO atm.`transferdestinationaccount`\n" +
+                    "(transactionID,\n" +
+                    "destinationAccountID)\n" +
                     "VALUES\n" +
-                    "(" + newTransactionID + ",\n" +
-                    destinationID + ");\n");
+                    "(" + this.transactionID + ",\n" +
+                    this.destinationAccountID + ");\n");
 
 
 
