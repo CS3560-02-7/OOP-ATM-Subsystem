@@ -106,7 +106,7 @@ public class DepositController implements Initializable {
 
     @FXML
     public void processNumber(ActionEvent event) throws IOException {
-        //  we are recording the text set to the button once it is pressed
+        //  we are recording the text set to the button once it is pressed a
         String buttonDigit = ((Button) event.getSource()).getText();
 
         //  get withdrawal label without '$' symbol in int
