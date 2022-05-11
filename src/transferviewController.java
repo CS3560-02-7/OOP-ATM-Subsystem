@@ -219,5 +219,24 @@ public class transferviewController implements Initializable {
     private void reset(ActionEvent event) {
         settransferValueLabel("$0");
     }
+    
+    @FXML
+    private void transferToSavings(ActionEvent event) throws IOException {
+        int transactionID = Transaction.getNextTransactionID();
+        Date currentDate = new Date();
+
+        //get savings account for this member
+        mySavingsAccount = Controller.getMember().getSavingsAccount();
+        Transfer newTransfer = new Transfer(transactionID,gettransferValueLabel().substring(1),currentDate,mySavingsAccount.getaccountID().intValue(),myCheckingAccount.getaccountID().intValue());
+        newTransfer.transferCash();
+        newTransfer.addTransferToDatabase();
+        alertScene(1);
+        try {
+            changeScenes(2);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mySavingsAccount = null;
+    }
 
 }
