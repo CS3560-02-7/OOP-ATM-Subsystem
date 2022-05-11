@@ -1,26 +1,29 @@
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import java.util.Date;
 import ATMPackage.*;
 
+import java.util.ResourceBundle;
+import java.sql.SQLException;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
-import javafx.fxml.FXMLLoader;
+import java.net.URL;
+
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -233,6 +236,25 @@ public class transferviewController implements Initializable {
         alertScene(1);
         try {
             changeScenes(2);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mySavingsAccount = null;
+    }
+    
+    @FXML
+    private void transferToChecking(ActionEvent event) throws IOException {
+        int transactionID = Transaction.getNextTransactionID();
+        Date currentDate = new Date();
+
+        //get checking account for this member
+        myCheckingAccount = Controller.getMember().getCheckingAccount();
+        Transfer newTransfer = new Transfer(transactionID,gettransferValueLabel().substring(1),currentDate,myCheckingAccount.getaccountID().intValue(),mySavingsAccount.getaccountID().intValue());
+        newTransfer.transferCash();
+        newTransfer.addTransferToDatabase();
+        alertScene(2);
+        try {
+            changeScenes(3);
         } catch (IOException e) {
             e.printStackTrace();
         }
