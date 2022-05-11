@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Integrated forgot pin">
+    <list default="true" id="2221fe26-eeca-49e7-af85-443c712e06e2" name="Changes" comment="Integrated change pin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/AccountSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/AccountSelection.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ATMPackage/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ATMPackage/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BankUI/AccountSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/AccountSelection.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/CheckingAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/CheckingAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/SavingsAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/SavingsAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingBalance.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingDeposit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingTransfer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/checkingTransfer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsBalance.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsDeposit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsTransfer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-ATM-Subsystem/BankUI/savingsTransfer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/CheckingAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/CheckingAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/SavingsAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/SavingsAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/checkingBalance.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/checkingDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingDeposit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/checkingTransfer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/checkingTransfer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/savingsBalance.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/savingsDeposit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/savingsDeposit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BankUI/savingsTransfer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BankUI/savingsTransfer.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transferviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/transferviewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652292254231</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Integrated change pin">
+      <created>1652293071045</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1652293071045</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,6 +317,18 @@
     <MESSAGE value="Changed GUI for deposit and withdrawal. Added some code to withdrawal controller" />
     <MESSAGE value="Added most withdraw functionality. still need check transfer from savings" />
     <MESSAGE value="Integrated forgot pin" />
-    <option name="LAST_COMMIT_MESSAGE" value="Integrated forgot pin" />
+    <MESSAGE value="Integrated change pin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Integrated change pin" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Controller.java</url>
+          <line>148</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

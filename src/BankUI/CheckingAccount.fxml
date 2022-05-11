@@ -23,7 +23,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="tobalanceChecking" alignment="CENTER" layoutX="431.0" layoutY="239.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="238.0" text="View Balance">
+            <Button fx:id="tobalanceChecking" alignment="CENTER" layoutX="431.0" layoutY="239.0" mnemonicParsing="false" onAction="#showCheckingBal" prefHeight="61.0" prefWidth="238.0" text="View Balance">
                <font>
                   <Font size="24.0" />
                </font>

@@ -26,13 +26,27 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class transferviewController implements Initializable {
-
+    private static CheckingAccount myCheckingAccount;
+    private static SavingsAccount mySavingsAccount;
     private dbConnection dbConn;
 
-    @FXML Button toChecking = new Button();
-    @FXML Button toSavings = new Button();
-    @FXML Button backc = new Button();
-    @FXML Button backs = new Button();
+    @FXML Button backButton = new Button();
+    @FXML Button backButtonSavings = new Button();
+    @FXML Button eightButton = new Button();
+    @FXML Button fiveButton = new Button();
+    @FXML Button fourButton = new Button();
+    @FXML Button nineButton = new Button();
+    @FXML Button oneButton = new Button();
+    @FXML Button resetButton = new Button();
+    @FXML Button sevenButton = new Button();
+    @FXML Button sixButton = new Button();
+    @FXML Button threeButton = new Button();
+    @FXML Button twoButton = new Button();
+    @FXML Button transferButton = new Button();
+    @FXML Label transferValueLabel = new Label();
+    @FXML Label savingsCurrentBal = new Label();
+    @FXML Label checkingCurrentBal = new Label();
+    @FXML Button zeroButton = new Button();
 
     @FXML private TableView<Integer> tableView;
     @FXML private TableColumn<Integer, Integer> amount;
@@ -40,29 +54,33 @@ public class transferviewController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
         dbConn = new dbConnection();
+        myCheckingAccount = Controller.retChecking();
+        mySavingsAccount = Controller.retSavings();
 
-        toChecking.setOnAction(event -> {
+        transferValueLabel.setText("$0");
+        if(!Objects.isNull(mySavingsAccount))
+        {
+            mySavingsAccount = Controller.getMember().getSavingsAccount();
+            System.out.println(mySavingsAccount.balanceProperty().get());
+            savingsCurrentBal.setText("$"+mySavingsAccount.balanceProperty().get());
+        }
+        if(!Objects.isNull(myCheckingAccount))
+        {
+            myCheckingAccount = Controller.getMember().getCheckingAccount();
+            System.out.println(myCheckingAccount.balanceProperty().get());
+            checkingCurrentBal.setText("$"+myCheckingAccount.balanceProperty().get());
+        }
+
+
+        backButton.setOnAction(event -> {
             try {
                 changeScenes(2);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
-        toSavings.setOnAction(event -> {
-            try {
-                changeScenes(3);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        backc.setOnAction(event -> {
-            try {
-                changeScenes(2);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        backs.setOnAction(event -> {
+
+        backButtonSavings.setOnAction(event -> {
             try {
                 changeScenes(3);
             } catch (IOException e) {
@@ -84,6 +102,57 @@ public class transferviewController implements Initializable {
         Stage stage = Main.retStage();
         stage.setScene(scene);
         stage.show();
+    }
+
+    private String gettransferValueLabel(){
+        return this.transferValueLabel.getText();
+    }
+
+    private void settransferValueLabel(String number){
+        this.transferValueLabel.setText(number);
+    }
+
+    @FXML
+    private void processNumber(ActionEvent event){
+        String buttonDigit = ((Button) event.getSource()).getText();
+
+        if(gettransferValueLabel()=="$0")
+        {
+            settransferValueLabel("$"+buttonDigit);
+        }
+        //check if a decimal and two values have been entered
+        else if (gettransferValueLabel().length()>2 && gettransferValueLabel().substring(gettransferValueLabel().length()-3).matches("[.][0-9][0-9]"))
+        {
+            settransferValueLabel(gettransferValueLabel());
+        }
+        else
+        {
+            settransferValueLabel(gettransferValueLabel()+buttonDigit);
+        }
+    }
+
+    @FXML
+    private void backSpace(ActionEvent event){
+        if(gettransferValueLabel().equals("$"))
+        {
+            settransferValueLabel("$");
+        }
+        else
+        {
+            settransferValueLabel(gettransferValueLabel().substring(0,gettransferValueLabel().length()-1));
+        }
+    }
+
+    @FXML
+    private void addDecimal(ActionEvent event){
+        if(gettransferValueLabel().contains("."))
+        {
+            settransferValueLabel(gettransferValueLabel());
+        }
+        else
+        {
+            settransferValueLabel(gettransferValueLabel()+".");
+        }
     }
 
     private void alertScene(int alerttype) throws IOException{
@@ -127,7 +196,7 @@ public class transferviewController implements Initializable {
             Statement statement3 = c.createStatement();
 
             ResultSet transfers = statement1.executeQuery("SELECT * FROM transfer");
-            ResultSet deposits = statement2.executeQuery("SELECT * FROM deposit");
+            ResultSet deposits = statement2.executeQuery("SELECT * FROM transfer");
             ResultSet withdrawals = statement3.executeQuery("SELECT * FROM withdrawal");
 
             int transaction;
@@ -147,33 +216,8 @@ public class transferviewController implements Initializable {
     }
 
     @FXML
-    public void checkingTransfer(){
-
-    }
-
-    @FXML
-    public void savingsTransfer(){
-
-    }
-
-    @FXML
-    public void checkingHistory(){
-
-    }
-
-    @FXML
-    public void savingsHistory(){
-
-    }
-
-    @FXML
-    public void checkingBalance(){
-
-    }
-
-    @FXML
-    public void savingsBalance(){
-
+    private void reset(ActionEvent event) {
+        settransferValueLabel("$0");
     }
 
 }

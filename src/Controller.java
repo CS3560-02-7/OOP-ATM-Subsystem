@@ -97,20 +97,6 @@ public class Controller implements Initializable {
                 e.printStackTrace();
             }
         });
-        tobalanceChecking.setOnAction(event -> {
-            try {
-                changeScenes(10);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        tobalanceSavings.setOnAction(event -> {
-            try {
-                changeScenes(11);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
         totransferChecking.setOnAction(event -> {
             try {
                 changeScenes(12);
@@ -160,12 +146,6 @@ public class Controller implements Initializable {
         if (sceneNum == 9) {
             page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/savingsHistory.fxml")));
         }
-        if (sceneNum == 10) {
-            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/checkingBalance.fxml")));
-        }
-        if (sceneNum == 11) {
-            page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/savingsBalance.fxml")));
-        }
         if (sceneNum == 12) {
             page = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BankUI/checkingTransfer.fxml")));
         }
@@ -201,6 +181,14 @@ public class Controller implements Initializable {
         if(alerttype == 4)
         {
             label.setText("Request Recieved. New pin will be mailed out.");
+        }
+        if(alerttype == 5)
+        {
+            label.setText("   Current checking account balance: $"+myCheckingAccount.balanceProperty().get()+"   ");
+        }
+        if(alerttype == 6)
+        {
+            label.setText("   Current savings account balance: $"+mySavingsAccount.balanceProperty().get()+"   ");
         }
 
 
@@ -285,11 +273,9 @@ public class Controller implements Initializable {
         GridPane.setConstraints(memID, 0, 1);
         grid.getChildren().add(memID);
 
-        //Button submit = new Button("Submit");
         GridPane.setConstraints(submit, 1, 0);
         grid.getChildren().add(submit);
 
-        //Button close = new Button("Close\n");
         GridPane.setConstraints(closepin, 1, 1);
         grid.getChildren().add(closepin);
         closepin.setOnAction(eee -> forgotpin.close());
@@ -344,25 +330,19 @@ public class Controller implements Initializable {
         grid.setVgap(5);
         grid.setHgap(5);
 
-        street.setPromptText("Enter PIN ");
+        street.setPromptText("Enter Current PIN ");
         street.setPrefColumnCount(10);
         street.getText();
 
         GridPane.setConstraints(street, 0, 0);
         grid.getChildren().add(street);
 
-        //Button submit = new Button("Submit");
         GridPane.setConstraints(submit, 1, 0);
         grid.getChildren().add(submit);
 
-        //Button close = new Button("Close\n");
         GridPane.setConstraints(closepin, 1, 1);
         grid.getChildren().add(closepin);
         closepin.setOnAction(eee -> forgotpin.close());
-
-        // Button clear = new Button("Clear");
-        // GridPane.setConstraints(clear, 1, 1);
-        // grid.getChildren().add(clear);
 
         submit.setOnAction(ee -> {
             try {
@@ -438,6 +418,22 @@ public class Controller implements Initializable {
         mySavingsAccount = null;
         try {
             changeScenes(1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showCheckingBal(ActionEvent event) throws IOException{
+        try {
+            alertScene(5);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showSavingsBal(ActionEvent event) throws IOException{
+        try {
+            alertScene(6);
         } catch (IOException e) {
             e.printStackTrace();
         }
