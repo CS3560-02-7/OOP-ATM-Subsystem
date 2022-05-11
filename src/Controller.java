@@ -424,6 +424,8 @@ public class Controller implements Initializable {
     }
 
     public void showCheckingBal(ActionEvent event) throws IOException{
+        //refresh balance
+        myCheckingAccount = myMember.getCheckingAccount();
         try {
             alertScene(5);
         } catch (IOException e) {
@@ -432,6 +434,7 @@ public class Controller implements Initializable {
     }
 
     public void showSavingsBal(ActionEvent event) throws IOException{
+        mySavingsAccount = myMember.getSavingsAccount();
         try {
             alertScene(6);
         } catch (IOException e) {
