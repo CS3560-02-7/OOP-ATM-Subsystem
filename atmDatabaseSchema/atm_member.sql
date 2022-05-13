@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: atm
+-- Host: localhost    Database: atm
 -- ------------------------------------------------------
 -- Server version	8.0.28
 
@@ -28,6 +28,7 @@ CREATE TABLE `member` (
   `firstName` varchar(45) DEFAULT NULL,
   `lastName` varchar(45) DEFAULT NULL,
   `address` varchar(50) DEFAULT NULL,
+  `changePinRequest` tinyint DEFAULT '0',
   PRIMARY KEY (`memberID`),
   UNIQUE KEY `memberID_UNIQUE` (`memberID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -39,7 +40,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (123456,4321,'John','Jones','250 3rd St, Los Angeles, CA'),(654321,1234,'Sarah','Smith','115 Beach Ave, San Diego, CA');
+INSERT INTO `member` VALUES (1,1,'a','b','asdas',0),(123456,4321,'John','Jones','250 3rd St, Los Angeles, CA',0),(654321,1234,'Sarah','Smith','115 Beach Ave, San Diego, CA',0);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-08 15:30:42
+-- Dump completed on 2022-05-12  2:01:12
