@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="historyController">
+    <children>
+        <AnchorPane prefHeight="600.0" prefWidth="800.0">
+            <children>
+                <Text layoutX="14.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Balance: ">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
+                <Text layoutX="297.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaction History">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Text>
+                <Separator layoutX="300.0" layoutY="74.0" prefWidth="200.0" />
+                <Button fx:id="backButton" layoutX="728.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="58.0" text="Back">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Label fx:id="checkingCurrentBal" layoutX="119.0" layoutY="76.0" prefHeight="20.0" prefWidth="113.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font></Label>
+                <TabPane layoutX="19.0" layoutY="119.0" prefHeight="463.0" prefWidth="762.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <Tab fx:id="checkingDeposit" text="Deposits">
+                            <content>
+                                <TableView fx:id="depositTableView" prefHeight="200.0" prefWidth="200.0">
+                           <columns>
+                              <TableColumn fx:id="dTransactionID" prefWidth="148.0" text="Transaction Identifier" />
+                              <TableColumn fx:id="dAmount" prefWidth="119.0" text="Amount" />
+                              <TableColumn fx:id="dDate" prefWidth="142.0" text="Date of deposit" />
+                           </columns></TableView>
+                            </content></Tab>
+                        <Tab fx:id="checkingWithdrawal" text="Withdrawals">
+                            <content>
+                                <TableView fx:id="withdrawTableView" prefHeight="200.0" prefWidth="200.0">
+                           <columns>
+                              <TableColumn fx:id="wTransactionID" prefWidth="148.0" text="Transaction Identifier" />
+                               <TableColumn fx:id="wAmount" prefWidth="119.0" text="Amount" />
+                               <TableColumn fx:id="wDate" prefWidth="142.0" text="Date of withdrawal" />
+                           </columns></TableView>
+                            </content></Tab>
+                        <Tab fx:id="checkingIn" text="Incoming Transfers">
+                     <content>
+                        <TableView fx:id="inTableView" prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                              <TableColumn fx:id="iTransactionID" prefWidth="148.0" text="Transaction Identifier" />
+                              <TableColumn fx:id="iAmount" prefWidth="119.0" text="Amount" />
+                              <TableColumn fx:id="iDate" prefWidth="142.0" text="Date of Transaction" />
+                              <TableColumn fx:id="source" prefWidth="200.0" text="Transfer source account ID" />
+                          </columns>
+                        </TableView>
+                     </content>
+                        </Tab>
+                        <Tab fx:id="checkingOut" text="Outgoing Transfers">
+                            <content>
+                                <TableView fx:id="outTableView" prefHeight="200.0" prefWidth="200.0">
+                                    <columns>
+                                        <TableColumn fx:id="oTransactionID" prefWidth="148.0" text="Transaction Identifier" />
+                                        <TableColumn fx:id="oAmount" prefWidth="119.0" text="Amount" />
+                                        <TableColumn fx:id="oDate" prefWidth="142.0" text="Date of Transaction" />
+                                        <TableColumn fx:id="destination" prefWidth="200.0" text="Transfer destination account ID" />
+                                    </columns>
+                                </TableView>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
